@@ -1,0 +1,40 @@
+<div class="row" ng-controller="breadcrumbController">
+    <ol class="breadcrumb" ng-if="urlParams.dbName">
+        <li >
+            <a ng-show="urlParams.dbName" href="#/">Home</a>
+            <span ng-hide="urlParams.dbName">Home</span>
+        </li>
+        <li ng-show="urlParams.dbName">
+            <a ng-show="urlParams.collName" href="#/database/{{urlParams.dbName}}">{{urlParams.dbName}}</a>
+            <span ng-hide="urlParams.collName">{{urlParams.dbName}}</span>
+        </li>
+        <li ng-show="urlParams.collName">
+            <a ng-show="urlParams.docId" href="#/collection/{{urlParams.dbName}}/{{urlParams.collName}}/{{collPage}}">
+            {{urlParams.collName}}</a>
+            <span ng-hide="urlParams.docId">{{urlParams.collName}}</span>
+        </li>
+        <li ng-show="urlParams.docId">
+            {{urlParams.docId}}
+        </li>
+    </ol>
+    <ol class="breadcrumb" ng-if="!urlParams.dbName" >
+        <li >
+            <a ng-hide="urlarry.length == 0" href="#/">Home</a>
+            <span ng-show="urlarry.length == 0">Home</span>
+        </li>
+        <li ng-repeat="url in urlarry" ng-switch on="url">
+            <a ng-hide="url && urlarry.length == 1" ng-switch-when="admin" href="#/admin">{{url}}</a>
+            <span ng-show="url && urlarry.length == 1" ng-switch-when="admin">{{url}}</span>
+            <a ng-hide="url && urlarry.length == 2" ng-switch-when="daily" href="#/admin/daily">{{url}}</a>
+            <span ng-show="url && urlarry.length == 2" ng-switch-when="daily">{{url}}</span>
+            <a ng-hide="url && urlarry.length == 2" ng-switch-when="currentop" href="#/admin/currentop">{{url}}</a>
+            <span ng-show="url && urlarry.length == 2" ng-switch-when="currentop">{{url}}</span>
+            <a ng-hide="url && urlarry.length == 3" ng-switch-when="newtask" href="#/admin/daily/newtask">{{url}}</a>
+            <span ng-show="url && urlarry.length == 3" ng-switch-when="newtask">{{url}}</span>
+            <a ng-hide="url && urlarry.length == 2" ng-switch-when="profile" href="#/admin/profile">{{url}}</a>
+            <span ng-show="url && urlarry.length == 2" ng-switch-when="profile">{{url}}</span>
+            <a ng-hide="url && urlarry.length == 2" ng-switch-when="checkfile" href="#/admin/checkfile">{{url}}</a>
+            <span ng-show="url && urlarry.length == 2" ng-switch-when="checkfile">{{url}}</span>
+        </li>
+    </ol>
+</div>

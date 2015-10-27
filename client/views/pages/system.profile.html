@@ -1,0 +1,79 @@
+<div class="row" ng-controller="proviewController">
+
+    <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            {{db}}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="" ng-repeat="dbname in dblist" ng-click="change_db(dbname.name)">{{dbname.name}}</a></li>
+        </ul>
+    </div>
+    <hr/>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <td ng-click="change_sort('op')">
+                Operation
+                <span ng-show="sort.sort == 'op'"
+                      ng-class='{true:"glyphicon glyphicon-arrow-up",false:"glyphicon glyphicon-arrow-down"}[sort.sign]'></span>
+            </td>
+            <td ng-click="change_sort('ns')">
+                NameSpace
+                <span ng-show="sort.sort == 'ns'"
+                      ng-class='{true:"glyphicon glyphicon-arrow-up",false:"glyphicon glyphicon-arrow-down"}[sort.sign]'></span>
+            </td>
+            <td ng-click="change_sort('ts')">
+                DateTime
+                <span ng-show="sort.sort == 'ts'"
+                      ng-class='{true:"glyphicon glyphicon-arrow-up",false:"glyphicon glyphicon-arrow-down"}[sort.sign]'></span>
+            </td>
+            <td>User</td>
+            <td ng-click="change_sort('millis')">
+                Millis
+                <span ng-show="sort.sort == 'millis'"
+                      ng-class='{true:"glyphicon glyphicon-arrow-up",false:"glyphicon glyphicon-arrow-down"}[sort.sign]'></span>
+            </td>
+            <td>Query</td>
+            <td>Detail</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="profile in profiles">
+            <td>{{profile.op}}</td>
+            <td>{{profile.ns}}</td>
+            <td>{{profile.ts | date}}</td>
+            <td>{{profile.user}}</td>
+            <td>{{profile.millis}}</td>
+            <td>{{profile.query}}</td>
+            <td><button class="btn btn-primary" ng-click="showdoc(profile)" data-toggle="modal" data-target="#detailModal">Detail</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <pagination boundary-links="true" total-items="bigTotalItems" ng-model="bigCurrentPage"
+                    class="pagination-sm" previous-text="&lsaquo;" max-size="maxSize"
+                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                    rotate="false" num-pages="numPages"></pagination>
+    </div>
+    <div class="modal fade" id="detailModal" role="dialog" aria-labelledby="myModalLabel" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Detail
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <textarea  style="width:100%;resize: none;" rows="30" readonly>
+                        {{profiledoc | ToJson}}
+                    </textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal" >关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

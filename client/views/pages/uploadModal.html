@@ -1,0 +1,35 @@
+<div class="modal fade" id="uploadModal" role="dialog" aria-labelledby="myModalLabel" ng-controller="uploadController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    Upload
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="file" class="control-label">File :</label>
+                        <br/>
+
+                        <input id="file" type="file" class="btn btn-default " ngf-select ng-model="uploadfile">
+                        <br/>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{progressPercentage}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':progressPercentage}" >
+                                {{progressPercentage}}
+                            </div>
+                        </div>
+
+                        <button class="btn btn-info" ng-click="upload()">
+                            Upload Start
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal" >关闭</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

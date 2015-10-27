@@ -1,0 +1,34 @@
+<div class="row" ng-controller="dbviewController">
+    <label ng-show="!collectionlist">NoList</label>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th> Collection</th>
+            <th> NameSpace</th>
+            <th> Size</th>
+            <th> Count</th>
+            <th> Indexs</th>
+            <th> Export</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in collectionlist" >
+            <td><a href="#/collection/{{urlParams.dbName}}/{{item.name}}/1">{{item.name}}</a></td>
+            <td>{{item.stats.ns}}</td>
+            <td>{{item.stats.size | BtoKB}} KB</td>
+            <td>{{item.stats.count}}</td>
+            <td>{{item.stats.totalIndex}}</td>
+            <!--<td>{{item.category.name}}</td>-->
+            <!--<td>{{item.pv}}</td>-->
+            <!--<td><a href="#/movie/detal/{{item._id}}">查看</a></td>-->
+            <!--<td><a href="#/movie/update/{{item._id}}">修改</a></td>-->
+            <td>
+                <a class="btn btn-primary" href="/collection/export/{{urlParams.dbName}}/{{item.name}}">Export</a>
+                <!--<button type="button" ng-click="" class="btn btn-danger del">Export</button>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!--<pagination itemsList=movielist pagesize="5" url="#/movie/list"></pagination>-->
+</div>

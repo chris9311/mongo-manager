@@ -1,0 +1,16 @@
+<div class="row" ng-controller="docviewController">
+    <div>
+        <textarea  style="width:100%;resize: none;" rows="30" >{{document | ToJson}}</textarea>
+        <!--<ul>-->
+            <!--<li ng-repeat="josn_ in document2 ">-->
+                <!--{{josn_.key}}  : <input style="width:100%;" ng-if="(josn_.value | checktype) != 'object'" value="{{josn_.value}}">-->
+                <!--<ul ng-if="(josn_.value | checktype) == 'object'">-->
+                    <!--<li ng- ng-repeat="value in josn_.value">-->
+                        <!--{{value.key}} : <input value="{{value.value}}" style="width:100%;">-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <hr/>
+    </div>
+</div>

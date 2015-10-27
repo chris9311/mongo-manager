@@ -1,0 +1,27 @@
+<div class="row" ng-controller="commandController">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Command JS File
+            <div >
+                <label>
+                    JS File Name : {{filename}}
+                </label>
+            </div>
+            <div>
+                <label>
+                    Chose DataBase :
+                </label>
+                <select ng-model='database'>
+                    <option ng-repeat="database in dbs" value={{database.name}}>{{database.name}}</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-primary" ng-click="command()">Command</button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div>
+                <textarea  style="width:100%;resize: none;" rows="30" readonly>{{filedata}}</textarea>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <% include ./includes/head.html %>
+</head>
+<body>
+<div class="container" ng-controller="appController">
+    <% include ./includes/header.html %>
+
+    <div class="row">
+        <div class="col-md-4">
+            <% include ./includes/tree.html %>
+        </div>
+        <div class="col-md-8">
+            <% include ./includes/breadcrumb.html %>
+            <div ng-view ></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

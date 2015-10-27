@@ -1,0 +1,1131 @@
+MongoDB shell version: 3.0.3
+connecting to: 127.0.0.1:11111/admin
+{
+	"inprog" : [
+		{
+			"desc" : "conn269",
+			"threadId" : "0x7903c20",
+			"connectionId" : 269,
+			"opid" : 8276,
+			"active" : true,
+			"secs_running" : 60,
+			"microsecs_running" : NumberLong(60673616),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"saslStart" : 1,
+				"mechanism" : "SCRAM-SHA-1",
+				"payload" : BinData(0,"biwsbj1mbV9vd25lcixyPUtBbnFJSGVLUXZESkkwNXFRaU1zMWZaNHl0dnNXWUtq")
+			},
+			"client" : "127.0.0.1:38000",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn266",
+			"threadId" : "0x3376700",
+			"connectionId" : 266,
+			"opid" : 8164,
+			"active" : true,
+			"secs_running" : 83,
+			"microsecs_running" : NumberLong(83675560),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"listCollections" : "ssm"
+			},
+			"client" : "172.16.8.145:62382",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn240",
+			"threadId" : "0x20c76cd00",
+			"connectionId" : 240,
+			"opid" : 7364,
+			"active" : true,
+			"secs_running" : 236,
+			"microsecs_running" : NumberLong(236147090),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:20186",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn230",
+			"threadId" : "0x46dcc700",
+			"connectionId" : 230,
+			"opid" : 7567,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:20138",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn223",
+			"threadId" : "0x46dcdc20",
+			"connectionId" : 223,
+			"opid" : 6835,
+			"active" : true,
+			"secs_running" : 339,
+			"microsecs_running" : NumberLong(339442281),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"listCollections" : "ssm"
+			},
+			"client" : "172.16.8.145:62077",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn208",
+			"threadId" : "0x20c76c820",
+			"connectionId" : 208,
+			"opid" : 6772,
+			"active" : true,
+			"secs_running" : 347,
+			"microsecs_running" : NumberLong(347155653),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:20087",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn203",
+			"threadId" : "0x46dcd260",
+			"connectionId" : 203,
+			"opid" : 6321,
+			"active" : true,
+			"secs_running" : 440,
+			"microsecs_running" : NumberLong(440799000),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"collstats" : "weatherevents"
+			},
+			"client" : "172.16.8.145:61942",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn196",
+			"threadId" : "0x3374b60",
+			"connectionId" : 196,
+			"opid" : 6143,
+			"active" : true,
+			"secs_running" : 471,
+			"microsecs_running" : NumberLong(471977006),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"listIndexes" : "vesselevents"
+			},
+			"client" : "172.16.8.145:61908",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn195",
+			"threadId" : "0x46dcc220",
+			"connectionId" : 195,
+			"opid" : 6142,
+			"active" : true,
+			"secs_running" : 471,
+			"microsecs_running" : NumberLong(471977028),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"count" : "vesselevents",
+				"query" : {
+					
+				}
+			},
+			"client" : "172.16.8.145:61909",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn186",
+			"threadId" : "0x20c76cb60",
+			"connectionId" : 186,
+			"opid" : 6232,
+			"active" : true,
+			"secs_running" : 457,
+			"microsecs_running" : NumberLong(457578490),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:20014",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn158",
+			"threadId" : "0x33763c0",
+			"connectionId" : 158,
+			"opid" : 5117,
+			"active" : true,
+			"secs_running" : 676,
+			"microsecs_running" : NumberLong(676798452),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19927",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn157",
+			"threadId" : "0x46dcddc0",
+			"connectionId" : 157,
+			"opid" : 4886,
+			"active" : true,
+			"secs_running" : 722,
+			"microsecs_running" : NumberLong(722671486),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"listCollections" : 1
+			},
+			"client" : "127.0.0.1:37773",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn152",
+			"threadId" : "0x46dcd5a0",
+			"connectionId" : 152,
+			"opid" : 4866,
+			"active" : true,
+			"secs_running" : 728,
+			"microsecs_running" : NumberLong(728364466),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"listDatabases" : 1
+			},
+			"client" : "172.16.7.28:19895",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn137",
+			"threadId" : "0x33751e0",
+			"connectionId" : 137,
+			"opid" : 4528,
+			"active" : true,
+			"secs_running" : 787,
+			"microsecs_running" : NumberLong(787582489),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19823",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn114",
+			"threadId" : "0x3376220",
+			"connectionId" : 114,
+			"opid" : 3982,
+			"active" : true,
+			"secs_running" : 897,
+			"microsecs_running" : NumberLong(897572452),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19758",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn202",
+			"threadId" : "0x46dcd400",
+			"connectionId" : 202,
+			"opid" : 6442,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:20066",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn97",
+			"threadId" : "0x3374ea0",
+			"connectionId" : 97,
+			"opid" : 3081,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19690",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn167",
+			"threadId" : "0x3375ee0",
+			"connectionId" : 167,
+			"opid" : 5321,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19944",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn96",
+			"threadId" : "0x3375380",
+			"connectionId" : 96,
+			"opid" : 2864,
+			"active" : true,
+			"secs_running" : 1117,
+			"microsecs_running" : NumberLong(1117083173),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19689",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn115",
+			"threadId" : "0x3377a80",
+			"connectionId" : 115,
+			"opid" : 3627,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19759",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn87",
+			"threadId" : "0x3375860",
+			"connectionId" : 87,
+			"opid" : 3425,
+			"active" : true,
+			"secs_running" : 1006,
+			"microsecs_running" : NumberLong(1006683742),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19635",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn77",
+			"threadId" : "0x3375a00",
+			"connectionId" : 77,
+			"opid" : 4421,
+			"active" : true,
+			"secs_running" : 808,
+			"microsecs_running" : NumberLong(808061101),
+			"op" : "query",
+			"ns" : "local.$cmd",
+			"query" : {
+				"count" : "system.replset",
+				"query" : {
+					
+				},
+				"fields" : {
+					
+				}
+			},
+			"client" : "127.0.0.1:37606",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn132",
+			"threadId" : "0x3374d00",
+			"connectionId" : 132,
+			"opid" : 4187,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19816",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn72",
+			"threadId" : "0x7902080",
+			"connectionId" : 72,
+			"opid" : 2509,
+			"active" : true,
+			"secs_running" : 1187,
+			"microsecs_running" : NumberLong(1187488605),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"listDatabases" : 1
+			},
+			"client" : "172.16.7.28:19578",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn67",
+			"threadId" : "0x3375040",
+			"connectionId" : 67,
+			"opid" : 1901,
+			"active" : true,
+			"secs_running" : 1302,
+			"microsecs_running" : NumberLong(1302857672),
+			"op" : "query",
+			"ns" : "local.$cmd",
+			"query" : {
+				"count" : "system.replset",
+				"query" : {
+					
+				},
+				"fields" : {
+					
+				}
+			},
+			"client" : "127.0.0.1:37584",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn62",
+			"threadId" : "0x7902a40",
+			"connectionId" : 62,
+			"opid" : 1947,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19564",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn218",
+			"threadId" : "0x46dcd740",
+			"connectionId" : 218,
+			"opid" : 7017,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:20127",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn48",
+			"threadId" : "0x46dcc8a0",
+			"connectionId" : 48,
+			"opid" : 1381,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19502",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn181",
+			"threadId" : "0x20c76c340",
+			"connectionId" : 181,
+			"opid" : 5861,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19998",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn239",
+			"threadId" : "0x20c76cea0",
+			"connectionId" : 239,
+			"opid" : 7912,
+			"active" : true,
+			"secs_running" : 127,
+			"microsecs_running" : NumberLong(127474757),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:20184",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn172",
+			"threadId" : "0x7902220",
+			"connectionId" : 172,
+			"opid" : 5654,
+			"active" : true,
+			"secs_running" : 567,
+			"microsecs_running" : NumberLong(567559119),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19959",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn272",
+			"threadId" : "0x20c76c680",
+			"connectionId" : 272,
+			"opid" : 8395,
+			"active" : true,
+			"secs_running" : 37,
+			"microsecs_running" : NumberLong(37270195),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"saslStart" : 1,
+				"mechanism" : "SCRAM-SHA-1",
+				"payload" : BinData(0,"biwsbj1mbV9vd25lcixyPWFSdWFWWU9udUZxclB0MHBDczBOSVg0dzVCWjJDV0FS")
+			},
+			"client" : "127.0.0.1:38006",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn255",
+			"threadId" : "0x46dcda80",
+			"connectionId" : 255,
+			"opid" : 8512,
+			"active" : true,
+			"secs_running" : 17,
+			"microsecs_running" : NumberLong(17573496),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:20243",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn199",
+			"threadId" : "0x33756c0",
+			"connectionId" : 199,
+			"opid" : 6176,
+			"active" : true,
+			"secs_running" : 465,
+			"microsecs_running" : NumberLong(465202178),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"listIndexes" : "vesselevents"
+			},
+			"client" : "172.16.8.145:61916",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn53",
+			"threadId" : "0x33778e0",
+			"connectionId" : 53,
+			"opid" : 1710,
+			"active" : true,
+			"secs_running" : 1337,
+			"microsecs_running" : NumberLong(1337563556),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19512",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn35",
+			"threadId" : "0x7902d80",
+			"connectionId" : 35,
+			"opid" : 933,
+			"active" : true,
+			"secs_running" : 1498,
+			"microsecs_running" : NumberLong(1498526608),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"listCollections" : 1
+			},
+			"client" : "127.0.0.1:37511",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn18",
+			"threadId" : "0x7901520",
+			"connectionId" : 18,
+			"opid" : 845,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19397",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn146",
+			"threadId" : "0x3375ba0",
+			"connectionId" : 146,
+			"opid" : 4742,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:19865",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn34",
+			"threadId" : "0x46dccf20",
+			"connectionId" : 34,
+			"opid" : 772,
+			"active" : true,
+			"secs_running" : 1527,
+			"microsecs_running" : NumberLong(1527515041),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"profile" : 1
+			},
+			"client" : "127.0.0.1:37503",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn217",
+			"threadId" : "0x3375d40",
+			"connectionId" : 217,
+			"opid" : 6747,
+			"active" : true,
+			"secs_running" : 351,
+			"microsecs_running" : NumberLong(351172913),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"count" : "weatherevents",
+				"query" : {
+					
+				},
+				"fields" : {
+					
+				}
+			},
+			"client" : "172.16.8.145:62069",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn82",
+			"threadId" : "0x33749c0",
+			"connectionId" : 82,
+			"opid" : 2301,
+			"active" : true,
+			"secs_running" : 1227,
+			"microsecs_running" : NumberLong(1227541671),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19619",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn16",
+			"threadId" : "0x7901a00",
+			"connectionId" : 16,
+			"opid" : 436,
+			"active" : true,
+			"secs_running" : 1595,
+			"microsecs_running" : NumberLong(1595085582),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"profile" : 1
+			},
+			"client" : "127.0.0.1:37467",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn225",
+			"threadId" : "0x20c76c9c0",
+			"connectionId" : 225,
+			"opid" : 6971,
+			"active" : true,
+			"secs_running" : 313,
+			"microsecs_running" : NumberLong(313899824),
+			"op" : "query",
+			"ns" : "ssm.$cmd",
+			"query" : {
+				"listCollections" : 1
+			},
+			"client" : "127.0.0.1:37900",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn19",
+			"threadId" : "0x7903740",
+			"connectionId" : 19,
+			"opid" : 267,
+			"active" : true,
+			"secs_running" : 1622,
+			"microsecs_running" : NumberLong(1622810499),
+			"op" : "query",
+			"ns" : "ssm.usagedatas",
+			"query" : {
+				"count" : "usagedatas",
+				"query" : {
+					"requestInformation.requestHeaders.mobileOsType" : "Android"
+				},
+				"fields" : {
+					
+				}
+			},
+			"planSummary" : "COLLSCAN",
+			"client" : "172.16.8.145:60598",
+			"numYields" : 182508,
+			"locks" : {
+				"Global" : "r",
+				"Database" : "r",
+				"Collection" : "r"
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				"Global" : {
+					"acquireCount" : {
+						"r" : NumberLong(182509)
+					}
+				},
+				"Database" : {
+					"acquireCount" : {
+						"r" : NumberLong(182509)
+					},
+					"acquireWaitCount" : {
+						"r" : NumberLong(1)
+					},
+					"timeAcquiringMicros" : {
+						"r" : NumberLong(126)
+					}
+				},
+				"Collection" : {
+					"acquireCount" : {
+						"r" : NumberLong(182509)
+					}
+				}
+			}
+		},
+		{
+			"desc" : "conn20",
+			"threadId" : "0x79038e0",
+			"connectionId" : 20,
+			"opid" : 613,
+			"active" : true,
+			"secs_running" : 1555,
+			"microsecs_running" : NumberLong(1555740775),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19415",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn256",
+			"threadId" : "0x7902700",
+			"connectionId" : 256,
+			"opid" : 8138,
+			"active" : false,
+			"op" : "query",
+			"ns" : "config.settings",
+			"query" : {
+				
+			},
+			"client" : "172.16.7.28:20244",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		},
+		{
+			"desc" : "conn21",
+			"threadId" : "0x79004e0",
+			"connectionId" : 21,
+			"opid" : 1176,
+			"active" : true,
+			"secs_running" : 1446,
+			"microsecs_running" : NumberLong(1446604331),
+			"op" : "query",
+			"ns" : "admin.$cmd",
+			"query" : {
+				"serverStatus" : 1,
+				"oplog" : 1
+			},
+			"client" : "172.16.7.28:19416",
+			"numYields" : 0,
+			"locks" : {
+				
+			},
+			"waitingForLock" : false,
+			"lockStats" : {
+				
+			}
+		}
+	]
+}
+bye

@@ -1,0 +1,48 @@
+<div class="row" ng-controller="currentController">
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <td ng-click="change_sort('opid')">
+                Opid
+                <span ng-show="sort.sort == 'opid'"
+                      ng-class='{true:"glyphicon glyphicon-arrow-up",false:"glyphicon glyphicon-arrow-down"}[sort.sign]'></span>
+            </td>
+            <td ng-click="change_sort('active')">
+                Active
+                <span ng-show="sort.sort == 'active'"
+                      ng-class='{true:"glyphicon glyphicon-arrow-up",false:"glyphicon glyphicon-arrow-down"}[sort.sign]'></span>
+            </td>
+            <td ng-click="change_sort('secs_running')">
+                Secs_running
+                <span ng-show="sort.sort == 'secs_running'"
+                      ng-class='{true:"glyphicon glyphicon-arrow-up",false:"glyphicon glyphicon-arrow-down"}[sort.sign]'></span>
+            </td>
+            <td ng-click="change_sort('ns')">
+                Ns
+                <span ng-show="sort.sort == 'ns'"
+                      ng-class='{true:"glyphicon glyphicon-arrow-up",false:"glyphicon glyphicon-arrow-down"}[sort.sign]'></span>
+            </td>
+            <td>Detail</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="filedata in data">
+            <td>{{filedata.opid}}</td>
+            <td>{{filedata.active}}</td>
+            <td>{{filedata.secs_running}}</td>
+            <td>{{filedata.ns}}</td>
+            <td>
+                <button class="btn btn-info" data-toggle="modal" data-target="#readfileModal">Detail</button>
+                <currentop-detail></currentop-detail>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <pagination boundary-links="true" total-items="bigTotalItems" ng-model="bigCurrentPage"
+                    class="pagination-sm" previous-text="&lsaquo;" max-size="maxSize"
+                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                    rotate="false" num-pages="numPages"></pagination>
+    </div>
+
+</div>
