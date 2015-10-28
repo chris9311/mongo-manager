@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5260ffbb-143b-4e52-94dd-6e0f9f5f31ab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/admin.html" afterPath="$PROJECT_DIR$/client/views/pages/admin.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/admin.js" afterPath="$PROJECT_DIR$/server/routes/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/app.js" afterPath="$PROJECT_DIR$/client/controllers/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/includes/breadcrumb.html" afterPath="$PROJECT_DIR$/client/views/includes/breadcrumb.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/detailModal.html" afterPath="$PROJECT_DIR$/client/views/pages/detailModal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/filelist.html" afterPath="$PROJECT_DIR$/client/views/pages/filelist.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/viewControllers.js" afterPath="$PROJECT_DIR$/client/controllers/viewControllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -33,8 +28,8 @@
       <file leaf-file-name="admin.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22013274">
-              <caret line="376" column="12" selection-start-line="376" selection-start-column="12" selection-end-line="376" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.16924779">
+              <caret line="132" column="13" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -44,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/client/controllers/viewControllers.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="155" column="38" selection-start-line="155" selection-start-column="38" selection-end-line="155" selection-end-column="38" />
+              <caret line="300" column="45" selection-start-line="300" selection-start-column="45" selection-end-line="300" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -115,12 +110,12 @@
         <option value="$PROJECT_DIR$/server/shell/exportdatabase.sh" />
         <option value="$PROJECT_DIR$/server/routes/database.js" />
         <option value="$PROJECT_DIR$/client/views/pages/admin.html" />
-        <option value="$PROJECT_DIR$/server/routes/admin.js" />
         <option value="$PROJECT_DIR$/client/views/pages/detailModal.html" />
         <option value="$PROJECT_DIR$/client/public/upload/js/testjs.js" />
         <option value="$PROJECT_DIR$/client/controllers/app.js" />
         <option value="$PROJECT_DIR$/client/views/pages/filelist.html" />
         <option value="$PROJECT_DIR$/client/views/includes/breadcrumb.html" />
+        <option value="$PROJECT_DIR$/server/routes/admin.js" />
         <option value="$PROJECT_DIR$/client/controllers/viewControllers.js" />
       </list>
     </option>
@@ -522,7 +517,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1040" extended-state="1" />
+    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22563559" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -871,14 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/upload/js/testjs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8888888">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/controllers/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -935,18 +922,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/upload/js/testjs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05641593">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/controllers/viewControllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="155" column="38" selection-start-line="155" selection-start-column="38" selection-end-line="155" selection-end-column="38" />
+          <caret line="300" column="45" selection-start-line="300" selection-start-column="45" selection-end-line="300" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22013274">
-          <caret line="376" column="12" selection-start-line="376" selection-start-column="12" selection-end-line="376" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.16924779">
+          <caret line="132" column="13" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
           <folding />
         </state>
       </provider>

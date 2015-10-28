@@ -251,29 +251,58 @@ uploadcontroller.controller('uploadController',function($http,$scope,$timeout,Up
     $scope.$on('reloadModal', function (event,data) {
         $scope.progressPercentage = '0%';
     });
+
     $scope.upload = function () {
         var str = $scope.uploadfile.name.split('.');
-        var type = str[str.length - 1];
-        if (type == 'js'){
-            Upload.upload({
-                'url' : '/admin/upload/jsfile',
-                'file' : $scope.uploadfile
-            }).progress(function(evt){
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                $scope.progressPercentage = progressPercentage + '%';
-                $scope.$emit('get_filename',evt.config.file.name);
-            }).success(function (data, status) {
-                if(data.success == true){
-                    $timeout(function () {
-                        alert('Upload Complete');
-                    },700);
-                }
-            }).error(function (data, status) {
+        //var type = str[str.length - 1];
+        //if (type == 'js'){
+        //    Upload.upload({
+        //        'url' : '/admin/upload/jsfile',
+        //        'file' : $scope.uploadfile
+        //    }).progress(function(evt){
+        //        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+        //        $scope.progressPercentage = progressPercentage + '%';
+        //        $scope.$emit('get_filename',evt.config.file.name);
+        //    }).success(function (data, status) {
+        //        if(data.success == true){
+        //            $timeout(function () {
+        //                alert('Upload Complete');
+        //            });
+        //        }else{
+        //            $timeout(function () {
+        //                alert(data.error+' Pls chack and upload again.');
+        //            });
+        //        }
+        //    }).error(function (data, status) {
+        //        alert('Upload Error! Pls upload again! \n Error Status: ' + status);
+        //    });
+        //}else{
+        //    alert('File type error! Pls choose the .js file.')
+        //}
+
+        Upload.upload({
+            'url' : '/admin/upload/jsfile',
+            'file' : $scope.uploadfile
+        }).progress(function(evt){
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.progressPercentage = progressPercentage + '%';
+            $scope.$emit('get_filename',evt.config.file.name);
+        }).success(function (data, status) {
+            if(data.success == true){
+                $timeout(function () {
+                    alert('Upload Complete');
+                });
+            }else{
+                $timeout(function () {
+                    alert(data.error+' Pls chack and upload again.');
+                });
+            }
+        }).error(function (data, status) {
+            $scope.progressPercentage = '0%';
+            $timeout(function () {
                 alert('Upload Error! Pls upload again! \n Error Status: ' + status);
             });
-        }else{
-            alert('File type error! Pls choose the .js file.')
-        }
+        });
     };
 });
 

@@ -126,11 +126,11 @@ router.post('/upload/jsfile',multipartMiddleware,function(req,res){
     var originalFilename = file.originalFilename;
 
     if(originalFilename){
+
         fs.readFile(filePath,function(err,data){
             if(err){
                 console.log(err);
             }
-
             var newPath = path.join(__dirname,'../../','client/public/upload/js/'+originalFilename);
             fs.writeFile(newPath,data,function(err){
                 if(err){
@@ -145,7 +145,48 @@ router.post('/upload/jsfile',multipartMiddleware,function(req,res){
                     success : true
                 })
             })
-        })
+        });
+
+        //fs.readFile(filePath,'utf-8', function (err,data) {
+        //    var reg = /(quit\(\);)/ig;
+        //    var str = data;
+        //    console.log(str);
+        //    var check = str.match(reg);
+        //    console.log(check);
+        //    if(!check || !check[0]){
+        //        fs.unlink(filePath,function(err) {
+        //            if (err) {
+        //                console.log(err);
+        //            }
+        //        });
+        //
+        //        res.json({
+        //            success : false,
+        //            error : 'Syntaxs error!'
+        //        })
+        //    }else{
+        //        fs.readFile(filePath,function(err,data){
+        //            if(err){
+        //                console.log(err);
+        //            }
+        //            var newPath = path.join(__dirname,'../../','client/public/upload/js/'+originalFilename);
+        //            fs.writeFile(newPath,data,function(err){
+        //                if(err){
+        //                    console.log(err);
+        //                }
+        //                fs.unlink(filePath,function(err){
+        //                    if(err){
+        //                        console.log(err);
+        //                    }
+        //                });
+        //                res.json({
+        //                    success : true
+        //                })
+        //            })
+        //        })
+        //    }
+        //});
+
     }
 });
 
