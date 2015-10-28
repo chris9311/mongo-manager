@@ -35,6 +35,8 @@
             <span ng-show="url && urlarry.length == 2" ng-switch-when="profile">{{url}}</span>
             <a ng-hide="url && urlarry.length == 2" ng-switch-when="checkfile" href="#/admin/checkfile">{{url}}</a>
             <span ng-show="url && urlarry.length == 2" ng-switch-when="checkfile">{{url}}</span>
+            <a ng-hide="url && urlarry.length == 4" ng-switch-when="command" >{{url}}</a>
+            <span ng-show="url && urlarry.length == 4" ng-switch-when="command">{{url}}</span>
         </li>
     </ol>
 </div>

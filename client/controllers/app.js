@@ -1,9 +1,10 @@
 /**
  * Created by HUANGCH4 on 2015/8/26.
  */
-var app = angular.module('app',['ngRoute','tree_controller','dbview_controller'
-    ,'breadcrumb_controller','collview_controller','docview_controller','indexview_controller',
-    'proview_controller','upload_controller','fileList','command','daily','dailytask','current']);
+var app = angular.module('app',['ngRoute','tree_controller','dbview_controller',
+    'breadcrumb_controller','collview_controller','docview_controller','indexview_controller',
+    'proview_controller','upload_controller','fileList','command','daily','dailytask','current',
+    'admin']);
 
 
 app.config(function ($routeProvider) {
@@ -35,7 +36,7 @@ app.config(function ($routeProvider) {
         .when('/admin/checkfile',{
             templateUrl : 'client/views/pages/filelist.html'
         })
-        .when('/admin/command/:filename',{
+        .when('/admin/checkfile/command/:filename',{
             templateUrl : 'client/views/pages/commandjs.html'
         })
         .when('/admin/daily',{

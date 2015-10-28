@@ -165,6 +165,14 @@ docviewcontroller.controller('docviewController',function($scope,$http,$rootScop
         }
 });
 
+var admin = angular.module('admin',[]);
+admin.controller('adminController', function ($scope,$http) {
+
+    $scope.show_upload = function () {
+        $scope.$emit('reloadModal','');
+    };
+});
+
 var profileviewcontroller = angular.module('proview_controller',['ui.bootstrap']);
 profileviewcontroller.controller('proviewController',function($scope,$rootScope,$http,$routeParams){
 
@@ -236,16 +244,16 @@ profileviewcontroller.controller('proviewController',function($scope,$rootScope,
 });
 
 var uploadcontroller = angular.module('upload_controller',['ngFileUpload']);
-uploadcontroller.controller('uploadController',function($http,$scope,Upload){
+uploadcontroller.controller('uploadController',function($http,$scope,$timeout,Upload){
 
     $scope.progressPercentage = '0%';
-    $scope.upload = function () {
-        console.log($scope.uploadfile.name);
 
+    $scope.$on('reloadModal', function (event,data) {
+        $scope.progressPercentage = '0%';
+    });
+    $scope.upload = function () {
         var str = $scope.uploadfile.name.split('.');
         var type = str[str.length - 1];
-        console.log(type);
-
         if (type == 'js'){
             Upload.upload({
                 'url' : '/admin/upload/jsfile',
@@ -253,13 +261,12 @@ uploadcontroller.controller('uploadController',function($http,$scope,Upload){
             }).progress(function(evt){
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 $scope.progressPercentage = progressPercentage + '%';
-                console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
                 $scope.$emit('get_filename',evt.config.file.name);
             }).success(function (data, status) {
-                console.log(data);
-                console.log(status);
                 if(data.success == true){
-                    alert('Upload Complete')
+                    $timeout(function () {
+                        alert('Upload Complete');
+                    },700);
                 }
             }).error(function (data, status) {
                 alert('Upload Error! Pls upload again! \n Error Status: ' + status);
@@ -267,8 +274,6 @@ uploadcontroller.controller('uploadController',function($http,$scope,Upload){
         }else{
             alert('File type error! Pls choose the .js file.')
         }
-
-
     };
 });
 

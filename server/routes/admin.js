@@ -8,6 +8,7 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var async = require('async');
 var child_process = require('child_process');
+var config = require('../../config');
 //var later = require('later');
 
 var daily_tasklist =[];
@@ -200,10 +201,15 @@ router.get('/command/:database/:filename', function (req,res) {
     var filename = req.params.filename;
     var database = req.params.database;
     var filepath = path.join(__dirname,'../../','client/public/upload/js');
-    var command = 'mongo '+database+' --shell '+filepath+'/'+filename+'';
+    var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
+    var ipaddress = config.mongodb.server;
+    var command = 'mongo 127.0.0.1/'+database+' -u '+auth[0]+' -p '+auth[1]+' --authenticationDatabase admin --shell '+filepath+'/'+filename+'';
     child_process.exec(command, function (err,stdout,stderr) {
+        if(err){
+            console.log(err);
+        }
         res.json({
-            suucess : true,
+            success : true,
             data : stdout
         })
     })
@@ -212,7 +218,7 @@ router.get('/command/:database/:filename', function (req,res) {
 router.get('/delete/:filename', function (req,res) {
     var filename = req.params.filename;
     var filepath = path.join(__dirname,'../../','client/public/upload/js');
-    fs.unlink(filepath+'\\'+filename,function (err){
+    fs.unlink(filepath+'/'+filename,function (err){
         if(err){
             console.log(err);
         }else{
