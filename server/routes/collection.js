@@ -39,7 +39,7 @@ router.get('/export/:dbName/:collName', function (req,res) {
 
     var dbName = req.params.dbName;
     var collName = req.params.collName;
-    var filepath = path.join(__dirname,'../../','server/shell/dumpcoll.sh');
+    var filepath = path.join(__dirname,'../../','server/shell/exportcollection.sh');
     var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
     child_process.execFile(filepath, [dbName,collName,auth[0],auth[1]],function (err,result) {
         if(err){

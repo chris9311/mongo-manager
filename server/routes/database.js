@@ -1,8 +1,7 @@
-/**
- * Created by HUANGCH4 on 2015/8/26.
- */
 var express = require('express');
 var async = require('async');
+var child_process = require('child_process');
+var path = require('path');
 var router = express.Router();
 
 router.get('/databases',function(req,res){
@@ -28,7 +27,6 @@ router.get('/databases',function(req,res){
             });
             callback2(null,null);
         });
-
     },function(err,result){
         res.json({
             success:true,
@@ -48,7 +46,6 @@ router.get('/getstats',function(req,res){
                     err : err
                 })
             }
-
             var dbstats = {
                 db : stats.db,
                 collections : stats.collections,
@@ -99,8 +96,20 @@ router.get('/getcollections/:dbName',function(req,res){
             });
         });
     });
+});
 
+router.get('/export/:dbName', function (req, res) {
 
+    var dbName = req.params.dbName;
+    var filepath = path.join(__dirname,'../../','server/shell/exportdatabase.sh');
+    var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
+    child_process.execFile(filepath, [dbName,auth[0],auth[1]], function (err, result) {
+        if(err){
+            console.log(err);
+        }
+        console.log(result);
+        res.download('/tmp/mongo_dump/'+dbName+'.zip',''+dbName+'.zip');
+    });
 });
 
 module.exports = router;
