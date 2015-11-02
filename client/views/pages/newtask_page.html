@@ -1,0 +1,156 @@
+<!--<div class="row" ng-controller="newtaskController">-->
+    <!--<div class="panel panel-primary">-->
+        <!--<div class="panel-heading">-->
+            <!--<h4>-->
+                <!--New Daily Task-->
+                <!--<a class="pull-right" style="color: white" href="#/admin/daily">List</a>-->
+            <!--</h4>-->
+
+
+        <!--</div>-->
+        <!--<div class="panel-body">-->
+            <!--<ul class="nav nav-tabs">-->
+
+                <!--<li role="presentation" ng-class='{true: "active", false: "inactive"}[tasktype=="hourly"]'><a href="" ng-click="hourly()">Hourly Task</a></li>-->
+                <!--<li role="presentation" ng-class='{true: "active", false: "inactive"}[tasktype=="daily"]'><a href="" ng-click="daily()">Daily Task</a></li>-->
+                <!--<li role="presentation" ng-class='{true: "active", false: "inactive"}[tasktype=="weekly"]'><a href="" ng-click="weekly()">Weekly Task</a></li>-->
+                <!--<li role="presentation" ng-class='{true: "active", false: "inactive"}[tasktype=="monthly"]'><a href="" ng-click="monthly()">monthly Task</a></li>-->
+                <!--<li role="presentation" ng-class='{true: "active", false: "inactive"}[tasktype=="yearly"]'><a href="" ng-click="yearly()">yearly Task</a></li>-->
+                <!--&lt;!&ndash;<li role="presentation" ng-class='{true: "active", false: "inactive"}[tasktype=="newtask"]'><a href="" ng-click="newtask1()">new Task</a></li>&ndash;&gt;-->
+            <!--</ul>-->
+            <!--<hr/>-->
+
+            <!--<monthlytask ng-if='tasktype=="monthly"'></monthlytask>-->
+
+            <!--<hourlytask ng-if='tasktype=="hourly"'></hourlytask>-->
+
+            <!--<yearlytask ng-if='tasktype=="yearly"'></yearlytask>-->
+
+            <!--<dailytask ng-if='tasktype=="daily"'></dailytask>-->
+
+            <!--<weeklytask ng-if='tasktype=="weekly"'></weeklytask>-->
+
+            <!--&lt;!&ndash;<new_task ng-if='tasktype=="newtask"'></new_task>&ndash;&gt;-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div ng-controller="newtaskController">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2>
+                New Task
+            </h2>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <!--<pre>The task will be command in  <em style="color: red">{{date.mon}} {{date.day}}th, {{time.hour}} : {{time.min}} : 00</em>   every year.</pre>-->
+                <pre>The task will be command.</pre>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="control-label col-md-2" >Set Date:</label>
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input class="form-control" id="monent" type="text" ng-model="date.mon" maxlength="2" placeholder="Monent">
+                                        <label class="control-label input-group-addon">M</label>
+                                    </p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input class="form-control" type="text" placeholder="Date" ng-model="date.day" maxlength="2">
+                                        <label class="control-label input-group-addon">D</label>
+                                    </p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input class="form-control" type="text" placeholder="Weekday" ng-model="date.week" maxlength="2">
+                                        <label class="control-label input-group-addon">W</label>
+                                    </p>
+                                    <!--<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="control-label col-md-2">Set Time:</label>
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input class="form-control" type="text" placeholder="Hour" ng-model="time.hour" maxlength="2">
+                                        <label class="control-label input-group-addon">H</label>
+                                    </p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input class="form-control" type="text" placeholder="Minute" ng-model="time.min" maxlength="2">
+                                        <label class="control-label input-group-addon">M</label>
+                                    </p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input class="form-control" type="text" value="00" readonly>
+                                        <label class="control-label input-group-addon">S</label>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="control-label col-md-2" for="once.task">Set Task:</label>
+                        <div ng-if="show_setFile == false">
+                            <div class="col-md-7">
+                                <input class="form-control" id="once.task" type="text" ng-model="task.shell">
+                            </div>
+                            <button class="btn btn-info col-md-2" ng-click="change_setTask_view()">
+                                JS File
+                            </button>
+                        </div>
+                        <div ng-if="show_setFile == true">
+                            <div class="col-md-7">
+                                <input class="form-control" type="text" ng-model="task.file" readonly>
+                            </div>
+                            <button class="btn btn-info col-md-2" ng-click="change_setTask_view()">
+                                Shell
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="show_setFile == true">
+                    <div class="row">
+                        <label class="control-label col-md-2">File Source:</label>
+                        <div class="col-md-9">
+                            <div class="dropdown col-md-4">
+                                <button class="btn btn-primary dropdown-toggle col-md-12" ng-click="get_filelist()" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Choose File
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+                                    <li><a href="" ng-repeat="filename in filelist" ng-click="task.file = filename">{{filename}}</a></li>
+                                </ul>
+                            </div>
+                            <span class="col-md-1"></span>
+                            <button class="btn btn-default col-md-4" data-toggle="modal" data-target="#uploadModal">Upload File</button>
+                            <span class="col-md-1"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 ">
+                        <button ng-click="submit()" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <upload-file></upload-file>
+</div>
+
+

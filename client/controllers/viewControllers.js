@@ -433,249 +433,314 @@ dailytask.controller('newtaskController', function ($scope,$http) {
             })
     };
 
+    $scope.task = {
+        shell : '',
+        file : ''
+    };
+
+    $scope.$on('get_filename', function (event,data) {
+        $scope.task.file = data;
+    });
+
+    $scope.newtask = function (datetime) {
+        console.log(datetime);
+        $http.get('/admin/newtask/'+datetime)
+            .success(function (json) {
+                if(json.success){
+                    console.log(json.success);
+                }else{
+                    console.log('error msg');
+                }
+            })
+    };
+
+    $scope.checkinput = function (data) {
+        console.log('check init');
+        console.log(data);
+        var length = data.length;
+        //if(length == 2){
+        //    if(data.match(/\d{2}/)){
+        //        console.log('Figure');
+        //    }else{
+        //        console.log('Error String1');
+        //    }
+        //}else if(length == 1){
+        //    if(data.match(/\*/)){
+        //        console.log('This is *');
+        //    }else{
+        //        console.log('Error String2');
+        //    }
+        //}else{
+        //    console.log('Error String3');
+        //}
+    };
+
+    $scope.submit = function () {
+
+        var datetime = $scope.date.mon + '-' + $scope.date.day + '-' + $scope.date.week + '-' + $scope.time.hour + '-' + $scope.time.min;
+
+        if(!$scope.show_setFile){
+            $http.get('/admin/newtask/' + datetime + '/0/' + $scope.task.shell )
+                .success(function (json) {
+                    console.log(json.success);
+                })
+        }else{
+            $http.get('/admin/newtask/' + datetime + '/1/' + $scope.task.file )
+                .success(function (json) {
+                    console.log(json.success);
+                })
+        }
+    }
 
 })
-    .directive('hourlytask', function () {
-        return {
-            restrict : 'E',
-            replace : true,
-            templateUrl : 'client/views/pages/task/hourlytask.html',
-        }
-    })
-    .directive('dailytask', function () {
-        return {
-            restrict : 'E',
-            replace : true,
-            templateUrl : 'client/views/pages/task/dailytask.html',
-        }
-    })
-    .directive('weeklytask', function () {
-        return {
-            restrict : 'E',
-            replace : true,
-            templateUrl : 'client/views/pages/task/weeklytask.html',
-        }
-    })
-    .directive('monthlytask',function(){
-        return {
-            restrict : 'E',
-            replace : true,
-            templateUrl : 'client/views/pages/task/monthlytask.html',
-        }
-    })
-    .directive('yearlytask',function(){
-        return {
-            restrict : 'E',
-            replace : true,
-            templateUrl : 'client/views/pages/task/yearlytask.html',
-        }
-    });
+    //.directive('hourlytask', function () {
+    //    return {
+    //        restrict : 'E',
+    //        replace : true,
+    //        templateUrl : 'client/views/pages/task/hourlytask.html',
+    //    }
+    //})
+    //.directive('dailytask', function () {
+    //    return {
+    //        restrict : 'E',
+    //        replace : true,
+    //        templateUrl : 'client/views/pages/task/dailytask.html',
+    //    }
+    //})
+    //.directive('weeklytask', function () {
+    //    return {
+    //        restrict : 'E',
+    //        replace : true,
+    //        templateUrl : 'client/views/pages/task/weeklytask.html',
+    //    }
+    //})
+    //.directive('monthlytask',function(){
+    //    return {
+    //        restrict : 'E',
+    //        replace : true,
+    //        templateUrl : 'client/views/pages/task/monthlytask.html',
+    //    }
+    //})
+    //.directive('yearlytask',function(){
+    //    return {
+    //        restrict : 'E',
+    //        replace : true,
+    //        templateUrl : 'client/views/pages/task/yearlytask.html',
+    //    }
+    //});
+    //.directive('newtask',function(){
+    //    return {
+    //        restrict : 'E',
+    //        replace : true,
+    //        templateUrl : 'client/views/pages/task/newtask.html'
+    //    }
+    //});
 
-dailytask.controller('hourlytask', function ($scope,$http) {
-
-    $scope.time = {
-        min : 0
-    };
-    $scope.task = {
-        shell : '',
-        file : ''
-    };
-
-    $scope.$on('get_filename', function (event,data) {
-        $scope.task.file = data;
-    });
-
-    $scope.submit = function () {
-        if(!$scope.show_setFile){
-            $http.get('/admin/newhourlytask/' + $scope.time.min + '/0/' + $scope.task.shell )
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }else{
-            $http.get('/admin/newhourlytask/' + $scope.time.min + '/1/' + $scope.task.file )
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }
-
-    }
-});
-
-dailytask.controller('dailytask', function ($scope,$http) {
-
-    $scope.time = {
-        hour : 0,
-        min : 0,
-    };
-
-    $scope.task = {
-        shell : '',
-        file : ''
-    };
-    $scope.$on('get_filename', function (event,data) {
-        $scope.task.file = data;
-    });
-
-    $scope.submit = function () {
-        if(!$scope.show_setFile){
-            $http.get('/admin/newdailytask/' + $scope.time.hour + '/' + $scope.time.min + '/0/' + $scope.task.shell)
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }else{
-            $http.get('/admin/newdailytask/' + $scope.time.hour + '/' + $scope.time.min + '/0/' + $scope.task.file)
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }
-    }
-});
-
-dailytask.controller('weeklytask', function ($scope,$http) {
-
-    $scope.weekday = 0;
-    $scope.hour = 0;
-    $scope.min = 0;
-
-    $scope.task = {
-        shell : '',
-        file : ''
-    };
-    $scope.$on('get_filename', function (event,data) {
-        $scope.task.file = data;
-    });
-
-
-    $scope.submit = function () {
-        if(!$scope.show_setFile){
-            $http.get('/admin/newweeklytask/' + $scope.weekday + '/' + $scope.hour + '/' + $scope.min + '/0/' + $scope.task.shell)
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }else{
-            $http.get('/admin/newweeklytask/' + $scope.weekday + '/' + $scope.hour + '/' + $scope.min + '/0/' + $scope.task.file)
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }
-    }
-})
-    .filter('toWeekday',function(){
-        return function(num){
-            if(num == 0){
-                return 'Sun';
-            }if(num == 1){
-                return 'Mon';
-            }if(num == 2){
-                return 'Tue';
-            }if(num == 3){
-                return 'Web';
-            }if(num == 4){
-                return 'Thu';
-            }if(num == 5){
-                return 'Fri';
-            }if(num == 6){
-                return 'Sat';
-            }
-        }
-    });
-
-dailytask.controller('monthlytask', function ($scope,$http) {
-
-    $scope.date = {
-        day : 1,
-    };
-    $scope.time = {
-        hour : 0,
-        min : 0,
-    };
-
-    $scope.task = {
-        shell : '',
-        file : ''
-    };
-    $scope.$on('get_filename', function (event,data) {
-        $scope.task.file = data;
-    });
-
-    $scope.submit = function () {
-        if(!$scope.show_setFile){
-            $http.get('/admin/newmonthlytask/'+$scope.date.day+'/'+$scope.time.hour+'/'+$scope.time.min + '/0/' + $scope.task.shell)
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }else{
-            $http.get('/admin/newmonthlytask/'+$scope.date.day+'/'+$scope.time.hour+'/'+$scope.time.min + '/0/' + $scope.task.file)
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }
-    }
-});
-
-dailytask.controller('yearlytask', function ($scope,$http) {
-
-
-    $scope.date = {
-        day : 1,
-        mon : 1
-    };
-    $scope.time = {
-        hour : 0,
-        min : 0,
-    };
-
-    $scope.task = {
-        shell : '',
-        file : ''
-    };
-    $scope.$on('get_filename', function (event,data) {
-        $scope.task.file = data;
-    });
-
-    $scope.submit = function () {
-        if(!$scope.show_setFile){
-            $http.get('/admin/newyearlytask/'+$scope.date.mon+'/'+$scope.date.day+'/'+$scope.time.hour+'/'+$scope.time.min + '/0/' + $scope.task.shell)
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }else{
-            $http.get('/admin/newyearlytask/'+$scope.date.mon+'/'+$scope.date.day+'/'+$scope.time.hour+'/'+$scope.time.min + '/0/' + $scope.task.file)
-                .success(function (json) {
-                    console.log(json.success);
-                })
-        }
-    }
-})
-    .filter('toMonth', function () {
-        return function (num) {
-            if(num == 1){
-                return 'Jan';
-            }if(num == 2){
-                return 'Feb';
-            }if(num == 3){
-                return 'Mar';
-            }if(num == 4){
-                return 'Apr';
-            }if(num == 5){
-                return 'May';
-            }if(num == 6){
-                return 'Jun';
-            }if(num == 7){
-                return 'Jul';
-            }if(num == 8){
-                return 'Aug';
-            }if(num == 9){
-                return 'Sep';
-            }if(num == 10){
-                return 'Oct';
-            }if(num == 11){
-                return 'Nov';
-            }if(num == 12){
-                return 'Dev';
-            }
-        }
-    });
+//dailytask.controller('hourlytask', function ($scope,$http) {
+//
+//    $scope.time = {
+//        min : 0
+//    };
+//    $scope.task = {
+//        shell : '',
+//        file : ''
+//    };
+//
+//    $scope.$on('get_filename', function (event,data) {
+//        $scope.task.file = data;
+//    });
+//
+//    $scope.submit = function () {
+//        if(!$scope.show_setFile){
+//            $http.get('/admin/newhourlytask/' + $scope.time.min + '/0/' + $scope.task.shell )
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }else{
+//            $http.get('/admin/newhourlytask/' + $scope.time.min + '/1/' + $scope.task.file )
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }
+//
+//    }
+//});
+//
+//dailytask.controller('dailytask', function ($scope,$http) {
+//
+//    $scope.time = {
+//        hour : 0,
+//        min : 0,
+//    };
+//
+//    $scope.task = {
+//        shell : '',
+//        file : ''
+//    };
+//    $scope.$on('get_filename', function (event,data) {
+//        $scope.task.file = data;
+//    });
+//
+//    $scope.submit = function () {
+//        if(!$scope.show_setFile){
+//            $http.get('/admin/newdailytask/' + $scope.time.hour + '/' + $scope.time.min + '/0/' + $scope.task.shell)
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }else{
+//            $http.get('/admin/newdailytask/' + $scope.time.hour + '/' + $scope.time.min + '/0/' + $scope.task.file)
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }
+//    }
+//});
+//
+//dailytask.controller('weeklytask', function ($scope,$http) {
+//
+//    $scope.weekday = 0;
+//    $scope.hour = 0;
+//    $scope.min = 0;
+//
+//    $scope.task = {
+//        shell : '',
+//        file : ''
+//    };
+//    $scope.$on('get_filename', function (event,data) {
+//        $scope.task.file = data;
+//    });
+//
+//
+//    $scope.submit = function () {
+//        if(!$scope.show_setFile){
+//            $http.get('/admin/newweeklytask/' + $scope.weekday + '/' + $scope.hour + '/' + $scope.min + '/0/' + $scope.task.shell)
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }else{
+//            $http.get('/admin/newweeklytask/' + $scope.weekday + '/' + $scope.hour + '/' + $scope.min + '/0/' + $scope.task.file)
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }
+//    }
+//})
+//    .filter('toWeekday',function(){
+//        return function(num){
+//            if(num == 0){
+//                return 'Sun';
+//            }if(num == 1){
+//                return 'Mon';
+//            }if(num == 2){
+//                return 'Tue';
+//            }if(num == 3){
+//                return 'Web';
+//            }if(num == 4){
+//                return 'Thu';
+//            }if(num == 5){
+//                return 'Fri';
+//            }if(num == 6){
+//                return 'Sat';
+//            }
+//        }
+//    });
+//
+//dailytask.controller('monthlytask', function ($scope,$http) {
+//
+//    $scope.date = {
+//        day : 1,
+//    };
+//    $scope.time = {
+//        hour : 0,
+//        min : 0,
+//    };
+//
+//    $scope.task = {
+//        shell : '',
+//        file : ''
+//    };
+//    $scope.$on('get_filename', function (event,data) {
+//        $scope.task.file = data;
+//    });
+//
+//    $scope.submit = function () {
+//        if(!$scope.show_setFile){
+//            $http.get('/admin/newmonthlytask/'+$scope.date.day+'/'+$scope.time.hour+'/'+$scope.time.min + '/0/' + $scope.task.shell)
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }else{
+//            $http.get('/admin/newmonthlytask/'+$scope.date.day+'/'+$scope.time.hour+'/'+$scope.time.min + '/0/' + $scope.task.file)
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }
+//    }
+//});
+//
+//dailytask.controller('yearlytask', function ($scope,$http) {
+//
+//
+//    $scope.date = {
+//        day : 1,
+//        mon : 1
+//    };
+//    $scope.time = {
+//        hour : 0,
+//        min : 0,
+//    };
+//
+//    $scope.task = {
+//        shell : '',
+//        file : ''
+//    };
+//    $scope.$on('get_filename', function (event,data) {
+//        $scope.task.file = data;
+//    });
+//
+//    $scope.submit = function () {
+//        if(!$scope.show_setFile){
+//            $http.get('/admin/newyearlytask/'+$scope.date.mon+'/'+$scope.date.day+'/'+$scope.time.hour+'/'+$scope.time.min + '/0/' + $scope.task.shell)
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }else{
+//            $http.get('/admin/newyearlytask/'+$scope.date.mon+'/'+$scope.date.day+'/'+$scope.time.hour+'/'+$scope.time.min + '/0/' + $scope.task.file)
+//                .success(function (json) {
+//                    console.log(json.success);
+//                })
+//        }
+//    }
+//})
+//    .filter('toMonth', function () {
+//        return function (num) {
+//            if(num == 1){
+//                return 'Jan';
+//            }if(num == 2){
+//                return 'Feb';
+//            }if(num == 3){
+//                return 'Mar';
+//            }if(num == 4){
+//                return 'Apr';
+//            }if(num == 5){
+//                return 'May';
+//            }if(num == 6){
+//                return 'Jun';
+//            }if(num == 7){
+//                return 'Jul';
+//            }if(num == 8){
+//                return 'Aug';
+//            }if(num == 9){
+//                return 'Sep';
+//            }if(num == 10){
+//                return 'Oct';
+//            }if(num == 11){
+//                return 'Nov';
+//            }if(num == 12){
+//                return 'Dev';
+//            }
+//        }
+//    });
 
 var current = angular.module('current',['ui.bootstrap']);
 current.controller('currentController', function ($scope,$http) {

@@ -40,10 +40,10 @@ app.config(function ($routeProvider) {
             templateUrl : 'client/views/pages/commandjs.html'
         })
         .when('/admin/daily',{
-            templateUrl : 'client/views/pages/dailytask.html'
+            templateUrl : 'client/views/pages/dailytask_list.html'
         })
         .when('/admin/daily/newtask',{
-            templateUrl : 'client/views/pages/newdailytask.html'
+            templateUrl : 'client/views/pages/newtask_page.html'
         })
         .when('/admin/currentop',{
             templateUrl : 'client/views/pages/currentop.html'

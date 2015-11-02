@@ -10,7 +10,6 @@ var fs = require('fs');
 var router = require('./server/routes/router');
 var app = express();
 var config = require('./config');
-
 app.set('views', path.join(__dirname, 'client/views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
@@ -25,7 +24,6 @@ var databases = {};
 
 app.use(function(req, res, next) {
   var auth;
-
   if (req.headers.authorization) {
     auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
   }
@@ -60,11 +58,8 @@ app.use(function(req, res, next) {
   }
 });
 
-
 function connectDb(user,pass,cb){
-
   //mongodb://user:pass@host:port/dbname
-  console.log(''+user+':'+pass+'');
   //mongodb.connect('mongodb://127.0.0.1:11111,127.0.0.1:22222,127.0.0.1:33333,127.0.0.1:44444,127.0.0.1:55555/admin', function (err,db) {
   mongodb.connect('mongodb://'+config.mongodb.server+'/admin', function (err,db) {
     if(err){
@@ -78,7 +73,6 @@ function connectDb(user,pass,cb){
     });
   })
 }
-
 
 var middleware = function(req, res, next) {
   req.adminDb = adminDb;
