@@ -1,8 +1,5 @@
-/**
- * Created by HUANGCH4 on 2015/8/26.
- */
-var app = angular.module('app',['ngRoute','tree_controller','dbview_controller',
-    'breadcrumb_controller','collview_controller','docview_controller','indexview_controller',
+var app = angular.module('app',['ngRoute','dbs_tree','db_view',
+    'breadcrumb_controller','coll_view','doc_view','index_view',
     'proview_controller','upload_controller','fileList','command','daily','dailytask','current',
     'admin']);
 
@@ -10,43 +7,42 @@ var app = angular.module('app',['ngRoute','tree_controller','dbview_controller',
 app.config(function ($routeProvider) {
 
     //$locationProvider.html5Mode(true);
-
     $routeProvider
         .when('/',{
             templateUrl : 'client/views/pages/index.html'
         })
         .when('/database/:dbName',{
-            templateUrl : 'client/views/pages/database.html'
+            templateUrl : 'client/views/pages/db_views/database.html'
         })
         .when('/collection/:dbName/:collName/:page',{
-            templateUrl : 'client/views/pages/collection.html'
+            templateUrl : 'client/views/pages/db_views/collection.html'
         })
         .when('/document/:dbName/:collName/:docId',{
-            templateUrl : 'client/views/pages/document.html'
+            templateUrl : 'client/views/pages/db_views/document.html'
         })
         .when('/admin',{
-            templateUrl : 'client/views/pages/admin.html'
+            templateUrl : 'client/views/pages/admin_views/admin.html'
         })
         .when('/admin/profile',{
-            templateUrl : 'client/views/pages/system.profile.html'
+            templateUrl : 'client/views/pages/admin_views/system.profile.html'
         })
         //.when('/admin/profile/:sort/:page',{
         //    templateUrl : 'client/views/pages/system.profile.html'
         //})
         .when('/admin/checkfile',{
-            templateUrl : 'client/views/pages/filelist.html'
+            templateUrl : 'client/views/pages/admin_views/filelist.html'
         })
         .when('/admin/checkfile/command/:filename',{
-            templateUrl : 'client/views/pages/commandjs.html'
+            templateUrl : 'client/views/pages/admin_views/commandjs.html'
         })
         .when('/admin/daily',{
-            templateUrl : 'client/views/pages/dailytask_list.html'
+            templateUrl : 'client/views/pages/admin_views/dailytask_list.html'
         })
         .when('/admin/daily/newtask',{
-            templateUrl : 'client/views/pages/newtask_page.html'
+            templateUrl : 'client/views/pages/admin_views/newtask_page.html'
         })
         .when('/admin/currentop',{
-            templateUrl : 'client/views/pages/currentop.html'
+            templateUrl : 'client/views/pages/admin_views/currentop.html'
         })
 });
 

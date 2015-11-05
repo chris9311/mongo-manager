@@ -1,0 +1,76 @@
+<div class="panel panel-default" ng-controller="queryController">
+    <div class="panel-heading">
+        <span>
+            Query
+        </span>
+        <!--<a href="" ng-click="show_query = !show_query" >-->
+           <!--<span ng-hide="show_query" class="pull-right glyphicon glyphicon-collapse-down"></span>-->
+           <!--<span ng-show="show_query" class="pull-right glyphicon glyphicon-collapse-up"></span>-->
+        <!--</a>-->
+        <button class="btn btn-default text-right" type="button" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">show</button>
+    </div>
+    <div class="panel-body collapse" id="collapseExample">
+        <div class="row">
+            <div class=" col-md-2">
+                <button class="btn btn-default">Insert</button>
+            </div>
+            <div class=" col-md-2">
+                <button class="btn btn-default">Find</button>
+            </div>
+            <div class=" col-md-2">
+                <button class="btn btn-default">Remove</button>
+            </div>
+            <div class=" col-md-2">
+                <button class="btn btn-default">Query</button>
+            </div>
+        </div>
+        <br/>
+        <!--<div>-->
+            <!--<div class="col-md-10">-->
+                <!--<form class="form-horizontal">-->
+                    <!--<div class="form-group">-->
+                        <!--<div class="row">-->
+                            <!--<label class="control-label col-md-2">query : </label>-->
+                            <!--<input class="form-control col-md-6" type="text">-->
+                            <!--<button class="btn btn-primary col-md-2">submit</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-2">Query:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" ng-model="find.query">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-2">Fields:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" ng-model="find.fields">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-2">Sort:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" ng-model="find.sort">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary" ng-click="submit()">submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

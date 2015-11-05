@@ -49,6 +49,37 @@ router.get('/export/:dbName/:collName', function (req,res) {
             res.download('/tmp/mongo_dump/' + dbName + '_' + collName + '.zip',dbName + '_' + collName+'.zip')
         }
     })
+});
+
+router.post('/query/:dbName/:collName', function (req, res) {
+
+    var dbName = req.params.dbName;
+    var collName = req.params.collName;
+
+    console.log('dbName:'+dbName);
+    console.log('collName:'+collName);
+
+    var query = undefined || req.body.query;
+    var sort = undefined || req.body.sort;
+    var fields = undefined || req.body.fields;
+
+    console.log('query:'+query);
+    console.log('sort:'+sort);
+    console.log('fields:'+fields);
+
+    var db = req.databases[dbName];
+    var collection = db.collection(collName);
+
+    collection.find({name:"Chris"}).toArray(function (err,docs) {
+        if(err){
+            console.log(err);
+        }else{
+            res.json({
+                success : true,
+                docs : docs
+            })
+        }
+    })
 
 });
 

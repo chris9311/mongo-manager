@@ -1,6 +1,8 @@
-var treecontroller = angular.module('tree_controller',[]);
-
-treecontroller.controller('treeController', function ($rootScope,$scope,$http) {
+/**
+ * DataBase tree moudule
+ */
+var dbs_tree = angular.module('dbs_tree',[]);
+dbs_tree.controller('treeController', function ($rootScope,$scope,$http) {
 
     $http.get('/database/databases')
         .success(function (json) {
@@ -19,8 +21,6 @@ treecontroller.controller('treeController', function ($rootScope,$scope,$http) {
             }
         }
     });
-
-
 });
 
 var breadcrumbcontroller = angular.module('breadcrumb_controller',[]);
@@ -39,13 +39,10 @@ breadcrumbcontroller.controller('breadcrumbController',function($scope,$rootScop
             $scope.urlarry = urlarry;
         }
     });
-    //$scope.$on('url_change', function (event,data) {
-    //    console.log(data);
-    //})
 });
 
-var dbviewcontroller = angular.module('dbview_controller',[]);
-dbviewcontroller.controller('dbviewController',function($scope,$http,$rootScope,$routeParams){
+var db_view = angular.module('db_view',[]);
+db_view.controller('dbviewController',function($scope,$http,$rootScope,$routeParams){
 
     $rootScope.urlParams = $routeParams;
 
@@ -59,14 +56,12 @@ dbviewcontroller.controller('dbviewController',function($scope,$http,$rootScope,
                 }
             });
     }
-    //$http.get('/database/getcollstats/'+dbName)
-    //    .success(function(json){
-    //       console.log(json);
-    //    });
 });
 
-var indexviewcontroller = angular.module('indexview_controller',[]);
-indexviewcontroller.controller('indexviewController',function($scope,$http){
+
+
+var index_view = angular.module('index_view',[]);
+index_view.controller('indexviewController',function($scope,$http){
     $http.get('/database/getstats')
         .success(function(json){
             if(json.success){
@@ -85,8 +80,8 @@ indexviewcontroller.controller('indexviewController',function($scope,$http){
     }
 });
 
-var collviewcontroller = angular.module('collview_controller',[]);
-collviewcontroller.controller('collviewController',function($scope,$http,$rootScope,$routeParams){
+var coll_view = angular.module('coll_view',[]);
+coll_view.controller('collviewController',function($scope,$http,$rootScope,$routeParams){
 
     $rootScope.urlParams = $routeParams;
     var dbName = $routeParams.dbName;
@@ -122,8 +117,47 @@ collviewcontroller.controller('collviewController',function($scope,$http,$rootSc
     }
 });
 
-var docviewcontroller = angular.module('docview_controller',[]);
-docviewcontroller.controller('docviewController',function($scope,$http,$rootScope,$routeParams){
+coll_view.directive('querypage', function () {
+
+    return {
+        restrict : 'E',
+        replace : true,
+        templateUrl : 'client/views/pages/db_views/query.html',
+    }
+});
+
+coll_view.controller('queryController', function ($scope,$rootScope,$http,$routeParams) {
+
+    $scope.show_query = false;
+    $rootScope.urlParams = $routeParams;
+    var dbName = $routeParams.dbName;
+    var collName = $routeParams.collName;
+
+    $scope.submit = function () {
+        console.log('dbName:'+dbName);
+        console.log('collName:'+collName);
+        console.log('query:'+$scope.find.query);
+        console.log('fields:'+$scope.find.fields);
+        console.log('sort:'+$scope.find.sort);
+
+        $http({
+            method : 'POST',
+            url : '/collection/query/' + dbName + '/' + collName,
+            data : $.param($scope.find),
+            headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+            .success(function (json) {
+                if(json.success){
+                    console.log(json.success);
+                    console.log(json.docs);
+                }
+            })
+
+    }
+});
+
+var doc_view = angular.module('doc_view',[]);
+doc_view.controller('docviewController',function($scope,$http,$rootScope,$routeParams){
 
     $rootScope.urlParams = $routeParams;
     var dbName = $routeParams.dbName;
@@ -164,8 +198,3 @@ docviewcontroller.controller('docviewController',function($scope,$http,$rootScop
             return type;
         }
     });
-
-var query = angular.module('query',[]);
-query.controller('queryController', function ($scope,$http) {
-
-});

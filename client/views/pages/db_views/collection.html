@@ -1,0 +1,10 @@
+<div class="row" ng-controller="collviewController">
+
+    <div ng-repeat="document in documents">
+        <textarea ng-click="getfield(document._id)" style="width:100%;resize: none;" rows="10" readonly>{{document | ToJson}}</textarea>
+        <hr/>
+    </div>
+
+    <pagination_ pagination-name=documents pagesize="5" url="#/collection" url-att1-name="dbName" url-att2-name="collName"></pagination_>
+
+</div>
