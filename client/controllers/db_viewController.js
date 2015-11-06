@@ -45,6 +45,8 @@ var db_view = angular.module('db_view',[]);
 db_view.controller('dbviewController',function($scope,$http,$rootScope,$routeParams){
 
     $rootScope.urlParams = $routeParams;
+    $scope.maxSize = 10;
+    $scope.bigCurrentPage = 1;
 
     if(!$scope.collectionlist){
         var dbName = $routeParams.dbName;
@@ -52,10 +54,18 @@ db_view.controller('dbviewController',function($scope,$http,$rootScope,$routePar
             .success(function (json) {
                 if(json.success){
                     $scope.collectionlist = json.collections;
+                    $scope.bigTotalItems = $scope.collectionlist.length;
+                    $scope.collections = $scope.collectionlist.slice(0,10);
                     $scope.$emit('show_views',null);
                 }
             });
     }
+
+    $scope.$watch('bigCurrentPage', function () {
+        if($scope.collectionlist){
+            $scope.collections = $scope.collectionlist.slice(($scope.bigCurrentPage-1)*10,($scope.bigCurrentPage-1)*10+10)
+        }
+    });
 });
 
 
@@ -81,7 +91,7 @@ index_view.controller('indexviewController',function($scope,$http){
 });
 
 var coll_view = angular.module('coll_view',[]);
-coll_view.controller('collviewController',function($scope,$http,$rootScope,$routeParams){
+coll_view.controller('collviewController',function($scope,$http,$rootScope,$routeParams) {
 
     $rootScope.urlParams = $routeParams;
     var dbName = $routeParams.dbName;
@@ -89,36 +99,62 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
     var page = $routeParams.page;
     $rootScope.collPage = $routeParams.page;
 
-    $scope.$on('pageSize',function(event,data){
-        $rootScope.pagesize = data;
-        var pagesize = $rootScope.pagesize;
-
-        $http.get('/collection/getdocuments/'+dbName+ '/' +collName+ '/' +pagesize+ '/' +page)
-            .success(function (json) {
-                if(json.success){
-                    //$scope.documents = JSON.stringify(json.documents, null, "\t");
-                    $scope.documents = json.documents;
-                    if(json.documents.length != 0){
-                        var data = {
-                            totalPages : json.totalPages,
-                            currentPage : page,
-                            dbName : dbName,
-                            collName : collName
-                        };
-                        $scope.$broadcast('documents',data);
-                        $scope.$emit('show_views',null);
-                    }
-                }
-            });
+    //$scope.$on('pageSize',function(event,data){
+    //    $rootScope.pagesize = data;
+    //    var pagesize = $rootScope.pagesize;
+    //
+    //    $http.get('/collection/getdocuments/'+dbName+ '/' +collName+ '/' +pagesize+ '/' +page)
+    //        .success(function (json) {
+    //            if(json.success){
+    //                //$scope.documents = JSON.stringify(json.documents, null, "\t");
+    //                $scope.documents = json.documents;
+    //                if(json.documents.length != 0){
+    //                    var data = {
+    //                        totalPages : json.totalPages,
+    //                        currentPage : page,
+    //                        dbName : dbName,
+    //                        collName : collName
+    //                    };
+    //                    $scope.$broadcast('documents',data);
+    //                    $scope.$emit('show_views',null);
+    //                }
+    //            }
+    //        });
+    //});
+    $http.get('/collection/getdocuments/' + dbName + '/' + collName)
+        .success(function (json) {
+            if (json.success) {
+                //$scope.documents = JSON.stringify(json.documents, null, "\t");
+                $scope.documents = json.documents;
+                $scope.bigTotalItems = $scope.documents.length;
+                $scope.docs = $scope.documents.slice(0,10);
+                $scope.$emit('show_views',null);
+            }
+        });
+    $scope.maxSize = 10;
+    $scope.bigCurrentPage = 1;
+    $scope.$watch('bigCurrentPage', function () {
+        if($scope.documents){
+            $scope.docs = $scope.documents.slice(($scope.bigCurrentPage-1)*10,($scope.bigCurrentPage-1)*10+10)
+        }
     });
 
     $scope.getfield = function(docId){
         window.location = '#/document/' +dbName+ '/' +collName+ '/' + docId ;
-    }
+    };
+
+    $scope.show_detail = function (doc) {
+        $scope.$broadcast('doc_detail',doc);
+    };
+
+    $scope.$on('queryResult', function (event,docs) {
+        $scope.documents = docs;
+        $scope.bigTotalItems = $scope.documents.length;
+        $scope.docs = $scope.documents.slice(0,10);
+    })
 });
 
-coll_view.directive('querypage', function () {
-
+coll_view.directive('queryPage', function () {
     return {
         restrict : 'E',
         replace : true,
@@ -126,33 +162,80 @@ coll_view.directive('querypage', function () {
     }
 });
 
+coll_view.directive('docDetail', function () {
+    return {
+        restrict : 'E',
+        replace : true,
+        templateUrl : 'client/views/pages/db_views/doc_detailModal.html',
+    }
+});
+
+coll_view.filter('fields_count', function () {
+    return function (docs) {
+        var count = 0;
+        for(key in docs){
+            count ++;
+            //console.log(count + '--' +key)
+        }
+        //console.log('************');
+        return count;
+    }
+});
+
+coll_view.filter('fields_detail', function () {
+    function s(arr,json){
+        for(key in json){
+            var data = {
+                key : key,
+                value : []
+            };
+            if(typeof json[key] == 'object'){
+                s(data.value,json[key]);
+            }else{
+                data.value = json[key];
+            }
+            arr.push(data);
+        }
+    }
+    return function (docs) {
+        var fields = [];
+        s(fields,docs);
+        return fields;
+    }
+});
+
+coll_view.controller('doc_detailController', function ($scope) {
+    $scope.$on('doc_detail', function (event,data) {
+        $scope.doc_dt = data;
+    })
+});
+
 coll_view.controller('queryController', function ($scope,$rootScope,$http,$routeParams) {
 
     $scope.show_query = false;
     $rootScope.urlParams = $routeParams;
-    var dbName = $routeParams.dbName;
-    var collName = $routeParams.collName;
+    $scope.dbName = $routeParams.dbName;
+    $scope.collName = $routeParams.collName;
+    $scope.find = '';
 
     $scope.submit = function () {
-        console.log('dbName:'+dbName);
-        console.log('collName:'+collName);
-        console.log('query:'+$scope.find.query);
-        console.log('fields:'+$scope.find.fields);
-        console.log('sort:'+$scope.find.sort);
-
+        //console.log('dbName:'+$scope.dbName);
+        //console.log('collName:'+$scope.collName);
+        //console.log('query:'+$scope.find.query);
+        //console.log('fields:'+$scope.find.fields);
+        //console.log('sort:'+$scope.find.sort);
         $http({
             method : 'POST',
-            url : '/collection/query/' + dbName + '/' + collName,
+            url : '/collection/query/' + $scope.dbName + '/' + $scope.collName,
             data : $.param($scope.find),
             headers : {'Content-Type': 'application/x-www-form-urlencoded'}
         })
             .success(function (json) {
                 if(json.success){
-                    console.log(json.success);
-                    console.log(json.docs);
+                    //console.log(json.success);
+                    $scope.$emit('queryResult',json.docs)
                 }
             })
-
     }
 });
 

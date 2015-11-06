@@ -13,8 +13,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="item in collectionlist" >
-            <td><a href="#/collection/{{urlParams.dbName}}/{{item.name}}/1">{{item.name}}</a></td>
+        <tr ng-repeat="item in collections" >
+            <td><a href="#/collection/{{urlParams.dbName}}/{{item.name}}">{{item.name}}</a></td>
             <td>{{item.stats.ns}}</td>
             <td>{{item.stats.size | BtoKB}} KB</td>
             <td>{{item.stats.count}}</td>
@@ -30,5 +30,10 @@
         </tr>
         </tbody>
     </table>
-    <!--<pagination itemsList=movielist pagesize="5" url="#/movie/list"></pagination>-->
+    <div class="text-center">
+        <pagination boundary-links="true" total-items="bigTotalItems" ng-model="bigCurrentPage"
+                    class="pagination-md" previous-text="&lsaquo;" max-size="maxSize"
+                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                    rotate="false" num-pages="numPages"></pagination>
+    </div>
 </div>

@@ -1,50 +1,59 @@
 <div class="panel panel-default" ng-controller="queryController">
     <div class="panel-heading">
-        <span>
+        <h4>
             Query
-        </span>
-        <!--<a href="" ng-click="show_query = !show_query" >-->
-           <!--<span ng-hide="show_query" class="pull-right glyphicon glyphicon-collapse-down"></span>-->
-           <!--<span ng-show="show_query" class="pull-right glyphicon glyphicon-collapse-up"></span>-->
-        <!--</a>-->
-        <button class="btn btn-default text-right" type="button" data-toggle="collapse" data-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">show</button>
+            <!--<div class="pull-right">-->
+                <!--<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample"-->
+                        <!--aria-expanded="false" aria-controls="collapseExample">show</button>-->
+            <!--</div>-->
+            <a href="" ng-click="show_query = !show_query" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <span ng-hide="show_query" class="pull-right glyphicon glyphicon-collapse-down"></span>
+                <span ng-show="show_query" class="pull-right glyphicon glyphicon-collapse-up"></span>
+            </a>
+
+        </h4>
     </div>
     <div class="panel-body collapse" id="collapseExample">
+        <pre>Query {{dbName}}: db.{{collName}}.find(<span ng-if="find.query">{<em style="color: red">{{find.query}}</em>}</span><span ng-if="find.fields">,{<em style="color: red">{{find.fields}}</em>}</span>)<span ng-if="find.sort">.sort({<em style="color: red">{{find.sort}}</em>})</span>;</pre>
         <div class="row">
-            <div class=" col-md-2">
-                <button class="btn btn-default">Insert</button>
-            </div>
-            <div class=" col-md-2">
-                <button class="btn btn-default">Find</button>
-            </div>
-            <div class=" col-md-2">
-                <button class="btn btn-default">Remove</button>
-            </div>
-            <div class=" col-md-2">
-                <button class="btn btn-default">Query</button>
-            </div>
+            <!--<div class=" col-md-2">-->
+                <!--<button class="btn btn-default">Insert</button>-->
+            <!--</div>-->
+            <!--<div class=" col-md-2">-->
+                <!--<button class="btn btn-default">Find</button>-->
+            <!--</div>-->
+            <!--<div class=" col-md-2">-->
+                <!--<button class="btn btn-default">Remove</button>-->
+            <!--</div>-->
+            <!--<div class=" col-md-2">-->
+                <!--<button class="btn btn-default">Query</button>-->
+            <!--</div>-->
         </div>
         <br/>
-        <!--<div>-->
-            <!--<div class="col-md-10">-->
-                <!--<form class="form-horizontal">-->
-                    <!--<div class="form-group">-->
-                        <!--<div class="row">-->
-                            <!--<label class="control-label col-md-2">query : </label>-->
-                            <!--<input class="form-control col-md-6" type="text">-->
-                            <!--<button class="btn btn-primary col-md-2">submit</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</form>-->
-            <!--</div>-->
-        <!--</div>-->
         <div class="row">
             <div class="col-md-12">
                 <form class="form-horizontal">
                     <div class="form-group">
                         <div class="row">
                             <label class="control-label col-md-2">Query:</label>
+                            <!--<div class="col-md-2">-->
+                                <!--<button class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                                    <!--Key-->
+                                    <!--<span class="caret"></span>-->
+                                <!--</button>-->
+                                <!--<ul class="dropdown-menu">-->
+                                    <!--<li><a href="" ng-repeat="key in documents|getKey">{{key}}</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-1">-->
+                                <!--<button class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                                    <!--==-->
+                                    <!--<span class="caret"></span>-->
+                                <!--</button>-->
+                                <!--<ul class="dropdown-menu">-->
+                                    <!--<li><a href="">Key</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
                             <div class="col-md-8">
                                 <input class="form-control" type="text" ng-model="find.query">
                             </div>

@@ -2,29 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5260ffbb-143b-4e52-94dd-6e0f9f5f31ab" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/admin_viewControllers.js" afterPath="$PROJECT_DIR$/client/controllers/admin_viewControllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/appController.js" afterPath="$PROJECT_DIR$/client/controllers/appController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/collection.js" afterPath="$PROJECT_DIR$/server/routes/collection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/admin_views/currentop.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/currentop.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/db_views/database.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/db_viewController.js" afterPath="$PROJECT_DIR$/client/controllers/db_viewController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/document.js" afterPath="$PROJECT_DIR$/server/routes/document.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/db_views/query.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/includes/tree.html" afterPath="$PROJECT_DIR$/client/views/includes/tree.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\admin.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/admin.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\collection.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/collection.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\commandjs.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/commandjs.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\currentop.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/currentop.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\dailytask_list.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/dailytask_list.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\database.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\detailModal.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/detailModal.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\document.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/document.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\filelist.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/filelist.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\newtask_page.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/newtask_page.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\query.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\system.profile.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\task\dailytask.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/task/dailytask.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\task\hourlytask.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/task/hourlytask.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\task\monthlytask.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/task/monthlytask.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\task\weeklytask.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/task/weeklytask.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\task\yearlytask.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/task/yearlytask.html" />
-      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\uploadModal.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/uploadModal.html" />
+      <change type="MOVED" beforePath="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\db_views\detailModal.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/detailModal.html" />
     </list>
     <ignored path="moongo-manager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,54 +35,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="db_viewController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="144" column="51" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collection.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/collection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="document.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/document.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collections_new.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="collections_new.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/collections_new.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4259681">
-              <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collection.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/collection.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384">
-              <caret line="3" column="104" selection-start-line="3" selection-start-column="104" selection-end-line="3" selection-end-column="125" />
-              <folding>
-                <element signature="n#style#0;n#textarea#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -100,18 +48,42 @@
       <file leaf-file-name="query.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/query.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="54" selection-start-line="0" selection-start-column="54" selection-end-line="0" selection-end-column="54" />
+            <state vertical-scroll-proportion="-23.538462">
+              <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+              <folding>
+                <element signature="n#style#0;n#em#0;n#span#0;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#em#0;n#span#1;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#em#0;n#span#2;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-30.851852">
+              <caret line="49" column="71" selection-start-line="49" selection-start-column="71" selection-end-line="49" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/controllers/appController.js">
+      <file leaf-file-name="www" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/www">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+              <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.09402655">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -138,11 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/views/pages/database.html" />
-        <option value="$PROJECT_DIR$/server/shell/dump_.sh" />
-        <option value="$PROJECT_DIR$/server/shell/dump.sh" />
-        <option value="$PROJECT_DIR$/server/data/dailytask/tasklist.js" />
-        <option value="$PROJECT_DIR$/client/views/pages/cuerrentop.html" />
         <option value="$PROJECT_DIR$/server/data/dailytask/cu_" />
         <option value="$PROJECT_DIR$/server/data/cu_.json" />
         <option value="$PROJECT_DIR$/server/data/cu_" />
@@ -155,7 +122,6 @@
         <option value="$PROJECT_DIR$/server/shell/dumpcoll.sh" />
         <option value="$PROJECT_DIR$/server/shell/dumpdb.sh" />
         <option value="$PROJECT_DIR$/client/views/pages/index.html" />
-        <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/client/views/pages/task/hourlytask.html" />
         <option value="$PROJECT_DIR$/client/views/pages/task/weeklytask.html" />
         <option value="$PROJECT_DIR$/client/views/pages/task/yearlytask.html" />
@@ -170,7 +136,6 @@
         <option value="$PROJECT_DIR$/client/views/pages/filelist.html" />
         <option value="$PROJECT_DIR$/client/views/includes/breadcrumb.html" />
         <option value="$PROJECT_DIR$/client/public/upload/js/testjs.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/client/views/pages/task/newtask.html" />
         <option value="$PROJECT_DIR$/client/views/pages/dailytask_list.html" />
         <option value="$PROJECT_DIR$/client/controllers/app.js" />
@@ -180,15 +145,22 @@
         <option value="$PROJECT_DIR$/client/views/pages/task/query.html" />
         <option value="$PROJECT_DIR$/client/controllers/viewControllers.js" />
         <option value="$PROJECT_DIR$/client/views/includes/head.html" />
-        <option value="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
         <option value="$PROJECT_DIR$/client/views/pages/db_views/document.html" />
-        <option value="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
-        <option value="$PROJECT_DIR$/client/controllers/appController.js" />
-        <option value="$PROJECT_DIR$/client/controllers/db_viewController.js" />
-        <option value="$PROJECT_DIR$/server/routes/collection.js" />
         <option value="$PROJECT_DIR$/server/routes/document.js" />
         <option value="$PROJECT_DIR$/client/views/pages/db_views/collection.html" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/fields_detailModal.html" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/doc_detailModal.html" />
+        <option value="$PROJECT_DIR$/client/controllers/admin_viewControllers.js" />
         <option value="$PROJECT_DIR$/client/views/pages/db_views/collections_new.html" />
+        <option value="$PROJECT_DIR$/client/views/includes/tree.html" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
+        <option value="$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html" />
+        <option value="$PROJECT_DIR$/client/controllers/appController.js" />
+        <option value="$PROJECT_DIR$/server/routes/collection.js" />
+        <option value="$PROJECT_DIR$/client/controllers/db_viewController.js" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/config.js" />
       </list>
     </option>
   </component>
@@ -200,7 +172,6 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
     <option name="width" value="960" />
     <option name="height" value="1040" />
   </component>
@@ -385,6 +356,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongo-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongo-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="task" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongo-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongo-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -488,18 +515,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\db_views" />
       <recent name="D:\LinuxWorkspace\node\mongo-manager\server\shell" />
       <recent name="D:\LinuxWorkspace\node\mongo-manager\server\routes" />
       <recent name="D:\LinuxWorkspace\workSpace\mongo-manager" />
       <recent name="C:\Users\HUANGCH4\Desktop\mongo\mongo-manager" />
-      <recent name="C:\Users\HUANGCH4\Desktop\mongo\mongo-manager\client\views\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\db_views" />
       <recent name="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\admin_views" />
+      <recent name="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\admin_views\task" />
+      <recent name="D:\LinuxWorkspace\node\mongo-manager\client\views\pages\db_views" />
       <recent name="D:\LinuxWorkspace\node\mongo-manager\client\views\pages" />
       <recent name="D:\LinuxWorkspace\node\mongo-manager\server\shell" />
-      <recent name="D:\LinuxWorkspace\mongo-manager\server\data" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.bin\www">
@@ -616,7 +643,13 @@
       <option name="project" value="LOCAL" />
       <updated>1446622008614</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="2015-11-05 backup for add the query">
+      <created>1446707719714</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1446707719714</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -629,8 +662,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="960" height="1040" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21610169" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -669,7 +702,9 @@
     <MESSAGE value="this is test2" />
     <MESSAGE value="2015-11-02 change the newtask way and some pages" />
     <MESSAGE value="2015-11-04 backup for the big change" />
-    <option name="LAST_COMMIT_MESSAGE" value="2015-11-04 backup for the big change" />
+    <MESSAGE value="2015-11-05 backup for add the query" />
+    <MESSAGE value="2015-11-06 finished query" />
+    <option name="LAST_COMMIT_MESSAGE" value="2015-11-06 finished query" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -678,38 +713,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bson.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apppp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/fs/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/data/cu">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5641593">
           <caret line="30" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="1131" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -748,38 +755,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/detailModal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19362187">
-          <caret line="10" column="93" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/filelist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077">
           <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/includes/breadcrumb.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.846153">
-          <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/uploadModal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="103" selection-start-line="0" selection-start-column="103" selection-end-line="0" selection-end-column="103" />
         </state>
       </provider>
     </entry>
@@ -798,17 +777,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/task/monthlytask.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-32.346153">
           <caret line="72" column="14" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -816,6 +789,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
           <caret line="44" column="152" selection-start-line="44" selection-start-column="152" selection-end-line="44" selection-end-column="152" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -823,6 +797,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0068337">
           <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -830,6 +805,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22818792">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -933,22 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/currentop.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20917226">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="37" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/task/dailytask.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.021252796">
@@ -957,44 +917,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.01901566">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/controllers/admin_viewControllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="400" column="57" selection-start-line="400" selection-start-column="45" selection-end-line="400" selection-end-column="57" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/web-forms.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3329646">
           <caret line="530" column="16" selection-start-line="530" selection-start-column="16" selection-end-line="530" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/database.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.019362187">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/document.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1007,38 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="54" selection-start-line="0" selection-start-column="54" selection-end-line="0" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/controllers/appController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="144" column="51" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/collection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/routes/document.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1047,20 +941,176 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/detailModal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23234624">
+          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/document.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.019362187">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/currentop.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65831435">
+          <caret line="34" column="93" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="41" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/uploadModal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/collection.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="3" column="104" selection-start-line="3" selection-start-column="104" selection-end-line="3" selection-end-column="125" />
+        <state vertical-scroll-proportion="0.05808656">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#textarea#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/doc_detailModal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2904328">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/includes/breadcrumb.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="13" column="67" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/includes/tree.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/database.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.5">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/controllers/appController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0154867">
+          <caret line="183" column="55" selection-start-line="183" selection-start-column="55" selection-end-line="183" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/collection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="192" column="40" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/query.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.538462">
+          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#em#0;n#span#0;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#em#0;n#span#1;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#em#0;n#span#2;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/controllers/admin_viewControllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96086955">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/collections_new.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4259681">
-          <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-30.851852">
+          <caret line="49" column="71" selection-start-line="49" selection-start-column="71" selection-end-line="49" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09402655">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
       </provider>
