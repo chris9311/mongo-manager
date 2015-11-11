@@ -1,0 +1,38 @@
+<div class="row" ng-controller="collviewController">
+
+    <query-page></query-page>
+
+    <label ng-show="!collectionlist">NoList</label>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th> Key</th>
+            <th> Value</th>
+            <th> Detal</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="document in docs" >
+            <td>{_id : {{document._id | ToJson}}}</td>
+            <td>{fields : {{document | fields_count}}}</td>
+            <!--<td>{{item.category.name}}</td>-->
+            <!--<td>{{item.pv}}</td>-->
+            <!--<td><a href="#/movie/detal/{{item._id}}">查看</a></td>-->
+            <!--<td><a href="#/movie/update/{{item._id}}">修改</a></td>-->
+            <td>
+                <button ng-click="show_detail(document)" class="btn btn-info" data-toggle="modal" data-target="#doc_detailModal">Detal</button>
+                <doc-detail></doc-detail>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--<pagination_ pagination-name=documents pagesize="5" url="#/collection" url-att1-name="dbName" url-att2-name="collName"></pagination_>-->
+    <div class="text-center">
+        <pagination boundary-links="true" total-items="bigTotalItems" ng-model="bigCurrentPage"
+                    class="pagination-md text-center" previous-text="&lsaquo;" max-size="maxSize"
+                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                    rotate="false" num-pages="numPages"></pagination>
+    </div>
+
+</div>
