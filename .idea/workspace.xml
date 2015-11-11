@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5260ffbb-143b-4e52-94dd-6e0f9f5f31ab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/admin_views/admin.html" afterPath="$PROJECT_DIR$/client/views/pages/admin_views/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/collection.js" afterPath="$PROJECT_DIR$/server/routes/collection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/db_viewController.js" afterPath="$PROJECT_DIR$/client/controllers/db_viewController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/db_views/query.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="moongo-manager.iws" />
@@ -626,7 +621,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447227594918</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="2015-11-11 dackup for change pageniation way">
+      <created>1447235093004</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1447235093004</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
