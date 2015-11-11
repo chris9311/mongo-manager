@@ -1,4 +1,4 @@
-<div class="panel panel-default" ng-controller="queryController">
+<div class="panel panel-default">
     <div class="panel-heading">
         <h4>
             Query
@@ -14,7 +14,7 @@
         </h4>
     </div>
     <div class="panel-body collapse" id="collapseExample">
-        <pre>Query {{dbName}}: db.{{collName}}.find(<span ng-if="find.query">{<em style="color: red">{{find.query}}</em>}</span><span ng-if="find.fields">,{<em style="color: red">{{find.fields}}</em>}</span>)<span ng-if="find.sort">.sort({<em style="color: red">{{find.sort}}</em>})</span>;</pre>
+        <pre>Query {{dbName}}: db.{{collName}}.findTmp(<span ng-if="findTmp.query">{<em style="color: red">{{findTmp.query}}</em>}</span><span ng-if="findTmp.fields">,{<em style="color: red">{{findTmp.fields}}</em>}</span>)<span ng-if="findTmp.sort">.sort({<em style="color: red">{{findTmp.sort}}</em>})</span>;</pre>
         <div class="row">
             <!--<div class=" col-md-2">-->
                 <!--<button class="btn btn-default">Insert</button>-->
@@ -55,7 +55,7 @@
                                 <!--</ul>-->
                             <!--</div>-->
                             <div class="col-md-8">
-                                <input class="form-control" type="text" ng-model="find.query">
+                                <input class="form-control" type="text" ng-model="findTmp.query">
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <div class="row">
                             <label class="control-label col-md-2">Fields:</label>
                             <div class="col-md-8">
-                                <input class="form-control" type="text" ng-model="find.fields">
+                                <input class="form-control" type="text" ng-model="findTmp.fields">
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="row">
                             <label class="control-label col-md-2">Sort:</label>
                             <div class="col-md-8">
-                                <input class="form-control" type="text" ng-model="find.sort">
+                                <input class="form-control" type="text" ng-model="findTmp.sort">
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-primary" ng-click="submit()">submit</button>
