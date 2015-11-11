@@ -15,8 +15,8 @@
                 <th>DataSize</th>
                 <th>StorageSize</th>
                 <th>Indexes</th>
-                <th>FileSize</th>
-                <th>NsSizeMB</th>
+                <!--<th>FileSize</th>-->
+                <!--<th>NsSizeMB</th>-->
                 <th>Export</th>
                 </thead>
                 <tbody>
@@ -24,11 +24,11 @@
                     <td>{{stats.db}}</td>
                     <td>{{stats.collections}}</td>
                     <td>{{stats.objects}}</td>
-                    <td>{{stats.dataSize | BtoKB}} KB</td>
-                    <td>{{stats.storageSize | BtoKB}} KB</td>
+                    <td>{{stats.dataSize | adaptSize}}</td>
+                    <td>{{stats.storageSize | adaptSize}}</td>
                     <td>{{stats.indexes}}</td>
-                    <td>{{stats.fileSize | BtoKB}} KB</td>
-                    <td>{{stats.nsSizeMB}} MB</td>
+                    <!--<td>{{stats.fileSize | adaptSize}}</td>-->
+                    <!--<td>{{stats.nsSizeMB}} MB</td>-->
                     <td>
                         <a class="btn btn-info" href="/database/export/{{stats.db}}">Export</a>
                     </td>

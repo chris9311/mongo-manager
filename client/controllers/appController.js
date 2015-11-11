@@ -60,9 +60,23 @@ app.controller('appController',function($rootScope,$scope){
     });
 });
 
-app.filter('BtoKB',function(){
+app.filter('adaptSize',function(){
     return function(data){
-        return data / 1024
+        if(data){
+            var check = data.toString().split('.');
+            if(check <= 1023){
+                return data.toFixed(2) + ' B';
+            }else if(check >= 1024 && check < 1024*1024){
+                return (data/1024).toFixed(2) + ' KB'
+            }else if(check < 1024*1024*1024 && check >= 1024*1024){
+                return (data/(1024*1024)).toFixed(2) + ' MB'
+            }else{
+                return (data/(1024*1024*1024)).toFixed(2) + ' GB'
+            }
+        }else{
+            return '0B';
+        }
+
     }
 })
     .filter('trandate',function(){

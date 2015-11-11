@@ -16,7 +16,7 @@
         <tr ng-repeat="item in collections" >
             <td><a href="#/collection/{{urlParams.dbName}}/{{item.name}}">{{item.name}}</a></td>
             <td>{{item.stats.ns}}</td>
-            <td>{{item.stats.size | BtoKB}} KB</td>
+            <td>{{item.stats.size | adaptSize}}</td>
             <td>{{item.stats.count}}</td>
             <td>{{item.stats.totalIndex}}</td>
             <!--<td>{{item.category.name}}</td>-->
