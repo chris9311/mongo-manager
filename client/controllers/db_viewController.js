@@ -47,6 +47,7 @@ db_view.controller('dbviewController',function($scope,$http,$rootScope,$routePar
     $rootScope.urlParams = $routeParams;
     $scope.maxSize = 10;
     $scope.bigCurrentPage = 1;
+    $scope.itemsPerPage = 10;
 
     if(!$scope.collectionlist){
         var dbName = $routeParams.dbName;
@@ -55,7 +56,7 @@ db_view.controller('dbviewController',function($scope,$http,$rootScope,$routePar
                 if(json.success){
                     $scope.collectionlist = json.collections;
                     $scope.bigTotalItems = $scope.collectionlist.length;
-                    $scope.collections = $scope.collectionlist.slice(0,10);
+                    $scope.collections = $scope.collectionlist.slice(0,$scope.itemsPerPage);
                     $scope.$emit('show_views',null);
                 }
             });
@@ -63,7 +64,7 @@ db_view.controller('dbviewController',function($scope,$http,$rootScope,$routePar
 
     $scope.$watch('bigCurrentPage', function () {
         if($scope.collectionlist){
-            $scope.collections = $scope.collectionlist.slice(($scope.bigCurrentPage-1)*10,($scope.bigCurrentPage-1)*10+10)
+            $scope.collections = $scope.collectionlist.slice(($scope.bigCurrentPage-1)*$scope.itemsPerPage,($scope.bigCurrentPage-1)*$scope.itemsPerPage+$scope.itemsPerPage)
         }
     });
 });
@@ -94,42 +95,24 @@ var coll_view = angular.module('coll_view',[]);
 coll_view.controller('collviewController',function($scope,$http,$rootScope,$routeParams) {
 
     $rootScope.urlParams = $routeParams;
-    var dbName = $routeParams.dbName;
-    var collName = $routeParams.collName;
+    $scope.dbName = $routeParams.dbName;
+    $scope.collName = $routeParams.collName;
     //var page = $routeParams.page;
     //$rootScope.collPage = $routeParams.page;
     $scope.maxSize = 10;
     $scope.bigCurrentPage = 1;
-    $scope.pageSize = 5;
-
-    //$http.get('/collection/getdocuments/' + dbName + '/' + collName)
-    //    .success(function (json) {
-    //        if (json.success) {
-    //            //$scope.documents = JSON.stringify(json.documents, null, "\t");
-    //            $scope.documents = json.documents;
-    //            $scope.bigTotalItems = $scope.documents.length;
-    //            $scope.docs = $scope.documents.slice(0,10);
-    //            $scope.$emit('show_views',null);
-    //        }
-    //    });
-    //$scope.$watch('bigCurrentPage', function () {
-    //    if($scope.documents){
-    //        $scope.docs = $scope.documents.slice(($scope.bigCurrentPage-1)*10,($scope.bigCurrentPage-1)*10+10)
-    //    }
-    //});
-    (function () {
-        console.log('start');
-        queryFun(1);
-        $scope.$emit('show_views',null);
-    });
-
+    $scope.itemsPerPage = 5;
     $scope.findTmp = '';
     $scope.find = '';
+    (function () {
+        queryFun(1);
+        $scope.$emit('show_views',null);
+    })();
 
     function queryFun(page){
         $http({
             method : 'POST',
-            url : '/collection/query/' + dbName + '/' + collName+ '/' + $scope.pageSize + '/' + page,
+            url : '/collection/query/' + $scope.dbName + '/' + $scope.collName+ '/' + $scope.itemsPerPage + '/' + page,
             data : $.param($scope.find),
             headers : {'Content-Type': 'application/x-www-form-urlencoded'}
         })
@@ -138,38 +121,19 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
                     //console.log(json.success);
                     //$scope.$emit('queryResult',json.docs)
                     $scope.bigTotalItems = json.totalPages;
-                    console.log($scope.bigTotalItems);
                     $scope.docs = json.documents;
                 }
             })
     }
-
 
     $scope.submit = function () {
         $scope.find = $scope.findTmp;
         queryFun(1);
     };
 
-    //$http.get('/collection/getdocuments/' + dbName + '/' + collName + '/' + $scope.pageSize + '/1')
-    //    .success(function (json) {
-    //        if (json.success) {
-    //            $scope.bigTotalItems = json.totalPages;
-    //            $scope.docs = json.documents;
-    //            $scope.$emit('show_views',null);
-    //        }
-    //    });
-
     $scope.$watch('bigCurrentPage', function () {
-        //if()
-        //$http.get('/collection/getdocuments/' + dbName + '/' + collName + '/' + $scope.pageSize + '/' + $scope.bigCurrentPage)
-        //    .success(function (json) {
-        //        if (json.success) {
-        //            $scope.docs = json.documents;
-        //        }
-        //    });
-        if($scope.bigCurrentPage){
+        if($scope.bigTotalItems){
             queryFun($scope.bigCurrentPage);
-            console.log('in watch : '+ $scope.bigTotalItems);
         }
 
     });
@@ -181,14 +145,6 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
     $scope.show_detail = function (doc) {
         $scope.$broadcast('doc_detail',doc);
     };
-
-    //$scope.$on('queryResult', function (event,docs) {
-    //
-    //    $scope.checkQuery = true;
-    //    $scope.documents = docs;
-    //    $scope.bigTotalItems = $scope.documents.length;
-    //    $scope.docs = $scope.documents.slice(0,10);
-    //})
 });
 
 coll_view.directive('queryPage', function () {

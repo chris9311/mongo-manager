@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5260ffbb-143b-4e52-94dd-6e0f9f5f31ab" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/collection.js" afterPath="$PROJECT_DIR$/server/routes/collection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/db_views/collections_new.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/collections_new.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/db_views/database.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/db_viewController.js" afterPath="$PROJECT_DIR$/client/controllers/db_viewController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/db_views/query.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="moongo-manager.iws" />
@@ -23,21 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="db_viewController.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4043478">
-              <caret line="170" column="42" selection-start-line="170" selection-start-column="28" selection-end-line="170" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="query.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/query.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.615385">
-              <caret line="73" column="89" selection-start-line="73" selection-start-column="89" selection-end-line="73" selection-end-column="89" />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
               <folding>
                 <element signature="n#style#0;n#em#0;n#span#0;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#em#0;n#span#1;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -51,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+              <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -71,7 +66,17 @@
         <entry file="file://$PROJECT_DIR$/server/routes/collection.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="35" selection-start-line="131" selection-start-column="35" selection-end-line="131" selection-end-column="35" />
+              <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_viewController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.31413043">
+              <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -136,18 +141,18 @@
         <option value="$PROJECT_DIR$/client/views/pages/db_views/fields_detailModal.html" />
         <option value="$PROJECT_DIR$/client/views/pages/db_views/doc_detailModal.html" />
         <option value="$PROJECT_DIR$/client/controllers/admin_viewControllers.js" />
-        <option value="$PROJECT_DIR$/client/views/pages/db_views/collections_new.html" />
         <option value="$PROJECT_DIR$/client/views/includes/tree.html" />
         <option value="$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/client/views/pages/index.html" />
-        <option value="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
         <option value="$PROJECT_DIR$/client/controllers/appController.js" />
         <option value="$PROJECT_DIR$/server/routes/database.js" />
         <option value="$PROJECT_DIR$/client/views/pages/admin_views/admin.html" />
-        <option value="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
-        <option value="$PROJECT_DIR$/server/routes/collection.js" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/collections_new.html" />
         <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/server/routes/collection.js" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
         <option value="$PROJECT_DIR$/client/controllers/db_viewController.js" />
       </list>
     </option>
@@ -406,10 +411,6 @@
               <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -627,7 +628,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447235093004</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="2015-11-11 tomorrow continue to finished it !">
+      <created>1447235140139</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1447235140139</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -683,7 +690,8 @@
     <MESSAGE value="2015-11-05 backup for add the query" />
     <MESSAGE value="2015-11-06 finished query" />
     <MESSAGE value="2015-11-11 dackup for change pageniation way" />
-    <option name="LAST_COMMIT_MESSAGE" value="2015-11-11 dackup for change pageniation way" />
+    <MESSAGE value="2015-11-11 tomorrow continue to finished it !" />
+    <option name="LAST_COMMIT_MESSAGE" value="2015-11-11 tomorrow continue to finished it !" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -984,14 +992,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4170354">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65818584">
@@ -1008,14 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/database.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/collection.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -1024,10 +1016,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3489131">
+          <caret line="73" column="35" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/database.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68456376">
+          <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1035,15 +1043,15 @@
     <entry file="file://$PROJECT_DIR$/server/routes/collection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="131" column="35" selection-start-line="131" selection-start-column="35" selection-end-line="131" selection-end-column="35" />
+          <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/query.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.615385">
-          <caret line="73" column="89" selection-start-line="73" selection-start-column="89" selection-end-line="73" selection-end-column="89" />
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
           <folding>
             <element signature="n#style#0;n#em#0;n#span#0;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#em#0;n#span#1;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -1062,8 +1070,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4043478">
-          <caret line="170" column="42" selection-start-line="170" selection-start-column="28" selection-end-line="170" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.31413043">
+          <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
           <folding />
         </state>
       </provider>

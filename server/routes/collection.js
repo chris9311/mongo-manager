@@ -121,15 +121,15 @@ router.post('/query/:dbName/:collName/:pageSize/:currentPage', function (req, re
         var jsonstr3 = eval('(' +sort + ')');
         console.log(jsonstr3);
     }
-    collection.count(function(err,count){
-        totalPages = Math.ceil(count / pageSize);
+    collection.find(jsonstr1).count(function(err,count){
+        //totalPages = Math.ceil(count / pageSize);
         collection.find(jsonstr1,jsonstr2,{skip:current,limit:pageSize}).sort(jsonstr3).toArray(function (err,docs) {
             if(err){
                 console.log(err);
             }else{
                 res.json({
                     success : true,
-                    totalPages:totalPages,
+                    totalPages:count,
                     documents : docs
                 })
             }
