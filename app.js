@@ -31,19 +31,6 @@ app.use(function(req, res, next) {
   if(auth && auth[0] && auth[1]){
     connectDb(auth[0],auth[1],function(result){
       if(result){
-        adminDb.listDatabases(function(err, dbs) {
-          if (err) {
-            console.error(err);
-          }
-          for (var key in dbs.databases) {
-            var dbName = dbs.databases[key]['name'];
-            if (dbName == 'local' || dbName == 'admin') {
-              continue;
-            }
-            databases[dbName] = adminConn.db(dbName);
-            //dbsName.push(dbName);
-          }
-        });
         next();
       }else{
         res.statusCode = 401;
@@ -79,9 +66,22 @@ function connectDb(user,pass,cb){
 var middleware = function(req, res, next) {
   req.adminDb = adminDb;
   req.adminConn = adminConn;
-  req.databases = databases;
-  //req.dbsName = dbsName;
-  next();
+  console.log('init');
+  var databases ={};
+  adminDb.listDatabases(function(err, dbs) {
+    if (err) {
+      console.error(err);
+    }
+    for (var key in dbs.databases) {
+      var dbName = dbs.databases[key]['name'];
+      if (dbName == 'local' || dbName == 'admin') {
+        continue;
+      }
+      databases[dbName] = adminConn.db(dbName);
+    }
+    req.databases = databases;
+    next();
+  });
 };
 
 app.use('/',middleware,router);

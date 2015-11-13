@@ -101,7 +101,7 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
     //$rootScope.collPage = $routeParams.page;
     $scope.maxSize = 10;
     $scope.bigCurrentPage = 1;
-    $scope.itemsPerPage = 5;
+    $scope.itemsPerPage = 15;
     $scope.findTmp = '';
     $scope.find = '';
     (function () {
@@ -145,6 +145,18 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
     $scope.show_detail = function (doc) {
         $scope.$broadcast('doc_detail',doc);
     };
+
+    //$scope.exportExcel = function () {
+    //    $http({
+    //        method : 'POST',
+    //        url : '/collection/exportExcel',
+    //        headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+    //    })
+    //        .success(function (json) {
+    //            if(json.success){
+    //            }
+    //        })
+    //}
 });
 
 coll_view.directive('queryPage', function () {
