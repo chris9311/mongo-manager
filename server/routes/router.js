@@ -43,10 +43,13 @@ router.use(function(err, req, res, next) {
     });
 });
 
-//router.get('/changeip/:ip', function (req,res) {
-//    var ip = req.params.ip;
-//    for
-//});
+router.get('/getAddress', function (req, res) {
+    res.json({
+        success : true,
+        currentAddress : global.dbAddress,
+        addressList : config.mongodb.addressList
+    })
+});
 
 router.use('/',index);
 router.use('/database',database);

@@ -1,8 +1,14 @@
-<div class="panel" ng-controller="treeController">
-    <div class="panel panel-title">
-        <ol class="breadcrumb ">Databases</ol>
-    </div>
-    <div class=" panel panel-body tree well" style="height: 350px;overflow:auto;">
+<div ng-controller="treeController">
+        <nav class="navbar navbar-default" >
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="">
+                        Databases
+                    </a>
+                </div>
+            </div>
+        </nav>
+    <div class=" tree well" style="height: 350px;overflow:auto;">
         <ul >
             <li ng-repeat="database in databases" class="parent_li" >
             <span>

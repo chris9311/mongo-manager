@@ -279,3 +279,23 @@ doc_view.controller('docviewController',function($scope,$http,$rootScope,$routeP
             return type;
         }
     });
+
+var address = angular.module('address',[]);
+address.controller('addressController', function ($scope,$http) {
+
+    $http.get('/getAddress')
+        .success(function (data) {
+            if(data.success){
+                $scope.currentAddress = data.currentAddress;
+                $scope.addressList = data.addressList;
+            }
+        });
+
+    $scope.checkChange = function (ip) {
+        $scope.tempAddress = ip;
+    };
+
+    $scope.changeAddress = function () {
+        window.location = '/changeip/'+$scope.tempAddress;
+    }
+});

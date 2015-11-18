@@ -1,7 +1,7 @@
 var app = angular.module('app',['ngRoute','dbs_tree','db_view',
     'breadcrumb_controller','coll_view','doc_view','index_view',
     'proview_controller','upload_controller','fileList','command','daily','dailytask','current',
-    'admin']);
+    'admin','address']);
 
 
 app.config(function ($routeProvider) {

@@ -76,23 +76,43 @@ function connectDb(user,pass,cb){
 var middleware = function(req, res, next) {
   req.adminDb = adminDb;
   req.adminConn = adminConn;
-  console.log('init');
   var databases ={};
   adminDb.listDatabases(function(err, dbs) {
     if (err) {
       console.error(err);
     }
-    for (var key in dbs.databases) {
-      var dbName = dbs.databases[key]['name'];
-      if (dbName == 'local' || dbName == 'admin') {
-        continue;
+    if(dbs && dbs.databases){
+      for (var key in dbs.databases) {
+        var dbName = dbs.databases[key]['name'];
+        if (dbName == 'local' || dbName == 'admin') {
+          continue;
+        }
+        databases[dbName] = adminConn.db(dbName);
       }
-      databases[dbName] = adminConn.db(dbName);
     }
     req.databases = databases;
     next();
   });
 };
+
+app.get('/changeip/:ip', function (req,res) {
+  var ip = req.params.ip;
+  var sign = 0;
+  for(i in config.mongodb.addressList){
+    if(ip == config.mongodb.addressList[i]){
+      sign = 1;
+      break;
+    }else{
+      continue;
+    }
+  }
+  if(sign = 1){
+    global.dbAddress = ip;
+    res.redirect('/')
+  }else{
+    res.statusCode = 404;
+  }
+});
 
 app.use('/',middleware,router);
 
