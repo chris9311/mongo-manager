@@ -8,6 +8,7 @@ var collection  = require('./collection');
 var document  = require('./document');
 var index = require('./index');
 var admin = require('./admin');
+var config = require('../../config');
 
 //console.log('router init');
 
@@ -41,6 +42,11 @@ router.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+//router.get('/changeip/:ip', function (req,res) {
+//    var ip = req.params.ip;
+//    for
+//});
 
 router.use('/',index);
 router.use('/database',database);

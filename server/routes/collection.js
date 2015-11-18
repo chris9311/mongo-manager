@@ -139,101 +139,133 @@ router.post('/query/:dbName/:collName/:pageSize/:currentPage', function (req, re
 });
 
 
-//router.post('/exportExcel/:dbName/:collName/:pageSize/:currentPage', function (req, res) {
-router.get('/exportExcel', function (req, res) {
+router.get('/exportExcel/:dbName/:collName/:query', function (req, res) {
+//router.get('/exportExcel', function (req, res) {
 
-    //var dbName = req.params.dbName;
-    //var collName = req.params.collName;
-    //
-    //console.log('dbName:'+dbName);
-    //console.log('collName:'+collName);
-    //
-    //var query = undefined || req.body.query;
+    var dbName = req.params.dbName;
+    var collName = req.params.collName;
+    var query = undefined || req.params.query;
     //var sort = undefined || req.body.sort;
     //var fields = undefined || req.body.fields;
-    //
-    //console.log('query:'+query);
-    //console.log('sort:'+sort);
-    //console.log('fields:'+fields);
-    //
-    var db = req.databases['test'];
-    var collection = db.collection('user');
-    //if(query){
-    //    query = '{' + query + '}';
-    //    console.log(query);
-    //    var jsonstr1 = eval('(' +query + ')');
-    //    console.log(jsonstr1);
-    //}
-    //if(fields){
-    //    fields = '{' + fields + '}';
-    //    console.log(fields);
-    //    var jsonstr2 = eval('(' +fields + ')');
-    //    console.log(jsonstr2);
-    //}
-    //if(sort){
-    //    sort = '{' + sort + '}';
-    //    console.log(sort);
-    //    var jsonstr3 = eval('(' +sort + ')');
-    //    console.log(jsonstr3);
-    //}
-    collection.find().toArray(function (err,docs) {
+
+    var db = req.databases[dbName];
+    var collection = db.collection(collName);
+
+    var queryjson = {
+        query : '',
+        fields : '',
+        sort : '',
+    };
+    if(query && query != 'null' ){
+        //query = '{' + query + '}';
+        var jsonstr = eval('(' +query + ')');
+
+        queryjson.query = undefined || jsonstr.query;
+        if(queryjson.query ){
+            queryjson.query = '{' + queryjson.query + '}';
+            queryjson.query = eval('(' +queryjson.query + ')');
+        }
+        queryjson.fields = undefined || jsonstr.fields;
+        if(queryjson.fields){
+            queryjson.fields = '{' + queryjson.fields + '}';
+            queryjson.fields = eval('(' +queryjson.fields + ')');
+        }
+        queryjson.sort = undefined || jsonstr.sort;
+        if(queryjson.sort){
+            queryjson.sort = '{' + queryjson.sort + '}';
+            queryjson.sort = eval('(' +queryjson.sort + ')');
+        }
+    }
+
+    console.log(queryjson);
+    collection.find(queryjson.query,queryjson.fields).sort(queryjson.sort).toArray(function (err,docs) {
         if(err){
             console.log(err);
         }else{
-            //var data = {};
             exportExcel(docs,function (result) {
-                res.setHeader('Content-Type', 'application/vnd.openxmlformats');
-                res.setHeader("Content-Disposition", "attachment; filename=" + "Data.xlsx");
-                res.end(result, 'binary');
+                //console.log('result type : '+ typeof result);
+                //res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+                //res.setHeader("Content-Disposition", "attachment; filename=" + "Data.xlsx");
+                //res.end(result, 'binary');
+                var filepath = path.join(__dirname,'../../','client/public/export/Data.xlsx');
+                fs.writeFile(filepath,result,'binary', function (err) {
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.download(filepath);
+                    }
+                })
             })
         }
     });
 });
 
-
 var exportExcel = function(data,cb){
-    console.log(data);
     var conf ={
         cols:[],
         rows:[]
     };
     for(i in data){
         for(key in data[i]){
-            console.log(key);
+
+            var type  = typeof data[i][key];
+            var width = 15;
+            if(type == 'object'){
+                type = 'string';
+            }else if(type == 'string'){
+                type = 'string';
+            }else if(type == 'number'){
+                type = 'number';
+            }else{
+                type = 'string';
+            }
+
             if(conf.cols.length == 0){
                 conf.cols.push({
                     caption : key,
-                    type : String
+                    type : type,
+                    width:15
                 })
-            }
-            for(j in conf.cols){
-                if(conf.cols[j].caption && key == conf.cols[j].caption){
-                    continue;
-                }else{
+            }else{
+                var sign = 0;
+                for(j in conf.cols){
+                    if(conf.cols[j].caption && key == conf.cols[j].caption){
+                        sign = 1;
+                        break;
+                    }else{
+                        continue;
+                    }
+                }
+                if(sign == 0){
                     conf.cols.push({
                         caption : key,
-                        type : String
+                        type : type,
+                        width:15
                     })
                 }
             }
         }
     }
-    console.log(conf.cols);
-
-    //conf.stylesXmlFile = "styles.xml";
-    //conf.cols = [
-    //    {caption:'test',type:String},
-    //    {caption:'test2',type:String},
-    //    {caption:'test3',type:String}
-    //];
-
-    conf.rows = [
-        //['1111','2222','3333'],
-        //['4444','5555','6666']
-    ];
-
+    for(i in  data){
+        var values = [];
+        for(key in data[i]){
+            for(j in conf.cols){
+                if(key == conf.cols[j].caption){
+                    if(typeof data[i][key] == 'object'){
+                        values[j] =JSON.stringify(data[i][key]);
+                    }else{
+                        values[j]=data[i][key].toString();
+                    }
+                }else{
+                    if(!values[j])
+                        values[j] = '';
+                }
+            }
+        }
+        conf.rows.push(values);
+    }
+    console.log('---------------------');
     var result = excel_export.execute(conf);
-    //console.log(result);
     cb(result);
 };
 

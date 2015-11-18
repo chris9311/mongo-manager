@@ -137,26 +137,24 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
         }
 
     });
-
-    $scope.getfield = function(docId){
-        window.location = '#/document/' +dbName+ '/' +collName+ '/' + docId ;
-    };
-
+    //$scope.getfield = function(docId){
+    //    window.location = '#/document/' +dbName+ '/' +collName+ '/' + docId ;
+    //};
     $scope.show_detail = function (doc) {
         $scope.$broadcast('doc_detail',doc);
     };
 
-    //$scope.exportExcel = function () {
-    //    $http({
-    //        method : 'POST',
-    //        url : '/collection/exportExcel',
-    //        headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-    //    })
-    //        .success(function (json) {
-    //            if(json.success){
-    //            }
-    //        })
-    //}
+    $scope.exportExcel = function () {
+        //console.log(typeof JSON.stringify($scope.find));
+        $scope.find = $scope.findTmp;
+        $scope.find = $scope.findTmp;
+        $scope.find = $scope.findTmp;
+        var str = null;
+        if($scope.find){
+            str = JSON.stringify($scope.find);
+        }
+        window.location = '/collection/exportExcel/' + $scope.dbName + '/' + $scope.collName + '/' + str;
+    }
 });
 
 coll_view.directive('queryPage', function () {

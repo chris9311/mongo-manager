@@ -242,8 +242,8 @@ router.get('/command/:database/:filename', function (req,res) {
     var database = req.params.database;
     var filepath = path.join(__dirname,'../../','client/public/upload/js');
     var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
-    var ipaddress = config.mongodb.server;
-    var command = 'mongo 127.0.0.1/'+database+' -u '+auth[0]+' -p '+auth[1]+' --authenticationDatabase admin --shell '+filepath+'/'+filename+'';
+    //var ipaddress = config.mongodb.server;
+    var command = 'mongo ' + global.dbAddress + '/'+database+' -u '+auth[0]+' -p '+auth[1]+' --authenticationDatabase admin --shell '+filepath+'/'+filename+'';
     child_process.exec(command, function (err,stdout,stderr) {
         if(err){
             console.log(err);
