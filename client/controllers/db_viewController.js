@@ -297,5 +297,5 @@ address.controller('addressController', function ($scope,$http) {
 
     $scope.changeAddress = function () {
         window.location = '/changeip/'+$scope.tempAddress;
-    }
+    };
 });

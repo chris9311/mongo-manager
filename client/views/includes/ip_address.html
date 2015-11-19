@@ -3,6 +3,15 @@
         Databases Address Detail
     </div>
     <div class="panel-body">
+        <div class="">
+            <label class="control-label">Current Address:</label>
+            <br/>
+            <!--<label class="control-label">{{currentAddress}}</label>-->
+            <span ng-bind="currentAddress"></span>
+        </div>
+        <hr/>
+        <label class="control-label">Change Address:</label>
+        <br/>
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{currentAddress}} <span class="caret"></span>

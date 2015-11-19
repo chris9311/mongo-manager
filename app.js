@@ -41,7 +41,25 @@ app.use(function(req, res, next) {
   if(auth && auth[0] && auth[1]){
     connectDb(auth[0],auth[1],function(result){
       if(result){
-        next();
+        adminDb.listDatabases(function(err, dbs) {
+          var _databases = {};
+          if (err) {
+            console.error(err);
+            res.redirect(req.url);
+          }else{
+            if (dbs && dbs.databases) {
+              for (var key in dbs.databases) {
+                var dbName = dbs.databases[key]['name'];
+                if (dbName == 'local' || dbName == 'admin') {
+                  continue;
+                }
+                _databases[dbName] = adminConn.db(dbName);
+              }
+              databases = _databases;
+              next();
+            }
+          }
+        });
       }else{
         res.statusCode = 401;
         res.setHeader('WWW-Authenticate', 'Basic realm="MyRealmName"');
@@ -76,23 +94,23 @@ function connectDb(user,pass,cb){
 var middleware = function(req, res, next) {
   req.adminDb = adminDb;
   req.adminConn = adminConn;
-  var databases ={};
-  adminDb.listDatabases(function(err, dbs) {
-    if (err) {
-      console.error(err);
-    }
-    if(dbs && dbs.databases){
-      for (var key in dbs.databases) {
-        var dbName = dbs.databases[key]['name'];
-        if (dbName == 'local' || dbName == 'admin') {
-          continue;
-        }
-        databases[dbName] = adminConn.db(dbName);
-      }
-    }
+  //var databases ={};
+  //adminDb.listDatabases(function(err, dbs) {
+  //  if (err) {
+  //    console.error(err);
+  //  }
+  //  if(dbs && dbs.databases){
+  //    for (var key in dbs.databases) {
+  //      var dbName = dbs.databases[key]['name'];
+  //      if (dbName == 'local' || dbName == 'admin') {
+  //        continue;
+  //      }
+  //      databases[dbName] = adminConn.db(dbName);
+  //    }
+  //  }
     req.databases = databases;
     next();
-  });
+  //});
 };
 
 app.get('/changeip/:ip', function (req,res) {
