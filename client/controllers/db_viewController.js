@@ -51,6 +51,7 @@ db_view.controller('dbviewController',function($scope,$http,$rootScope,$routePar
 
     if(!$scope.collectionlist){
         var dbName = $routeParams.dbName;
+        $scope.$emit('show_loading');
         $http.get('/database/getcollections/' + dbName)
             .success(function (json) {
                 if(json.success){
@@ -58,13 +59,16 @@ db_view.controller('dbviewController',function($scope,$http,$rootScope,$routePar
                     $scope.bigTotalItems = $scope.collectionlist.length;
                     $scope.collections = $scope.collectionlist.slice(0,$scope.itemsPerPage);
                     $scope.$emit('show_views',null);
+                    $scope.$emit('hide_loading');
                 }
             });
     }
 
     $scope.$watch('bigCurrentPage', function () {
         if($scope.collectionlist){
+            $scope.$emit('show_loading');
             $scope.collections = $scope.collectionlist.slice(($scope.bigCurrentPage-1)*$scope.itemsPerPage,($scope.bigCurrentPage-1)*$scope.itemsPerPage+$scope.itemsPerPage)
+            $scope.$emit('hide_loading');
         }
     });
 });
@@ -110,6 +114,7 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
     })();
 
     function queryFun(page){
+        $scope.$emit('show_loading');
         $http({
             method : 'POST',
             url : '/collection/query/' + $scope.dbName + '/' + $scope.collName+ '/' + $scope.itemsPerPage + '/' + page,
@@ -122,6 +127,7 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
                     //$scope.$emit('queryResult',json.docs)
                     $scope.bigTotalItems = json.totalPages;
                     $scope.docs = json.documents;
+                    $scope.$emit('hide_loading');
                 }
             })
     }
@@ -146,6 +152,7 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
 
     $scope.exportExcel = function () {
         //console.log(typeof JSON.stringify($scope.find));
+        $scope.$emit('show_loading');
         $scope.find = $scope.findTmp;
         $scope.find = $scope.findTmp;
         $scope.find = $scope.findTmp;
@@ -153,7 +160,14 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
         if($scope.find){
             str = JSON.stringify($scope.find);
         }
-        window.location = '/collection/exportExcel/' + $scope.dbName + '/' + $scope.collName + '/' + str;
+        $http.get('/collection/exportExcel/' + $scope.dbName + '/' + $scope.collName + '/' + str)
+            .success(function (json) {
+                if(json.success){
+                    console.log('file generation');
+                    $scope.$emit('hide_loading');
+                    window.location = '/collection/downloadExcel/'+json.filename;
+                }
+            })
     }
 });
 

@@ -62,13 +62,13 @@ app.use(function(req, res, next) {
         });
       }else{
         res.statusCode = 401;
-        res.setHeader('WWW-Authenticate', 'Basic realm="MyRealmName"');
+        res.setHeader('WWW-Authenticate', 'Basic realm="Databases UserName and Password"');
         res.end('Unauthorized');
       }
     });
   }else{
     res.statusCode = 401;
-    res.setHeader('WWW-Authenticate', 'Basic realm="MyRealmName"');
+    res.setHeader('WWW-Authenticate', 'Basic realm="Databases UserName and Password"');
     res.end('Unauthorized');
   }
 });

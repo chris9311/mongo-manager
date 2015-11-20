@@ -152,9 +152,9 @@ router.get('/exportExcel/:dbName/:collName/:query', function (req, res) {
     var collection = db.collection(collName);
 
     var queryjson = {
-        query : '',
-        fields : '',
-        sort : '',
+        query : undefined,
+        fields : undefined,
+        sort : undefined,
     };
     if(query && query != 'null' ){
         //query = '{' + query + '}';
@@ -187,12 +187,19 @@ router.get('/exportExcel/:dbName/:collName/:query', function (req, res) {
                 //res.setHeader('Content-Type', 'application/vnd.openxmlformats');
                 //res.setHeader("Content-Disposition", "attachment; filename=" + "Data.xlsx");
                 //res.end(result, 'binary');
-                var filepath = path.join(__dirname,'../../','client/public/export/Data.xlsx');
+                var filename = 'Data.xlsx';
+                var filepath = path.join(__dirname,'../../','client/public/export/'+filename);
                 fs.writeFile(filepath,result,'binary', function (err) {
                     if(err){
                         console.log(err);
+                        re.json({
+                            success : false
+                        })
                     }else{
-                        res.download(filepath);
+                        res.json({
+                            success : true,
+                            filename : filename
+                        })
                     }
                 })
             })
@@ -268,5 +275,22 @@ var exportExcel = function(data,cb){
     var result = excel_export.execute(conf);
     cb(result);
 };
+
+router.get('/downloadExcel/:fileName', function (req,res) {
+
+    var filename = req.params.fileName;
+    var filepath = path.join(__dirname,'../../','client/public/export/'+filename);
+    fs.exists(filepath, function (exists) {
+        if(exists){
+            res.download(filepath)
+        }else{
+            res.status(404);
+            res.render('error', {
+                message: '404 File Not found !',
+                error: {}
+            });
+        }
+    });
+});
 
 module.exports = router;

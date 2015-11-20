@@ -58,6 +58,13 @@ app.controller('appController',function($rootScope,$scope){
     $scope.$on('show_views',function(event,data){
         $scope.$broadcast('show_view',data);
     });
+
+    $scope.$on('show_loading', function (event,data) {
+        $scope.loading = true;
+    });
+    $scope.$on('hide_loading', function (event,data) {
+        $scope.loading = false;
+    })
 });
 
 app.filter('adaptSize',function(){

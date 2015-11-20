@@ -204,6 +204,8 @@ command.controller('commandController',function($scope,$rootScope,$http,$routePa
 var daily = angular.module('daily',[]);
 daily.controller('dailyController', function ($scope,$rootScope,$http,$routeParams) {
 
+
+
     $http.get('/admin/dailytasklist')
         .success(function (json) {
             if(json.success == false){

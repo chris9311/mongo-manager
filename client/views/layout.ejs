@@ -14,7 +14,11 @@
         </div>
         <div class="col-md-8">
             <% include ./includes/breadcrumb.html %>
-            <div ng-view ></div>
+            <!--<div ng-view ></div>-->
+            <div ng-show="!loading" ng-view ></div>
+            <div ng-show="loading" class="text-center">
+                <img src="/client/public/img/loading.gif" alt="">
+            </div>
         </div>
     </div>
 </div>
