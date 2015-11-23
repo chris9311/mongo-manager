@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var child_process = require('child_process');
 var fs = require('fs');
@@ -72,6 +74,9 @@ router.get('/export/:dbName/:collName', function (req,res) {
     child_process.execFile(filepath, [dbName,collName,auth[0],auth[1]],function (err,result) {
         if(err){
             console.log(err);
+            res.json({
+                err : err
+            })
         } else{
             console.log(result);
             res.download('/tmp/mongo_dump/' + dbName + '_' + collName + '.zip',dbName + '_' + collName+'.zip')
@@ -176,35 +181,42 @@ router.get('/exportExcel/:dbName/:collName/:query', function (req, res) {
             queryjson.sort = eval('(' +queryjson.sort + ')');
         }
     }
-
-    console.log(queryjson);
-    collection.find(queryjson.query,queryjson.fields).sort(queryjson.sort).toArray(function (err,docs) {
-        if(err){
-            console.log(err);
+    checkCollectionSize(collection,10485760, function (sign) {
+        if(sign){
+            collection.find(queryjson.query,queryjson.fields).sort(queryjson.sort).toArray(function (err,docs) {
+                if(err){
+                    console.log(err);
+                }else{
+                    exportExcel(docs,function (result) {
+                        //console.log('result type : '+ typeof result);
+                        //res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+                        //res.setHeader("Content-Disposition", "attachment; filename=" + "Data.xlsx");
+                        //res.end(result, 'binary');
+                        var filename = 'Data.xlsx';
+                        var filepath = path.join(__dirname,'../../','client/public/export/'+filename);
+                        fs.writeFile(filepath,result,'binary', function (err) {
+                            if(err){
+                                console.log(err);
+                                re.json({
+                                    success : false
+                                })
+                            }else{
+                                res.json({
+                                    success : true,
+                                    filename : filename
+                                })
+                            }
+                        })
+                    })
+                }
+            });
         }else{
-            exportExcel(docs,function (result) {
-                //console.log('result type : '+ typeof result);
-                //res.setHeader('Content-Type', 'application/vnd.openxmlformats');
-                //res.setHeader("Content-Disposition", "attachment; filename=" + "Data.xlsx");
-                //res.end(result, 'binary');
-                var filename = 'Data.xlsx';
-                var filepath = path.join(__dirname,'../../','client/public/export/'+filename);
-                fs.writeFile(filepath,result,'binary', function (err) {
-                    if(err){
-                        console.log(err);
-                        re.json({
-                            success : false
-                        })
-                    }else{
-                        res.json({
-                            success : true,
-                            filename : filename
-                        })
-                    }
-                })
+            res.json({
+                success : false,
+                err : 'Collextion too big!'
             })
         }
-    });
+    })
 });
 
 var exportExcel = function(data,cb){
@@ -212,8 +224,8 @@ var exportExcel = function(data,cb){
         cols:[],
         rows:[]
     };
-    for(i in data){
-        for(key in data[i]){
+    for(var i in data){
+        for(var key in data[i]){
 
             var type  = typeof data[i][key];
             var width = 15;
@@ -253,10 +265,10 @@ var exportExcel = function(data,cb){
             }
         }
     }
-    for(i in  data){
+    for(var i in  data){
         var values = [];
-        for(key in data[i]){
-            for(j in conf.cols){
+        for(var key in data[i]){
+            for(var j in conf.cols){
                 if(key == conf.cols[j].caption){
                     if(typeof data[i][key] == 'object'){
                         values[j] =JSON.stringify(data[i][key]);
@@ -271,7 +283,7 @@ var exportExcel = function(data,cb){
         }
         conf.rows.push(values);
     }
-    console.log('---------------------');
+    console.log('----------file generation-----------');
     var result = excel_export.execute(conf);
     cb(result);
 };
@@ -292,5 +304,19 @@ router.get('/downloadExcel/:fileName', function (req,res) {
         }
     });
 });
+
+var checkCollectionSize = function (collection,maxSize,cb) {
+    collection.stats(function (err,stats) {
+        if(err){
+            console.log(err);
+            return;
+        }else{
+            var size = stats.size;
+            console.log('size : '+size);
+            console.log('sign : '+size <= maxSize ? true : false);
+            cb(size <= maxSize ? true : false);
+        }
+    })
+};
 
 module.exports = router;

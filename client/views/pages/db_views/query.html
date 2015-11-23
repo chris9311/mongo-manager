@@ -2,10 +2,6 @@
     <div class="panel-heading">
         <h4>
             Query
-            <!--<div class="pull-right">-->
-                <!--<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample"-->
-                        <!--aria-expanded="false" aria-controls="collapseExample">show</button>-->
-            <!--</div>-->
             <a href="" ng-click="show_query = !show_query" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 <span ng-hide="show_query" class="pull-right glyphicon glyphicon-collapse-down"></span>
                 <span ng-show="show_query" class="pull-right glyphicon glyphicon-collapse-up"></span>
@@ -16,18 +12,6 @@
     <div class="panel-body collapse" id="collapseExample">
         <pre>Query {{dbName}}: db.{{collName}}.find(<span ng-if="findTmp.query">{<em style="color: red">{{findTmp.query}}</em>}</span><span ng-if="findTmp.fields">,{<em style="color: red">{{findTmp.fields}}</em>}</span>)<span ng-if="findTmp.sort">.sort({<em style="color: red">{{findTmp.sort}}</em>})</span>;</pre>
         <div class="row">
-            <!--<div class=" col-md-2">-->
-                <!--<button class="btn btn-default">Insert</button>-->
-            <!--</div>-->
-            <!--<div class=" col-md-2">-->
-                <!--<button class="btn btn-default">Find</button>-->
-            <!--</div>-->
-            <!--<div class=" col-md-2">-->
-                <!--<button class="btn btn-default">Remove</button>-->
-            <!--</div>-->
-            <!--<div class=" col-md-2">-->
-                <!--<button class="btn btn-default">Query</button>-->
-            <!--</div>-->
         </div>
         <br/>
         <div class="row">
@@ -36,24 +20,6 @@
                     <div class="form-group">
                         <div class="row">
                             <label class="control-label col-md-2">Query:</label>
-                            <!--<div class="col-md-2">-->
-                                <!--<button class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                                    <!--Key-->
-                                    <!--<span class="caret"></span>-->
-                                <!--</button>-->
-                                <!--<ul class="dropdown-menu">-->
-                                    <!--<li><a href="" ng-repeat="key in documents|getKey">{{key}}</a></li>-->
-                                <!--</ul>-->
-                            <!--</div>-->
-                            <!--<div class="col-md-1">-->
-                                <!--<button class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                                    <!--==-->
-                                    <!--<span class="caret"></span>-->
-                                <!--</button>-->
-                                <!--<ul class="dropdown-menu">-->
-                                    <!--<li><a href="">Key</a></li>-->
-                                <!--</ul>-->
-                            <!--</div>-->
                             <div class="col-md-8">
                                 <input class="form-control" type="text" ng-model="findTmp.query">
                             </div>

@@ -101,8 +101,6 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
     $rootScope.urlParams = $routeParams;
     $scope.dbName = $routeParams.dbName;
     $scope.collName = $routeParams.collName;
-    //var page = $routeParams.page;
-    //$rootScope.collPage = $routeParams.page;
     $scope.maxSize = 10;
     $scope.bigCurrentPage = 1;
     $scope.itemsPerPage = 15;
@@ -123,8 +121,6 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
         })
             .success(function (json) {
                 if(json.success){
-                    //console.log(json.success);
-                    //$scope.$emit('queryResult',json.docs)
                     $scope.bigTotalItems = json.totalPages;
                     $scope.docs = json.documents;
                     $scope.$emit('hide_loading');
@@ -143,15 +139,11 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
         }
 
     });
-    //$scope.getfield = function(docId){
-    //    window.location = '#/document/' +dbName+ '/' +collName+ '/' + docId ;
-    //};
     $scope.show_detail = function (doc) {
         $scope.$broadcast('doc_detail',doc);
     };
 
     $scope.exportExcel = function () {
-        //console.log(typeof JSON.stringify($scope.find));
         $scope.$emit('show_loading');
         $scope.find = $scope.findTmp;
         $scope.find = $scope.findTmp;
@@ -166,6 +158,11 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
                     console.log('file generation');
                     $scope.$emit('hide_loading');
                     window.location = '/collection/downloadExcel/'+json.filename;
+                }else{
+                    if(json.err){
+                        alert(json.err);
+                        $scope.$emit('hide_loading');
+                    }
                 }
             })
     }
