@@ -1,0 +1,121 @@
+<div class="panel" ng-controller="queryController">
+    <div class="panel panel-heading">
+        <h3>
+            Query builder
+        </h3>
+    </div>
+    <div class="panel-body">
+        <pre>Query {{dbName}}: db.{{collName}}.find(<span ng-if="findTmp.query">{<em style="color: red">{{findTmp.query}}</em>}</span><span ng-if="findTmp.fields">,{<em style="color: red">{{findTmp.fields}}</em>}</span>)<span ng-if="findTmp.sort">.sort({<em style="color: red">{{findTmp.sort}}</em>})</span>;</pre>
+        <br/>
+        query:<span style="color: green" ng-repeat="query in queryList">{{query}}</span><br/>
+        projection:<span style="color: red" ng-repeat="projection in projectionList">{{projection}}</span><br/>
+        modifier:<span style="color: blue" ng-repeat="modifier in modifierList">{{modifier}}</span><br/>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <h3>
+                    Query:
+                    <button class="btn btn-info" ng-click="addQuery()">+</button>
+                </h3>
+                <div class="row" ng-repeat="query in queryList">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <label class="control-label col-md-2">Field:</label>
+                            <div class="col-md-10">
+                                <input class="form-control" ng-model="query.field">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <!--<button class="btn btn-default"> == </button>-->
+                        <!-- Single button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                == <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href=""> <= </a></li>
+                                <li><a href=""> >= </a></li>
+                                <li><a href=""> != </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-1">-->
+                        <!--<div class="btn-group">-->
+                            <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                                <!--type <span class="caret"></span>-->
+                            <!--</button>-->
+                            <!--<ul class="dropdown-menu">-->
+                                <!--<li><a href=""> String </a></li>-->
+                                <!--<li><a href=""> Number </a></li>-->
+                                <!--<li><a href=""> ObjectId </a></li>-->
+                                <!--<li><a href="">  </a></li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="col-md-5">
+                        <div class="row">
+                            <label class="control-label col-md-2">Value:</label>
+                            <div class="col-md-10">
+                                <input class="form-control" ng-model="query.value">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-default" ng-click="delQuery($index)">-</button>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <h3>
+                    Projection:
+                    <button class="btn btn-info" ng-click="addProjection()"> + </button>
+                </h3>
+                <div class="row" ng-repeat="projection in projectionList">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <label class="col-md-2 control-label">Field:</label>
+                            <div class="col-md-10">
+                                <input class="form-control" ng-model="projection.field">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-success">include</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-default" ng-click="delProjection($index)">-</button>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <h3>
+                    Modifier:
+                    <button class="btn btn-info" ng-click="addModifier()"> + </button>
+                </h3>
+                <div class="row" ng-repeat="modifier in modifierList">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <label class="col-md-2 control-label">Field:</label>
+                            <div class="col-md-10">
+                                <input class="form-control" ng-model="modifier.field">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-success">descending</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-default" ng-click="delModifier($index)">-</button>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+            <hr/>
+            <button class="btn btn-success" ng-click="submit()">Submit</button>
+        </form>
+    </div>
+</div>
