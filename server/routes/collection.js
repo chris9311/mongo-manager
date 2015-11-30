@@ -94,16 +94,16 @@ router.post('/query/:dbName/:collName/:pageSize/:currentPage', function (req, re
     var current = currentPage * pageSize;
     var totalPages ;
 
-    console.log('dbName:'+dbName);
-    console.log('collName:'+collName);
+    //console.log('dbName:'+dbName);
+    //console.log('collName:'+collName);
 
     var query = undefined || req.body.query;
     var sort = undefined || req.body.sort;
     var fields = undefined || req.body.fields;
-
-    console.log('query:'+query);
-    console.log('sort:'+sort);
-    console.log('fields:'+fields);
+    //
+    //console.log('query:'+query);
+    //console.log('sort:'+sort);
+    //console.log('fields:'+fields);
 
     var db = req.databases[dbName];
     var collection = db.collection(collName);
@@ -111,21 +111,22 @@ router.post('/query/:dbName/:collName/:pageSize/:currentPage', function (req, re
     //console.log(jsonstr);
     if(query){
         query = '{' + query + '}';
-        console.log(query);
+        //console.log(query);
         var jsonstr1 = eval('(' +query + ')');
-        console.log(jsonstr1);
+        //console.log(jsonstr1);
+        //var jsonstr1 = JSON.parse(query)
     }
     if(fields){
         fields = '{' + fields + '}';
-        console.log(fields);
+        //console.log(fields);
         var jsonstr2 = eval('(' +fields + ')');
-        console.log(jsonstr2);
+        //console.log(jsonstr2);
     }
     if(sort){
         sort = '{' + sort + '}';
-        console.log(sort);
+        //console.log(sort);
         var jsonstr3 = eval('(' +sort + ')');
-        console.log(jsonstr3);
+        //console.log(jsonstr3);
     }
     collection.find(jsonstr1).count(function(err,count){
         //totalPages = Math.ceil(count / pageSize);
@@ -143,6 +144,41 @@ router.post('/query/:dbName/:collName/:pageSize/:currentPage', function (req, re
     });
 });
 
+//router.get('/query/:query/:projection/:modifier', function (req,res) {
+//    var query = req.params.query;
+//    var projection = req.params.projection;
+//    var modifier = req.params.modifier;
+//    console.log('query : ' + query);
+//    console.log('projection : '+projection);
+//    console.log('modifier : '+modifier);
+//    query = changeToJson(query);
+//    console.log(query);
+//    res.json({
+//        success:true
+//    })
+//});
+//
+//var changeToJson = function (data) {
+//    var list = eval('(' +data + ')');
+//    //console.log(list.length);
+//    //var list = JSON.parse(data);
+//    var json = {};
+//    if(list.length>0){
+//        for(var i in list){
+//            try{
+//                var value = eval('(' + list[i].value + ')');
+//            }catch(e){
+//                var value = list[i].value;
+//            }
+//            console.log(value);
+//            json[list[i].field] = value;
+//        }
+//        //cb(josn);
+//        return json;
+//    }else{
+//        return ;
+//    }
+//};
 
 router.get('/exportExcel/:dbName/:collName/:query', function (req, res) {
 //router.get('/exportExcel', function (req, res) {

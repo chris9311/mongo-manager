@@ -43,14 +43,16 @@ app.config(function ($routeProvider) {
         })
         .when('/admin/currentop',{
             templateUrl : 'client/views/pages/admin_views/currentop.html'
-        })
+        });
+        //.when('/test',{
+        //    templateUrl : 'client/views/pages/db_views/query_new.html'
+        //})
 });
 
 app.run(function ($rootScope,$location) {
     $rootScope.$on('$routeChangeStart', function(event) {
         $rootScope.urlStr = $location.url();
     });
-
 });
 
 app.controller('appController',function($rootScope,$scope){
@@ -95,7 +97,8 @@ app.filter('adaptSize',function(){
     })
     .filter('ToJson',function(){
         return function(json){
-            var _json = JSON.stringify(json, null, "\t");
+            //var _json = JSON.stringify(json, null, "\t");
+            var _json = angular.toJson(json,"\t");
             return _json;
         }
     });

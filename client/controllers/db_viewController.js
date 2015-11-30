@@ -188,8 +188,10 @@ coll_view.filter('fields_count', function () {
     return function (docs) {
         var count = 0;
         for(key in docs){
+            if(key == '$$hashKey'){
+                continue;
+            }
             count ++;
-            //console.log(count + '--' +key)
         }
         //console.log('************');
         return count;
@@ -224,29 +226,58 @@ coll_view.controller('doc_detailController', function ($scope) {
     })
 });
 
-//coll_view.controller('queryController', function ($scope,$rootScope,$http,$routeParams) {
-//
-//    $scope.show_query = false;
-//    $rootScope.urlParams = $routeParams;
-//    $scope.dbName = $routeParams.dbName;
-//    $scope.collName = $routeParams.collName;
-//    $scope.find = '';
-//
-//    $scope.submit = function () {
-//        $http({
-//            method : 'POST',
-//            url : '/collection/query/' + $scope.dbName + '/' + $scope.collName,
-//            data : $.param($scope.find),
-//            headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-//        })
-//            .success(function (json) {
-//                if(json.success){
-//                    //console.log(json.success);
-//                    $scope.$emit('queryResult',json.docs)
-//                }
-//            })
-//    }
-//});
+coll_view.controller('queryController', function ($scope,$rootScope,$http,$routeParams) {
+    $rootScope.urlParams = $routeParams;
+    $scope.dbName = $routeParams.dbName;
+    $scope.collName = $routeParams.collName;
+
+    $scope.queryList = [];
+    $scope.modifierList = [];
+    $scope.projectionList = [];
+
+    $scope.addQuery = function () {
+        $scope.queryList.push({
+            field : '',
+            value : ''
+        })
+    };
+    $scope.delQuery = function (index) {
+        $scope.queryList.splice(index,1);
+    };
+
+    $scope.addModifier = function () {
+        $scope.modifierList.push({
+            field : '',
+            //value : ''
+        })
+    };
+    $scope.delModifier = function (index) {
+        $scope.modifierList.splice(index,1);
+    };
+
+    $scope.addProjection = function () {
+        $scope.projectionList.push({
+            field : '',
+            value : ''
+        })
+    };
+    $scope.delProjection = function (index) {
+        $scope.projectionList.splice(index,1);
+    };
+
+    $scope.submit = function () {
+        var query = angular.toJson($scope.queryList);
+        var modifier = angular.toJson($scope.modifierList);
+        var projection = angular.toJson($scope.projectionList);
+
+        $http.get('/collection/query/'+query+'/'+projection+'/'+modifier)
+            .success(function (json) {
+                if(json.success){
+                    console.log(json.success);
+                }
+            })
+    }
+});
 
 var doc_view = angular.module('doc_view',[]);
 doc_view.controller('docviewController',function($scope,$http,$rootScope,$routeParams){
