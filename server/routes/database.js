@@ -6,32 +6,44 @@ var router = express.Router();
 
 router.get('/databases',function(req,res){
 
+    console.log('init');
     var databases = req.databases;
     var databaselist = [];
-    async.map(databases,function(db,callback2){
-        db.collections(function(err,collections) {
-            var _datbase = {};
-            var collNames = [];
-            async.map(collections,function(colls,callback){
-                var coll = {
-                    name : colls.s.name
-                };
-                collNames.push(coll);
-                callback(null,null);
-            },function(err,result){
-                _datbase = {
-                    name : db.s.databaseName,
-                    collNames : collNames
-                };
-                databaselist.push(_datbase);
-            });
-            callback2(null,null);
+    async.map(databases,function(database,callback2){
+        database.collections(function(err,collections) {
+            if(err){
+                console.log(err);
+                callback2(err,null);
+            }else{
+                var _datbase = {};
+                var collNames = [];
+                console.log(collections);
+                async.map(collections,function(coll,callback){
+                    var _coll = {
+                        name : coll.s.name
+                    };
+                    console.log(_coll);
+                    collNames.push(_coll);
+                    callback(null,null);
+                },function(err,result){
+                    _datbase = {
+                        name : database.s.databaseName,
+                        collNames : collNames
+                    };
+                    databaselist.push(_datbase);
+                    callback2(null,null);
+                });
+            }
         });
     },function(err,result){
-        res.json({
-            success:true,
-            databases : databaselist
-        });
+        if(err){
+            res.redirect('/database/databases')
+        }else{
+            res.json({
+                success:true,
+                databases : databaselist
+            });
+        }
     });
 });
 
@@ -55,7 +67,7 @@ router.get('/getstats',function(req,res){
                 indexes : stats.indexes,
                 dindexSizeb : stats.indexSize,
                 fileSize : stats.fileSize,
-                nsSizeMB : stats.nsSizeMB,
+                nsSizeMB : stats.nsSizeMB
             };
             dbsstats.push(dbstats);
             callback(null,null);
