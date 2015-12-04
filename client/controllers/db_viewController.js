@@ -4,13 +4,20 @@
 var dbs_tree = angular.module('dbs_tree',[]);
 dbs_tree.controller('treeController', function ($rootScope,$scope,$http) {
 
-    $http.get('/database/databases')
+    $http.get('/getConnections')
         .success(function (json) {
-            if(json.success){
-                $scope.databases = json.databases;
-                $rootScope.dbs = json.databases;
+            if(json.success == true){
+                $scope.connectionlist = json.connectionlist;
             }
         });
+
+    //$http.get('/database/databases')
+    //    .success(function (json) {
+    //        if(json.success){
+    //            $scope.databases = json.databases;
+    //            $rootScope.dbs = json.databases;
+    //        }
+    //    });
 
     $scope.$on('show_view',function(event,dbName){
         for(database in $scope.databases){

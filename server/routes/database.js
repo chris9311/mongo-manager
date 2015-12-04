@@ -6,7 +6,6 @@ var router = express.Router();
 
 router.get('/databases',function(req,res){
 
-    console.log('init');
     var databases = req.databases;
     var databaselist = [];
     async.map(databases,function(database,callback2){
@@ -17,12 +16,10 @@ router.get('/databases',function(req,res){
             }else{
                 var _datbase = {};
                 var collNames = [];
-                console.log(collections);
                 async.map(collections,function(coll,callback){
                     var _coll = {
                         name : coll.s.name
                     };
-                    console.log(_coll);
                     collNames.push(_coll);
                     callback(null,null);
                 },function(err,result){
