@@ -3,38 +3,28 @@
         WELCOME!
     </h1>
     <div class="panel panel-success">
-        <!--<div class="panel-heading">-->
-            <!--DataBase Information-->
-        <!--</div>-->
-        <!--<div class="panel-body row">-->
-            <!--<table class="table table-bordered table-hover">-->
-                <!--<thead>-->
-                <!--<th>DataBase</th>-->
-                <!--<th>Collections</th>-->
-                <!--<th>Objects</th>-->
-                <!--<th>DataSize</th>-->
-                <!--<th>StorageSize</th>-->
-                <!--<th>Indexes</th>-->
-                <!--&lt;!&ndash;<th>FileSize</th>&ndash;&gt;-->
-                <!--&lt;!&ndash;<th>NsSizeMB</th>&ndash;&gt;-->
-                <!--<th>Export</th>-->
-                <!--</thead>-->
-                <!--<tbody>-->
-                <!--<tr ng-repeat="stats in dbsstats">-->
-                    <!--<td>{{stats.db}}</td>-->
-                    <!--<td>{{stats.collections}}</td>-->
-                    <!--<td>{{stats.objects}}</td>-->
-                    <!--<td>{{stats.dataSize | adaptSize}}</td>-->
-                    <!--<td>{{stats.storageSize | adaptSize}}</td>-->
-                    <!--<td>{{stats.indexes}}</td>-->
-                    <!--&lt;!&ndash;<td>{{stats.fileSize | adaptSize}}</td>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<td>{{stats.nsSizeMB}} MB</td>&ndash;&gt;-->
-                    <!--<td>-->
-                        <!--<a class="btn btn-info" href="/database/export/{{stats.db}}">Export</a>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--</tbody>-->
-            <!--</table>-->
-        <!--</div>-->
+        <div class="panel-heading">
+            Connections Information
+        </div>
+        <div class="panel-body row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <th>Connection</th>
+                    <th>Server</th>
+                    <th>Port</th>
+                    <th>Databases</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="connection in connectionList">
+                        <td>{{connection.conn_name}}</td>
+                        <td>{{connection.server.split(':')[0]}}</td>
+                        <td>{{connection.server.split(':')[1]}}</td>
+                        <td>{{connection.databases.length}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

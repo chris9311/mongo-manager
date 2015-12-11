@@ -1,33 +1,88 @@
 /**
  * DataBase tree moudule
  */
-var dbs_tree = angular.module('dbs_tree',[]);
+var dbs_tree = angular.module('dbs_tree',['ui.bootstrap']);
 dbs_tree.controller('treeController', function ($rootScope,$scope,$http) {
 
-    $http.get('/getConnections')
+    $http.get('/connection/getConnections')
         .success(function (json) {
             if(json.success == true){
-                $scope.connectionlist = json.connectionlist;
+                $rootScope.connectionList = json.connections;
             }
         });
-
-    //$http.get('/database/databases')
-    //    .success(function (json) {
-    //        if(json.success){
-    //            $scope.databases = json.databases;
-    //            $rootScope.dbs = json.databases;
+    //
+    //$scope.$on('show_view',function(event,dbName){
+    //    for(database in $scope.databases){
+    //        if($scope.databases[database].name == $rootScope.urlParams.dbName){
+    //            $scope.databases[database].showcollections =true;
+    //        }else{
+    //            $scope.databases[database].showcollections = false;
     //        }
-    //    });
+    //    }
+    //});
 
-    $scope.$on('show_view',function(event,dbName){
-        for(database in $scope.databases){
-            if($scope.databases[database].name == $rootScope.urlParams.dbName){
-                $scope.databases[database].showcollections =true;
-            }else{
-                $scope.databases[database].showcollections = false;
+    $scope.sendDelData = function (conn_name,server) {
+        var _server = server.split(':');
+        $scope.deldata = {
+            conn_name : conn_name,
+            server : _server[0],
+            port : _server[1]
+        }
+    };
+
+    $scope.deleteConnection = function () {
+        $http.delete('/connection/del_connection/'+$scope.deldata.conn_name+'/'+$scope.deldata.server+'/'+$scope.deldata.port)
+            .success(function (json) {
+                if(json.success){
+                    window.location= '/';
+                }
+            })
+    };
+});
+
+dbs_tree.controller('addConnecntionController', function ($scope, $http) {
+
+    var reset = function () {
+        $scope.connection = {
+            conn_name:'',
+            server : '',
+            port : '',
+            auth : {
+                sign : false,
+                db : 'admin',
+                user : '',
+                password : ''
             }
         }
-    });
+    };
+    reset();
+    $scope.clear = function () {
+        reset();
+    };
+    
+    $scope.testConnection = function () {
+        if(!$scope.connection.auth.sign){
+            $scope.connection.auth = {
+                sign : false
+            }
+        }
+        $http.post('/connection/test_connection',$scope.connection)
+            .success(function (json) {
+                if(json.success){
+                    console.log(json.success)
+                }
+            })
+    };
+    
+    $scope.saveConnection = function () {
+        $http.post('/connection/save_connection',$scope.connection)
+            .success(function (json) {
+                if(json.success){
+                    console.log(json.success);
+                    window.location = '/';
+                }
+            })
+    };
 });
 
 var breadcrumbcontroller = angular.module('breadcrumb_controller',[]);
@@ -46,6 +101,26 @@ breadcrumbcontroller.controller('breadcrumbController',function($scope,$rootScop
             $scope.urlarry = urlarry;
         }
     });
+});
+
+var index_view = angular.module('index_view',[]);
+index_view.controller('indexviewController',function($scope,$http){
+    $http.get('/database/getstats')
+        .success(function(json){
+            if(json.success){
+                //console.log(json);
+                $scope.dbsstats = json.dbsstats;
+            }
+        });
+
+    $scope.export = function () {
+        $http.get('/database/export')
+            .success(function (json) {
+                if(json.success){
+                    console.log(json);
+                }
+            })
+    }
 });
 
 var db_view = angular.module('db_view',[]);
@@ -78,28 +153,6 @@ db_view.controller('dbviewController',function($scope,$http,$rootScope,$routePar
             $scope.$emit('hide_loading');
         }
     });
-});
-
-
-
-var index_view = angular.module('index_view',[]);
-index_view.controller('indexviewController',function($scope,$http){
-    $http.get('/database/getstats')
-        .success(function(json){
-            if(json.success){
-                //console.log(json);
-                $scope.dbsstats = json.dbsstats;
-            }
-        });
-
-    $scope.export = function () {
-        $http.get('/database/export')
-            .success(function (json) {
-                if(json.success){
-                    console.log(json);
-                }
-            })
-    }
 });
 
 var coll_view = angular.module('coll_view',[]);

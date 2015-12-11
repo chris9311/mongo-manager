@@ -1,0 +1,30 @@
+<div ng-controller="treeController">
+        <nav class="navbar navbar-default" >
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="">
+                        Databases
+                    </a>
+                </div>
+            </div>
+        </nav>
+    <div class=" tree well" style="height: 700px;overflow:auto;">
+        <ul >
+            <li ng-repeat="database in databases" class="parent_li" >
+            <span>
+                <i ng-class='{true: "glyphicon glyphicon-plus", false: "glyphicon glyphicon-minus"}[!database.showcollections]' ng-click="database.showcollections=!database.showcollections"></i>
+                <a href="#/database/{{database.name}}" >{{database.name}}</a>
+            </span>
+                <ul ng-show="database.showcollections">
+                    <li ng-repeat=" collection in database.collNames">
+                    <span>
+                        <i class="glyphicon glyphicon-file"></i>
+                        <a href="#/collection/{{database.name}}/{{collection.name}}" >{{collection.name}}</a>
+                    </span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+

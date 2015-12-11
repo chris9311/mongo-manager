@@ -7,6 +7,7 @@ var collection  = require('./collection');
 var document  = require('./document');
 var index = require('./index');
 var admin = require('./admin');
+var connection = require('./connection');
 var config = require('../../config');
 
 //console.log('router init');
@@ -55,5 +56,6 @@ router.use('/database',database);
 router.use('/collection',collection);
 router.use('/document',document);
 router.use('/admin',admin);
+router.use('/connection',connection);
 
 module.exports = router;

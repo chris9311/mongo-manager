@@ -1,0 +1,40 @@
+<div class="row" ng-controller="indexviewController">
+    <h1>
+        WELCOME!
+    </h1>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            DataBase Information
+        </div>
+        <div class="panel-body row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <th>DataBase</th>
+                <th>Collections</th>
+                <th>Objects</th>
+                <th>DataSize</th>
+                <th>StorageSize</th>
+                <th>Indexes</th>
+                <!--<th>FileSize</th>-->
+                <!--<th>NsSizeMB</th>-->
+                <th>Export</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="stats in dbsstats">
+                    <td>{{stats.db}}</td>
+                    <td>{{stats.collections}}</td>
+                    <td>{{stats.objects}}</td>
+                    <td>{{stats.dataSize | adaptSize}}</td>
+                    <td>{{stats.storageSize | adaptSize}}</td>
+                    <td>{{stats.indexes}}</td>
+                    <!--<td>{{stats.fileSize | adaptSize}}</td>-->
+                    <!--<td>{{stats.nsSizeMB}} MB</td>-->
+                    <td>
+                        <a class="btn btn-info" href="/database/export/{{stats.db}}">Export</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

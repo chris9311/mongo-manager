@@ -10,6 +10,7 @@ var fs = require('fs');
 var router = require('./server/routes/router');
 var app = express();
 var config = require('./config');
+var async = require('async');
 app.set('views', path.join(__dirname, 'client/views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
@@ -33,13 +34,89 @@ app.use(express.static(path.join(__dirname)));
 //});
 
 app.use(function (req,res,next) {
-  mongodb.connect('mongodb://'+config.serverDatabase.dbUrl+'/mmd', function (err,db) {
+  mongodb.connect('mongodb://'+config.serverDatabase.dbUrl+'/mmd', function (err,sdb) {
     if(err){
+      console.log('app.js 38');
       console.log(err);
       next();
     }else{
-      req.mmdb = db;
-      next();
+      var connections = {};
+      req.serverdb = sdb;
+      var serverList = sdb.collection('connectionlist');
+      serverList.find({}).toArray(function (err,conns) {
+        if(err){
+          console.log('app.js 48');
+          console.log(err);
+        }else{
+          async.map(conns, function (connection,callback) {
+            var connection = connection;
+            var serverAddress = connection.server + ':' +connection.port;
+            mongodb.connect('mongodb://'+serverAddress+'/admin', function (err,db) {
+              if(err){
+                console.log('app.js 56');
+                console.log(err);
+                next();
+                callback(err,null);
+              }else{
+                connection.adminConn = db;
+                connection.adminDb = db.admin();
+                if(connection.auth.sign){
+                  db.admin().authenticate(connection.auth.user,connection.auth.password, function (err,result) {
+                    if(err){
+                      console.log('app.js 59');
+                      console.log(err);
+                    }else{
+                      db.admin().listDatabases(function (err,databases) {
+                        if(err){
+                          console.log('app.js 64');
+                          console.log(err);
+                        }else{
+                          var _database = {};
+                          async.map(databases.databases, function (database,callback2) {
+                            var dbName = database['name'];
+                            if (dbName != 'local' && dbName != 'admin') {
+                              _database[dbName] = db.db(dbName);
+                            }
+                            callback2(null,null);
+                          }, function (err,result) {//finished the databases
+                            connection.databases = _database;
+                            connections[serverAddress] = connection;
+                            callback(null,null);
+                          })
+                        }
+                      })
+                    }
+                  })
+                }else{
+                  db.admin().listDatabases(function (err,databases) {
+                    if(err){
+                      console.log('app.js 64');
+                      console.log(err);
+                    }else{
+                      var _database = {};
+                      async.map(databases.databases, function (database,callback2) {
+                        var dbName = database['name'];
+                        //console.log('dbname: '+dbName);
+                        if (dbName != 'local' && dbName != 'admin') {
+                          _database[dbName] = db.db(dbName);
+                        }
+                        callback2(null,null);
+                      }, function (err,result) {//finished the databases
+                        connection.databases = _database;
+                        connections[serverAddress] = connection;
+                        callback(null,null);
+                      })
+                    }
+                  })
+                }
+              }
+            })
+          },function (err,result) {//finished the connections
+            req.connections = connections;
+            next();
+          })
+        }
+      });
     }
   })
 });
@@ -125,32 +202,56 @@ app.use(function (req,res,next) {
 
 //app.use('/',middleware,router);
 
-app.get('/getConnections', function (req,res) {
-  var serverDatabase = req.mmdb;
-  var connectionlist = [];
-  var collection = serverDatabase.collection('connectionlist');
-  collection.find({}).toArray(function (err,coll) {
-    //console.log(coll);
-    if(err){
-      console.log(err);
-    }else{
-      for(i in coll){
-        var connection = {
-          server : coll[i].server,
-          conn_name : coll[i].conn_name
-        };
-        if(coll[i].auth.sign){
-          connection.username = coll[i].auth.user;
-        }
-        connectionlist.push(connection);
-      }
-      res.json({
-        success : true,
-        connectionlist : connectionlist
-      })
-    }
-  });
-});
+//app.get('/getConnections', function (req,res) {
+//  var connections = req.connections;
+//  var connectionList = [];
+//  async.map(connections,function(connection,callback){
+//    var _connection = {};
+//    _connection.server = connection.server + ':' + connection.port;
+//    _connection.conn_name = connection.conn_name;
+//    connection.auth.sign ? _connection.user.name:null;
+//    var databases = connection.databases;
+//    var databaselist = [];
+//    async.map(databases,function(database,callback1){
+//      database.collections(function(err,collections) {
+//        if(err){
+//          console.log(err);
+//          callback1(err,null);
+//        }else{
+//          var _datbase = {};
+//          var collNames = [];
+//          async.map(collections,function(coll,callback2){
+//            var _coll = {
+//              name : coll.s.name
+//            };
+//            collNames.push(_coll);
+//            callback2(null,null);
+//          },function(err,result){
+//            _datbase = {
+//              name : database.s.databaseName,
+//              collNames : collNames
+//            };
+//            databaselist.push(_datbase);
+//            callback1(null,null);
+//          });
+//        }
+//      });
+//    },function(err,result){
+//      if(err){
+//        res.redirect('/database/databases')
+//      }else{
+//        _connection.databases = databaselist;
+//        connectionList.push(_connection);
+//        callback(null,null);
+//      }
+//    });
+//  }, function (err,result) {
+//    res.json({
+//      success : true,
+//      connections : connectionList
+//    })
+//  })
+//});
 
 app.use('/',router);
 
