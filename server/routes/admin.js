@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var filter  = require('./filter');
+//var filter  = require('./filter');
 var _ = require('underscore');
 var fs = require('fs');
 var path = require('path');

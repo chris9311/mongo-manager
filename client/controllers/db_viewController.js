@@ -2,7 +2,7 @@
  * DataBase tree moudule
  */
 var dbs_tree = angular.module('dbs_tree',['ui.bootstrap']);
-dbs_tree.controller('treeController', function ($rootScope,$scope,$http) {
+dbs_tree.controller('treeController', function ($rootScope,$scope,$http,$location) {
 
     $http.get('/connection/getConnections')
         .success(function (json) {
@@ -38,6 +38,12 @@ dbs_tree.controller('treeController', function ($rootScope,$scope,$http) {
                 }
             })
     };
+
+    $scope.redirect = function (conn_name) {
+        console.log('init');
+        //$location = '/'+conn_name;
+        window.location = '#/database/'+conn_name ;
+    }
 });
 
 dbs_tree.controller('addConnecntionController', function ($scope, $http) {
@@ -104,8 +110,11 @@ breadcrumbcontroller.controller('breadcrumbController',function($scope,$rootScop
 });
 
 var index_view = angular.module('index_view',[]);
-index_view.controller('indexviewController',function($scope,$http){
-    $http.get('/database/getstats')
+index_view.controller('indexviewController',function($rootScope,$scope,$http,$routeParams){
+
+    $rootScope.urlParams = $routeParams;
+    $scope.conn_name = $routeParams.conn_name;
+    $http.get('/database/getstats/'+$scope.conn_name)
         .success(function(json){
             if(json.success){
                 //console.log(json);
@@ -127,6 +136,7 @@ var db_view = angular.module('db_view',[]);
 db_view.controller('dbviewController',function($scope,$http,$rootScope,$routeParams){
 
     $rootScope.urlParams = $routeParams;
+    var conn_name = $routeParams.conn_name;
     $scope.maxSize = 10;
     $scope.bigCurrentPage = 1;
     $scope.itemsPerPage = 10;
@@ -134,7 +144,7 @@ db_view.controller('dbviewController',function($scope,$http,$rootScope,$routePar
     if(!$scope.collectionlist){
         var dbName = $routeParams.dbName;
         $scope.$emit('show_loading');
-        $http.get('/database/getcollections/' + dbName)
+        $http.get('/database/getcollections/'+conn_name +'/'+ dbName)
             .success(function (json) {
                 if(json.success){
                     $scope.collectionlist = json.collections;
@@ -159,6 +169,7 @@ var coll_view = angular.module('coll_view',[]);
 coll_view.controller('collviewController',function($scope,$http,$rootScope,$routeParams) {
 
     $rootScope.urlParams = $routeParams;
+    $scope.conn_name =  $routeParams.conn_name;
     $scope.dbName = $routeParams.dbName;
     $scope.collName = $routeParams.collName;
     $scope.maxSize = 10;
@@ -175,7 +186,7 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
         $scope.$emit('show_loading');
         $http({
             method : 'POST',
-            url : '/collection/query/' + $scope.dbName + '/' + $scope.collName+ '/' + $scope.itemsPerPage + '/' + page,
+            url : '/collection/query/'+ $scope.conn_name +'/' + $scope.dbName + '/' + $scope.collName+ '/' + $scope.itemsPerPage + '/' + page,
             data : $.param($scope.find),
             headers : {'Content-Type': 'application/x-www-form-urlencoded'}
         })

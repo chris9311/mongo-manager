@@ -1,15 +1,19 @@
 <div class="row" ng-controller="breadcrumbController">
     <ol class="breadcrumb" ng-if="urlParams.dbName">
         <li >
-            <a ng-show="urlParams.dbName" href="#/">Home</a>
-            <span ng-hide="urlParams.dbName">Home</span>
+            <a ng-show="urlParams.conn_name" href="#/">Home</a>
+            <span ng-hide="urlParams.conn_name">Home</span>
+        </li>
+        <li ng-show="urlParams.conn_name">
+            <a ng-show="urlParams.dbName" href="#/database/{{urlParams.conn_name}}">{{urlParams.conn_name}}</a>
+            <span ng-hide="urlParams.dbName">{{urlParams.conn_name}}</span>
         </li>
         <li ng-show="urlParams.dbName">
-            <a ng-show="urlParams.collName" href="#/database/{{urlParams.dbName}}">{{urlParams.dbName}}</a>
+            <a ng-show="urlParams.collName" href="#/database/{{urlParams.conn_name}}/{{urlParams.dbName}}">{{urlParams.dbName}}</a>
             <span ng-hide="urlParams.collName">{{urlParams.dbName}}</span>
         </li>
         <li ng-show="urlParams.collName">
-            <a ng-show="urlParams.docId" href="#/collection/{{urlParams.dbName}}/{{urlParams.collName}}/{{collPage}}">
+            <a ng-show="urlParams.docId" href="#/collection/{{urlParams.conn_name}}/{{urlParams.dbName}}/{{urlParams.collName}}/{{collPage}}">
             {{urlParams.collName}}</a>
             <span ng-hide="urlParams.docId">{{urlParams.collName}}</span>
         </li>

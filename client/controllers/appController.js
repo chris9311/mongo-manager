@@ -11,13 +11,16 @@ app.config(function ($routeProvider) {
         .when('/',{
             templateUrl : 'client/views/pages/index.html'
         })
-        .when('/database/:dbName',{
+        .when('/database/:conn_name',{
+            templateUrl : 'client/views/pages/db_views/db_index.html'
+        })
+        .when('/database/:conn_name/:dbName',{
             templateUrl : 'client/views/pages/db_views/database.html'
         })
-        .when('/collection/:dbName/:collName',{
+        .when('/collection/:conn_name/:dbName/:collName',{
             templateUrl : 'client/views/pages/db_views/collections_new.html'
         })
-        .when('/document/:dbName/:collName/:docId',{
+        .when('/document/:conn_name/:dbName/:collName/:docId',{
             templateUrl : 'client/views/pages/db_views/document.html'
         })
         .when('/admin',{
@@ -26,9 +29,6 @@ app.config(function ($routeProvider) {
         .when('/admin/profile',{
             templateUrl : 'client/views/pages/admin_views/system.profile.html'
         })
-        //.when('/admin/profile/:sort/:page',{
-        //    templateUrl : 'client/views/pages/system.profile.html'
-        //})
         .when('/admin/checkfile',{
             templateUrl : 'client/views/pages/admin_views/filelist.html'
         })
@@ -44,9 +44,6 @@ app.config(function ($routeProvider) {
         .when('/admin/currentop',{
             templateUrl : 'client/views/pages/admin_views/currentop.html'
         });
-        //.when('/test',{
-        //    templateUrl : 'client/views/pages/db_views/query_new.html'
-        //})
 });
 
 app.run(function ($rootScope,$location) {

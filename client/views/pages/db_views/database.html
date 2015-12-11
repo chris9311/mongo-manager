@@ -14,7 +14,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="item in collections" >
-            <td><a href="#/collection/{{urlParams.dbName}}/{{item.name}}">{{item.name}}</a></td>
+            <td><a href="#/collection/{{urlParams.conn_name}}/{{urlParams.dbName}}/{{item.name}}">{{item.name}}</a></td>
             <td>{{item.stats.ns}}</td>
             <td>{{item.stats.size | adaptSize}}</td>
             <td>{{item.stats.count}}</td>
@@ -31,9 +31,9 @@
         </tbody>
     </table>
     <div class="text-center">
-        <pagination boundary-links="true" total-items="bigTotalItems" ng-model="bigCurrentPage"
+        <uib-pagination boundary-links="true" total-items="bigTotalItems" ng-model="bigCurrentPage"
                     class="pagination-md" previous-text="&lsaquo;" max-size="maxSize"
                     next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
-                    rotate="false" num-pages="numPages" items-per-page='itemsPerPage' ></pagination>
+                    rotate="false" num-pages="numPages" items-per-page='itemsPerPage' ></uib-pagination>
     </div>
 </div>

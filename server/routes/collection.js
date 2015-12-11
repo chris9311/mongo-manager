@@ -84,7 +84,7 @@ router.get('/export/:dbName/:collName', function (req,res) {
     })
 });
 
-router.post('/query/:dbName/:collName/:pageSize/:currentPage', function (req, res) {
+router.post('/query/:conn_name/:dbName/:collName/:pageSize/:currentPage', function (req, res) {
 
     var dbName = req.params.dbName;
     var collName = req.params.collName;
@@ -105,7 +105,9 @@ router.post('/query/:dbName/:collName/:pageSize/:currentPage', function (req, re
     //console.log('sort:'+sort);
     //console.log('fields:'+fields);
 
-    var db = req.databases[dbName];
+    var conn_name = req.params.conn_name;
+    var databases = req.connections[conn_name].databases;
+    var db = databases[dbName];
     var collection = db.collection(collName);
     //var jsonstr = JSON.parse(query);
     //console.log(jsonstr);

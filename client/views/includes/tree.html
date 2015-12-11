@@ -17,7 +17,7 @@
         <ul>
             <li ng-repeat="connection in connectionList" class="parent_li">
                 <span title="{{connection.user}}@{{connection.server}}">
-                    <em>{{connection.conn_name}}({{connection.user}}@{{connection.server}})</em>
+                    <em ng-click="redirect(connection.conn_name)">{{connection.conn_name}}({{connection.user}}@{{connection.server}})</em>
                 </span>
                 &nbsp;&nbsp;&nbsp;
                 <i class="pull right glyphicon glyphicon-remove" ng-click="sendDelData(connection.conn_name,connection.server)" style="cursor:pointer" data-toggle="modal" data-target="#delConfirmModal" ></i>
@@ -25,13 +25,13 @@
                     <li ng-repeat="database in connection.databases" class="parent_li">
                         <span>
                             <i ng-class='{true: "glyphicon glyphicon-plus", false: "glyphicon glyphicon-minus"}[!database.showcollections]' ng-click="database.showcollections=!database.showcollections"></i>
-                            <a href="#/database/{{database.name}}">{{database.name}}</a>
+                            <a href="#/database/{{connection.conn_name}}/{{database.name}}">{{database.name}}</a>
                         </span>
                         <ul ng-show="database.showcollections">
                             <li ng-repeat=" collection in database.collNames">
                                 <span>
                                     <i class="glyphicon glyphicon-file"></i>
-                                    <a href="#/collection/{{database.name}}/{{collection.name}}" >{{collection.name}}</a>
+                                    <a href="#/collection/{{connection.conn_name}}/{{database.name}}/{{collection.name}}" >{{collection.name}}</a>
                                 </span>
                             </li>
                         </ul>
@@ -131,7 +131,7 @@
                                         <input type="text" ng-if="isEyeOpen" ng-model="connection.auth.password" class="form-control">
                                     </div>
                                     <label class="control-label">
-                                        <i href="" class="glyphicon" ng-class="{'glyphicon-eye-open':isEyeOpen,'glyphicon-eye-close':!isEyeOpen}" ng-click="isEyeOpen = !isEyeOpen" style="cursor:pointer"></i>
+                                        <i class="glyphicon" ng-class="{'glyphicon-eye-open':isEyeOpen,'glyphicon-eye-close':!isEyeOpen}" ng-click="isEyeOpen = !isEyeOpen" style="cursor:pointer"></i>
                                         <!--<a href="" class="glyphicon glyphicon-eye-close"></a>-->
                                     </label>
                                 </div>

@@ -17,7 +17,7 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="connection in connectionList">
-                        <td>{{connection.conn_name}}</td>
+                        <td><a href="#/database/{{connection.conn_name}}">{{connection.conn_name}}</a></td>
                         <td>{{connection.server.split(':')[0]}}</td>
                         <td>{{connection.server.split(':')[1]}}</td>
                         <td>{{connection.databases.length}}</td>

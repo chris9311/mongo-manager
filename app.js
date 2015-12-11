@@ -51,6 +51,7 @@ app.use(function (req,res,next) {
           async.map(conns, function (connection,callback) {
             var connection = connection;
             var serverAddress = connection.server + ':' +connection.port;
+            var conn_name = connection.conn_name;
             mongodb.connect('mongodb://'+serverAddress+'/admin', function (err,db) {
               if(err){
                 console.log('app.js 56');
@@ -80,7 +81,7 @@ app.use(function (req,res,next) {
                             callback2(null,null);
                           }, function (err,result) {//finished the databases
                             connection.databases = _database;
-                            connections[serverAddress] = connection;
+                            connections[conn_name] = connection;
                             callback(null,null);
                           })
                         }
@@ -103,7 +104,7 @@ app.use(function (req,res,next) {
                         callback2(null,null);
                       }, function (err,result) {//finished the databases
                         connection.databases = _database;
-                        connections[serverAddress] = connection;
+                        connections[conn_name] = connection;
                         callback(null,null);
                       })
                     }

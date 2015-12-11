@@ -4,48 +4,51 @@ var child_process = require('child_process');
 var path = require('path');
 var router = express.Router();
 
-router.get('/databases',function(req,res){
+//router.get('/databases/:server',function(req,res){
+//
+//    var server = req.params.server;
+//    var databases = req.connection[server].databases;
+//    var databaselist = [];
+//    async.map(databases,function(database,callback2){
+//        database.collections(function(err,collections) {
+//            if(err){
+//                console.log(err);
+//                callback2(err,null);
+//            }else{
+//                var _datbase = {};
+//                var collNames = [];
+//                async.map(collections,function(coll,callback){
+//                    var _coll = {
+//                        name : coll.s.name
+//                    };
+//                    collNames.push(_coll);
+//                    callback(null,null);
+//                },function(err,result){
+//                    _datbase = {
+//                        name : database.s.databaseName,
+//                        collNames : collNames
+//                    };
+//                    databaselist.push(_datbase);
+//                    callback2(null,null);
+//                });
+//            }
+//        });
+//    },function(err,result){
+//        if(err){
+//            res.redirect('/database/databases')
+//        }else{
+//            res.json({
+//                success:true,
+//                databases : databaselist
+//            });
+//        }
+//    });
+//});
 
-    var databases = req.databases;
-    var databaselist = [];
-    async.map(databases,function(database,callback2){
-        database.collections(function(err,collections) {
-            if(err){
-                console.log(err);
-                callback2(err,null);
-            }else{
-                var _datbase = {};
-                var collNames = [];
-                async.map(collections,function(coll,callback){
-                    var _coll = {
-                        name : coll.s.name
-                    };
-                    collNames.push(_coll);
-                    callback(null,null);
-                },function(err,result){
-                    _datbase = {
-                        name : database.s.databaseName,
-                        collNames : collNames
-                    };
-                    databaselist.push(_datbase);
-                    callback2(null,null);
-                });
-            }
-        });
-    },function(err,result){
-        if(err){
-            res.redirect('/database/databases')
-        }else{
-            res.json({
-                success:true,
-                databases : databaselist
-            });
-        }
-    });
-});
+router.get('/getstats/:conn_name',function(req,res){
 
-router.get('/getstats',function(req,res){
-    var databases = req.databases;
+    var conn_name = req.params.conn_name;
+    var databases = req.connections[conn_name].databases;
     var dbsstats = [];
     async.map(databases,function(database,callback){
         database.stats(function(err,stats){
@@ -77,10 +80,12 @@ router.get('/getstats',function(req,res){
     });
 });
 
-router.get('/getcollections/:dbName',function(req,res){
+router.get('/getcollections/:conn_name/:dbName',function(req,res){
 
+    var conn_name = req.params.conn_name;
+    var databases = req.connections[conn_name].databases;
     var dbName = req.params.dbName;
-    var db = req.databases[dbName];
+    var db = databases[dbName];
     var collections = [];
     db.collections(function(err,colls){
         async.map(colls,function(coll,cb){
