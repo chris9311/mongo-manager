@@ -8,7 +8,7 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var async = require('async');
 var child_process = require('child_process');
-var config = require('../../config');
+//var config = require('../../config');
 //var later = require('later');
 
 var daily_tasklist =[];

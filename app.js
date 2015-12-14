@@ -54,7 +54,7 @@ app.use(function (req,res,next) {
             var conn_name = connection.conn_name;
             mongodb.connect('mongodb://'+serverAddress+'/admin', function (err,db) {
               if(err){
-                console.log('app.js 56');
+                console.log('app.js 57');
                 console.log(err);
                 next();
                 callback(err,null);
@@ -69,7 +69,7 @@ app.use(function (req,res,next) {
                     }else{
                       db.admin().listDatabases(function (err,databases) {
                         if(err){
-                          console.log('app.js 64');
+                          console.log('app.js 72');
                           console.log(err);
                         }else{
                           var _database = {};
@@ -91,7 +91,7 @@ app.use(function (req,res,next) {
                 }else{
                   db.admin().listDatabases(function (err,databases) {
                     if(err){
-                      console.log('app.js 64');
+                      console.log('app.js 94');
                       console.log(err);
                     }else{
                       var _database = {};

@@ -1,5 +1,5 @@
 <div class="row" ng-controller="breadcrumbController">
-    <ol class="breadcrumb" ng-if="urlParams.dbName">
+    <ol class="breadcrumb" ng-if="urlParams.conn_name">
         <li >
             <a ng-show="urlParams.conn_name" href="#/">Home</a>
             <span ng-hide="urlParams.conn_name">Home</span>
@@ -21,7 +21,7 @@
             {{urlParams.docId}}
         </li>
     </ol>
-    <ol class="breadcrumb" ng-if="!urlParams.dbName" >
+    <ol class="breadcrumb" ng-if="!urlParams.conn_name" >
         <li >
             <a ng-hide="urlarry.length == 0" href="#/">Home</a>
             <span ng-show="urlarry.length == 0">Home</span>

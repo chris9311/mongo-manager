@@ -1,12 +1,12 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h4>
-            Query
-            <a href="" ng-click="show_query = !show_query" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <span ng-hide="show_query" class="pull-right glyphicon glyphicon-collapse-down"></span>
-                <span ng-show="show_query" class="pull-right glyphicon glyphicon-collapse-up"></span>
-            </a>
-
+            <span ng-click="show_query = !show_query" style="cursor:pointer" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Query</span>
+            <i ng-click="show_query = !show_query" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer"
+               ng-class="{true:'pull-right glyphicon glyphicon-collapse-down',false:'pull-right glyphicon glyphicon-collapse-up'}[!show_query]">
+                <!--<span ng-hide="show_query" class="pull-right glyphicon glyphicon-collapse-down"></span>-->
+                <!--<span ng-show="show_query" class="pull-right glyphicon glyphicon-collapse-up"></span>-->
+            </i>
         </h4>
     </div>
     <div class="panel-body collapse" id="collapseExample">

@@ -112,18 +112,44 @@ router.get('/getcollections/:conn_name/:dbName',function(req,res){
     });
 });
 
-router.get('/export/:dbName', function (req, res) {
+router.get('/export/:conn_name/:dbName', function (req, res) {
 
     var dbName = req.params.dbName;
-    var filepath = path.join(__dirname,'../../','server/shell/exportdatabase.sh');
-    var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
-    child_process.execFile(filepath, [dbName,auth[0],auth[1]], function (err, result) {
+    var conn_name = req.params.conn_name;
+    //var filepath = path.join(__dirname,'../../','server/shell/exportdatabase.sh');
+    var filepath = '';
+    var serverdb = req.serverdb;
+    var connectionlist = serverdb.collection('connectionlist');
+    connectionlist.findOne({conn_name:conn_name}, function (err,doc) {
+        if(err){
+            console.log('databases.js 125');
+            console.log(err);
+        }else{
+            if(doc.auth.sign){
+                filepath = path.join(__dirname,'../../','server/shell/exportdatabase_auth.sh');
+                child_process.execFile(filepath, [doc.server,doc.port,doc.auth.user,doc.auth.password,dbName], function (err,result) {
+                    resResult(err,result)
+                });
+            }else{
+                filepath = path.join(__dirname,'../../','server/shell/exportdatabase.sh');
+                child_process.execFile(filepath, [doc.server,doc.port,dbName], function (err,result) {
+                    resResult(err,result)
+                });
+            }
+        }
+    });
+    function resResult(err,result){
         if(err){
             console.log(err);
+            res.json({
+                success: false,
+                err : err
+            })
+        }else{
+            console.log(result);
+            res.download('/tmp/mongo_dump/'+dbName+'.zip',''+dbName+'.zip');
         }
-        console.log(result);
-        res.download('/tmp/mongo_dump/'+dbName+'.zip',''+dbName+'.zip');
-    });
+    }
 });
 
 module.exports = router;

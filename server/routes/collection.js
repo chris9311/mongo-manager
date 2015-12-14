@@ -7,35 +7,35 @@ var path = require('path');
 var excel_export = require('excel-export');
 var router = express.Router();
 
-router.get('/getdocuments/:dbName/:collName/:pageSize/:currentPage',function(req,res){
-
-    var dbName = req.params.dbName;
-    var collName = req.params.collName;
-    var currentPage = parseInt(req.params.currentPage,10)-1;
-    var pageSize = parseInt(req.params.pageSize,10);
-    var current = currentPage * pageSize;
-    var totalPages ;
-
-    console.log('currentPage : '+ currentPage);
-    console.log('current : '+ current + '-----' + (current+pageSize));
-
-    var db = req.databases[dbName];
-    var collection = db.collection(collName);
-    collection.count(function(err,count){
-        totalPages = Math.ceil(count / pageSize);
-        collection.find({},{skip:current,limit:pageSize}).toArray(function(err,docs){
-            if(err){
-                console.log(err);
-            }
-            res.json({
-                success : true,
-                totalPages:totalPages,
-                documents :  docs,
-
-            })
-        })
-    });
-});
+//router.get('/getdocuments/:dbName/:collName/:pageSize/:currentPage',function(req,res){
+//
+//    var dbName = req.params.dbName;
+//    var collName = req.params.collName;
+//    var currentPage = parseInt(req.params.currentPage,10)-1;
+//    var pageSize = parseInt(req.params.pageSize,10);
+//    var current = currentPage * pageSize;
+//    var totalPages ;
+//
+//    //console.log('currentPage : '+ currentPage);
+//    //console.log('current : '+ current + '-----' + (current+pageSize));
+//
+//    var db = req.databases[dbName];
+//    var collection = db.collection(collName);
+//    collection.count(function(err,count){
+//        totalPages = Math.ceil(count / pageSize);
+//        collection.find({},{skip:current,limit:pageSize}).toArray(function(err,docs){
+//            if(err){
+//                console.log(err);
+//            }
+//            res.json({
+//                success : true,
+//                totalPages:totalPages,
+//                documents :  docs,
+//
+//            })
+//        })
+//    });
+//});
 
 
 /**
@@ -64,14 +64,35 @@ router.get('/getdocuments/:dbName/:collName/:pageSize/:currentPage',function(req
 //});
 
 
-router.get('/export/:dbName/:collName', function (req,res) {
+router.get('/export/:conn_name/:dbName/:collName', function (req,res) {
 
     var dbName = req.params.dbName;
     var collName = req.params.collName;
+    var conn_name = req.params.conn_name;
 
-    var filepath = path.join(__dirname,'../../','server/shell/exportcollection.sh');
-    var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
-    child_process.execFile(filepath, [dbName,collName,auth[0],auth[1]],function (err,result) {
+    var filepath = '';
+    //var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
+    var serverdb = req.serverdb;
+    var connections = serverdb.collection('connectionlist');
+    connections.findOne({conn_name:conn_name}, function (err,doc) {
+       if(err){
+           console.log('collection.js 79');
+           console.log(err);
+       }else{
+           if(doc.auth.sign){
+               filepath = path.join(__dirname,'../../','server/shell/exportcollection_auth.sh');
+               child_process.execFile(filepath, [doc.server,doc.port,doc.auth.user,doc.auth.password,dbName,collName],function (err,result) {
+                   resResult(err,result);
+               })
+           }else{
+               filepath = path.join(__dirname,'../../','server/shell/exportcollection.sh');
+               child_process.execFile(filepath,[doc.server,doc.port,dbName,collName],function (err,result) {
+                   resResult(err,result);
+               })
+           }
+       }
+    });
+    function resResult(err,result){
         if(err){
             console.log(err);
             res.json({
@@ -81,7 +102,7 @@ router.get('/export/:dbName/:collName', function (req,res) {
             console.log(result);
             res.download('/tmp/mongo_dump/' + dbName + '_' + collName + '.zip',dbName + '_' + collName+'.zip')
         }
-    })
+    }
 });
 
 router.post('/query/:conn_name/:dbName/:collName/:pageSize/:currentPage', function (req, res) {
@@ -182,8 +203,7 @@ router.post('/query/:conn_name/:dbName/:collName/:pageSize/:currentPage', functi
 //    }
 //};
 
-router.get('/exportExcel/:dbName/:collName/:query', function (req, res) {
-//router.get('/exportExcel', function (req, res) {
+router.get('/exportExcel/:conn_name/:dbName/:collName/:query', function (req, res) {
 
     var dbName = req.params.dbName;
     var collName = req.params.collName;
@@ -191,7 +211,9 @@ router.get('/exportExcel/:dbName/:collName/:query', function (req, res) {
     //var sort = undefined || req.body.sort;
     //var fields = undefined || req.body.fields;
 
-    var db = req.databases[dbName];
+    var conn_name = req.params.conn_name;
+    var databases = req.connections[conn_name].databases;
+    var db = databases[dbName];
     var collection = db.collection(collName);
 
     var queryjson = {

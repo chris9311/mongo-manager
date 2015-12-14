@@ -40,7 +40,7 @@ dbs_tree.controller('treeController', function ($rootScope,$scope,$http,$locatio
     };
 
     $scope.redirect = function (conn_name) {
-        console.log('init');
+        //console.log('init');
         //$location = '/'+conn_name;
         window.location = '#/database/'+conn_name ;
     }
@@ -114,10 +114,12 @@ index_view.controller('indexviewController',function($rootScope,$scope,$http,$ro
 
     $rootScope.urlParams = $routeParams;
     $scope.conn_name = $routeParams.conn_name;
+    $scope.$emit('show_loading');
     $http.get('/database/getstats/'+$scope.conn_name)
         .success(function(json){
             if(json.success){
                 //console.log(json);
+                $scope.$emit('hide_loading');
                 $scope.dbsstats = json.dbsstats;
             }
         });
@@ -223,7 +225,7 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
         if($scope.find){
             str = JSON.stringify($scope.find);
         }
-        $http.get('/collection/exportExcel/' + $scope.dbName + '/' + $scope.collName + '/' + str)
+        $http.get('/collection/exportExcel/'+ $scope.conn_name + '/' + $scope.dbName + '/' + $scope.collName + '/' + str)
             .success(function (json) {
                 if(json.success){
                     console.log('file generation');
