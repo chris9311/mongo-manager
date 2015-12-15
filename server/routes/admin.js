@@ -67,10 +67,12 @@ var daily_tasklist =[];
 //    }
 //});
 
-router.get('/profile/:dbName', function (req, res) {
+router.get('/profile/:conn_name/:dbName', function (req, res) {
 
     var dbName = req.params.dbName;
-    var db = req.adminConn.db(dbName);
+    var conn_name = req.params.conn_name;
+    var databases = req.connections[conn_name].databases;
+    var db = databases[dbName];
     //var db = req.databases[dbName];
     var profile = db.collection('system.profile');
     profile.find().toArray(function(err, docs) {
@@ -236,14 +238,22 @@ router.get('/readfile/:filename', function (req,res) {
     })
 });
 
-router.get('/command/:database/:filename', function (req,res) {
+router.get('/command/:conn_name/:dbName/:fileName', function (req,res) {
 
-    var filename = req.params.filename;
-    var database = req.params.database;
+    var filename = req.params.fileName;
+    var dbName = req.params.dbName;
+    var conn_name = req.params.conn_name;
+    var connection = req.connections[conn_name];
+    //var database = connection.databases[dbName];
     var filepath = path.join(__dirname,'../../','client/public/upload/js');
-    var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
+    //var auth = new Buffer(req.headers.authorization.substring(6), 'base64').toString().split(':');
     //var ipaddress = config.mongodb.server;
-    var command = 'mongo ' + global.dbAddress + '/'+database+' -u '+auth[0]+' -p '+auth[1]+' --authenticationDatabase admin --shell '+filepath+'/'+filename+'';
+    var command = '';
+    if(connection.auth.sign){
+        command = 'mongo ' + connection.server + ':' + connection.port + '/'+dbName+' -u '+ connection.auth.user +' -p '+ connection.auth.password +' --authenticationDatabase admin --shell '+filepath+'/'+filename+'';
+    }else{
+        command = 'mongo ' + connection.server + ':' + connection.port + '/'+dbName + ' --shell ' +filepath+'/'+filename+'';
+    }
     child_process.exec(command, function (err,stdout,stderr) {
         if(err){
             console.log(err);

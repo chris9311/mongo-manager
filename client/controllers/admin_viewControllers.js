@@ -18,12 +18,23 @@ profileviewcontroller.controller('proviewController',function($scope,$rootScope,
         sort : '',
         sign : ''
     };
+
+    $scope.connection = 'Choose Connection';
+
     $scope.db = 'Choose DataBase';
 
-    $http.get('/database/databases')
-        .success(function (json) {
-            $scope.dblist = json.databases;
-        });
+    //
+    //$http.get('/database/databases')
+    //    .success(function (json) {
+    //        $scope.dblist = json.databases;
+    //    });
+
+    $scope.change_conn = function (connection) {
+        $scope.dblist  = connection.databases;
+        $scope.connection = connection.conn_name;
+        $scope.db = 'Choose DataBase';
+        $scope.enableDb = true;
+    };
 
     $scope.change_db = function (dbName) {
         $scope.db =  dbName;
@@ -31,7 +42,7 @@ profileviewcontroller.controller('proviewController',function($scope,$rootScope,
 
     $scope.$watch('db', function () {
         if($scope.db != 'Choose DataBase'){
-            $http.get('/admin/profile/'+$scope.db)
+            $http.get('/admin/profile/'+ $scope.connection +'/'+$scope.db)
                 .success(function (json) {
                     $scope.bigTotalItems = json.profiles.length;
                     $scope.profileslist = json.profiles;
@@ -194,10 +205,24 @@ command.controller('commandController',function($scope,$rootScope,$http,$routePa
     var filename = $routeParams.filename;
     $scope.filename = $routeParams.filename;
     $scope.command = function(){
-        $http.get('/admin/command/' + $scope.database + '/' + filename)
+        $http.get('/admin/command/'+ $scope.connection + '/' + $scope.db + '/' + filename)
             .success(function(json){
                 $scope.filedata = json.data;
             });
+    };
+
+    $scope.connection = 'Choose Connection';
+    $scope.db = 'Choose DataBase';
+
+    $scope.change_conn = function (connection) {
+        $scope.dblist  = connection.databases;
+        $scope.connection = connection.conn_name;
+        $scope.db = 'Choose DataBase';
+        $scope.enableDb = true;
+    };
+
+    $scope.change_db = function (dbName) {
+        $scope.db =  dbName;
     };
 });
 
