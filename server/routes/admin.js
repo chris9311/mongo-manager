@@ -9,7 +9,7 @@ var multipartMiddleware = multipart();
 var async = require('async');
 var child_process = require('child_process');
 //var config = require('../../config');
-//var later = require('later');
+var later = require('later');
 
 var daily_tasklist =[];
 
@@ -478,73 +478,87 @@ router.get('/dailytasklist', function (req,res) {
 //    fs.writeFile(filepath,template, cb(err));
 //}
 
-router.get('/newtask/:datetime/:sign/:task',function(req,res){
+//router.get('/newtask/:datetime/:sign/:task',function(req,res){
+//
+//    console.log('new task test');
+//    var datetime = req.params.datetime;
+//    console.log('date time : '+datetime);
+//    var sign  = req.params.sign;
+//    var taskname  = req.params.task;
+//
+//    var arr = datetime.split('-');
+//    console.log(arr);
+//
+//    var dt = ''+arr[4]+' '+arr[3]+' '+arr[1]+' '+arr[0]+' '+arr[2]+'';
+//
+//    if(sign == '0'){
+//        var task = taskname;
+//    }else{
+//        var task = path.join(__dirname,'../../','client/public/upload/'+taskname);
+//    }
+//    var filepath = path.join(__dirname,'../../','server/shell/crontab.sh');
+//
+//    child_process.execFile(filepath, [dt, task], function (err, result) {
+//
+//        if(err){
+//            console.log(err);
+//        }
+//        res.json({
+//            success : true
+//        });
+//    });
+//});
+//
+//router.get('/updatetasklist/:taskno', function (req,res) {
+//
+//    console.log(daily_tasklist);
+//
+//    child_process.exec('crontab -r', function (err,stdout,stderr) {
+//        if(err){
+//            console.log(err);
+//        }else{
+//            var taskno = req.params.taskno;
+//
+//            async.mapSeries(daily_tasklist, function (task,cb) {
+//                if(task.num == taskno){
+//                    cb(null,null);
+//                }else{
+//                    var dt = ''+task.dt.min+' '+task.dt.hour+' '+task.dt.day+' '+task.dt.mon+' '+task.dt.weekday+'';
+//                    console.log(dt);
+//                    var task_ = task.cmd;
+//                    console.log(task_);
+//                    var filepath = path.join(__dirname,'../../','server/shell/crontab.sh');
+//                    console.log(filepath);
+//                    child_process.execFile(filepath, [dt, task_], function (err, result) {
+//                        console.log('*********');
+//                        if(err){
+//                            console.log(err);
+//                        }
+//                        cb(null,null);
+//                    });
+//                }
+//            },function (err,result) {
+//                res.json({
+//                    success : true
+//                });
+//            });
+//        }
+//    });
+//});
 
-    console.log('new task test');
-    var datetime = req.params.datetime;
-    console.log('date time : '+datetime);
-    var sign  = req.params.sign;
-    var taskname  = req.params.task;
 
-    var arr = datetime.split('-');
-    console.log(arr);
-
-    var dt = ''+arr[4]+' '+arr[3]+' '+arr[1]+' '+arr[0]+' '+arr[2]+'';
-
-    if(sign == '0'){
-        var task = taskname;
-    }else{
-        var task = path.join(__dirname,'../../','client/public/upload/'+taskname);
-    }
-    var filepath = path.join(__dirname,'../../','server/shell/crontab.sh');
-
-    child_process.execFile(filepath, [dt, task], function (err, result) {
-
-        if(err){
-            console.log(err);
-        }
-        res.json({
-            success : true
-        });
-    });
+router.get('/set_task/:time', function (req,res){
+    //var schdule =
+    var time = req.params.time;
+    var cronSched = later.parse.cron(''+time+' * * * *');
+    later.date.UTC();
+    later.date.localTime();
+    var task = later.setInterval(function () {
+        console.log(new Date());
+    },cronSched);
+    res.json({
+        success : true
+    })
 });
-
-router.get('/updatetasklist/:taskno', function (req,res) {
-
-    console.log(daily_tasklist);
-
-    child_process.exec('crontab -r', function (err,stdout,stderr) {
-        if(err){
-            console.log(err);
-        }else{
-            var taskno = req.params.taskno;
-
-            async.mapSeries(daily_tasklist, function (task,cb) {
-                if(task.num == taskno){
-                    cb(null,null);
-                }else{
-                    var dt = ''+task.dt.min+' '+task.dt.hour+' '+task.dt.day+' '+task.dt.mon+' '+task.dt.weekday+'';
-                    console.log(dt);
-                    var task_ = task.cmd;
-                    console.log(task_);
-                    var filepath = path.join(__dirname,'../../','server/shell/crontab.sh');
-                    console.log(filepath);
-                    child_process.execFile(filepath, [dt, task_], function (err, result) {
-                        console.log('*********');
-                        if(err){
-                            console.log(err);
-                        }
-                        cb(null,null);
-                    });
-                }
-            },function (err,result) {
-                res.json({
-                    success : true
-                });
-            });
-        }
-    });
-});
-
 
 module.exports = router;
