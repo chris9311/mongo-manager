@@ -1,0 +1,97 @@
+<div class="modal fade" id="addConnectionModal" role="dialog" aria-labelledby="myModalLabel" ng-controller="addConnecntionController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    New Connection
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="clear()">
+                        <span aria-hidden="true">&times;</span></button>
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="post" name="connectionForm" novalidate>
+                    <div class="form-group " ng-class="{'has-error':connectionForm.conn_name.$invalid}">
+                        <div class="row">
+                            <label class="control-label col-md-2">Name:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="conn_name" ng-model="connection.conn_name" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':connectionForm.server.$invalid || connectionForm.port.$invalid}">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <label class="control-label col-md-3">Server:</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="server" ng-model="connection.server" required>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label class="control-label col-md-3">Port:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="port" ng-model="connection.port" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Authentication
+                        <input type="checkbox" ng-model="connection.auth.sign">
+                        &nbsp;&nbsp;&nbsp;
+                        <!--Replica Set-->
+                        <!--<input type="checkbox">-->
+                    </div>
+                    <br/>
+                    <div ng-show="connection.auth.sign">
+                        <div class="form-group" ng-class="{'has-error':connection.auth.db.length === 0}" >
+                            <div class="row">
+                                <label class="control-label col-md-3">Database:</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="db" ng-model="connection.auth.db" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':connection.auth.user.length === 0}">
+                            <div class="row">
+                                <label class="control-label col-md-3">User Name:</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="username" ng-model="connection.auth.user">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':connection.auth.password.length === 0}">
+                            <div class="row">
+                                <label class="control-label col-md-3">Password:</label>
+                                <div class="col-md-7">
+                                    <input type="password" name="password" ng-if="!isEyeOpen" ng-model="connection.auth.password" class="form-control">
+                                    <input type="text" name="password" ng-if="isEyeOpen" ng-model="connection.auth.password" class="form-control">
+                                </div>
+                                <label class="control-label">
+                                    <i class="glyphicon" ng-class="{'glyphicon-eye-open':isEyeOpen,'glyphicon-eye-close':!isEyeOpen}" ng-click="isEyeOpen = !isEyeOpen" style="cursor:pointer"></i>
+                                    <!--<a href="" class="glyphicon glyphicon-eye-close"></a>-->
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label ng-show="message" class="control-label" ng-style="{true:{color:'green'},false:{color:'red'}}[success]">Message : {{message}}</label>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-default" type="button" ng-click="testConnection()" ng-disabled = "connectionForm.conn_name.$invalid
+                        || connectionForm.server.$invalid || connectionForm.port.$invalid
+                        || (connection.auth.sign && (connection.auth.user.length === 0 || connection.auth.password.length === 0 || connection.auth.db.length === 0))" >Test Connection</button>
+                        <button class="btn btn-default" type="button" ng-click="saveConnection()"  ng-disabled = "connectionForm.conn_name.$invalid
+                        || connectionForm.server.$invalid || connectionForm.port.$invalid
+                        || (connection.auth.sign && (connection.auth.user.length === 0 || connection.auth.password.length === 0 || connection.auth.db.length === 0))">Save</button>
+                        <button class="btn btn-default" type="button" data-dismiss="modal" ng-click="clear()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
