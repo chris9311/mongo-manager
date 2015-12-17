@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5260ffbb-143b-4e52-94dd-6e0f9f5f31ab" name="Default" comment="" />
+    <list default="true" id="5260ffbb-143b-4e52-94dd-6e0f9f5f31ab" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/admin_viewControllers.js" afterPath="$PROJECT_DIR$/client/controllers/admin_viewControllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/appController.js" afterPath="$PROJECT_DIR$/client/controllers/appController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/includes/breadcrumb.html" afterPath="$PROJECT_DIR$/client/views/includes/breadcrumb.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/connection.js" afterPath="$PROJECT_DIR$/server/routes/connection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/db_views/db_index.html" afterPath="$PROJECT_DIR$/client/views/pages/db_views/db_index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/controllers/db_viewController.js" afterPath="$PROJECT_DIR$/client/controllers/db_viewController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/pages/index.html" afterPath="$PROJECT_DIR$/client/views/pages/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/includes/tree.html" afterPath="$PROJECT_DIR$/client/views/includes/tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="moongo-manager.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,98 +36,30 @@
         <entry file="file://$PROJECT_DIR$/client/controllers/appController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+              <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_viewController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="db_viewController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+            <state vertical-scroll-proportion="1.4024526">
+              <caret line="74" column="29" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="breadcrumb.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/includes/breadcrumb.html">
+      <file leaf-file-name="add_connectionModal.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/includes/add_connectionModal.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384">
-              <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="system.profile.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="41" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="commandjs.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/commandjs.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collection.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/collection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="128" column="4" selection-start-line="128" selection-start-column="4" selection-end-line="129" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin_viewControllers.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/controllers/admin_viewControllers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="207" column="54" selection-start-line="207" selection-start-column="54" selection-end-line="207" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/database.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="101" column="18" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39086294">
-              <caret line="254" column="83" selection-start-line="254" selection-start-column="83" selection-end-line="254" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/pages/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.423077">
-              <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-              <folding />
+            <state vertical-scroll-proportion="-25.653847">
+              <caret line="84" column="54" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#label#1;n#div#0;n#div#2;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,8 +69,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Html5" />
         <option value="JavaScript File" />
+        <option value="Html5" />
       </list>
     </option>
   </component>
@@ -142,7 +85,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/views/pages/detailModal.html" />
         <option value="$PROJECT_DIR$/client/views/pages/filelist.html" />
         <option value="$PROJECT_DIR$/client/public/upload/js/testjs.js" />
         <option value="$PROJECT_DIR$/client/views/pages/task/newtask.html" />
@@ -167,22 +109,13 @@
         <option value="$PROJECT_DIR$/client/views/includes/tree_bp.html" />
         <option value="$PROJECT_DIR$/server/routes/connections.js" />
         <option value="$PROJECT_DIR$/client/views/includes/head.html" />
-        <option value="$PROJECT_DIR$/server/routes/connection.js" />
         <option value="$PROJECT_DIR$/client/views/pages/admin_views/uploadModal.html" />
-        <option value="$PROJECT_DIR$/client/views/includes/tree.html" />
         <option value="$PROJECT_DIR$/client/views/pages/db_views/collections_new.html" />
-        <option value="$PROJECT_DIR$/client/controllers/appController.js" />
-        <option value="$PROJECT_DIR$/client/views/pages/index.html" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/client/views/includes/breadcrumb.html" />
         <option value="$PROJECT_DIR$/client/views/pages/admin_views/currentop.html" />
         <option value="$PROJECT_DIR$/server/routes/router.js" />
-        <option value="$PROJECT_DIR$/config.js" />
-        <option value="$PROJECT_DIR$/client/controllers/db_viewController.js" />
-        <option value="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/server/shell/exportcollection_auth.sh" />
-        <option value="$PROJECT_DIR$/client/views/pages/db_views/db_index.html" />
         <option value="$PROJECT_DIR$/server/shell/exportcollection.sh" />
         <option value="$PROJECT_DIR$/server/shell/exportdatabase.sh" />
         <option value="$PROJECT_DIR$/server/shell/exportdatabase_auth.sh" />
@@ -191,8 +124,18 @@
         <option value="$PROJECT_DIR$/client/views/pages/db_views/query.html" />
         <option value="$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html" />
         <option value="$PROJECT_DIR$/client/views/pages/admin_views/commandjs.html" />
-        <option value="$PROJECT_DIR$/client/controllers/admin_viewControllers.js" />
         <option value="$PROJECT_DIR$/server/routes/admin.js" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/database.html" />
+        <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/client/views/includes/breadcrumb.html" />
+        <option value="$PROJECT_DIR$/client/controllers/admin_viewControllers.js" />
+        <option value="$PROJECT_DIR$/client/views/pages/db_views/db_index.html" />
+        <option value="$PROJECT_DIR$/client/controllers/appController.js" />
+        <option value="$PROJECT_DIR$/client/views/pages/index.html" />
+        <option value="$PROJECT_DIR$/server/routes/connection.js" />
+        <option value="$PROJECT_DIR$/client/views/includes/tree.html" />
+        <option value="$PROJECT_DIR$/client/views/includes/add_connectionModal.html" />
+        <option value="$PROJECT_DIR$/client/controllers/db_viewController.js" />
       </list>
     </option>
   </component>
@@ -711,7 +654,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1332982" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -719,13 +662,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325054" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3243243" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32289416" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27682403" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33081082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33081082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -774,13 +717,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/public/libs/angular-route/angular-route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326087">
-          <caret line="709" column="15" selection-start-line="709" selection-start-column="15" selection-end-line="709" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/block.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4826087">
@@ -900,14 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5817556">
-          <caret line="28" column="62" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/includes/head.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08777969">
@@ -939,14 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/connection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/currentop.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.961538">
@@ -963,14 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6607774">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/shell/crontab.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -983,22 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7635135">
           <caret line="23351" column="3" selection-start-line="23351" selection-start-column="3" selection-end-line="23351" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1722973">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/db_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307">
-          <caret line="30" column="86" selection-start-line="30" selection-start-column="86" selection-end-line="30" selection-end-column="86" />
           <folding />
         </state>
       </provider>
@@ -1035,14 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/database.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0">
-          <caret line="26" column="89" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/query_new.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="58.846153">
@@ -1051,30 +939,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.615385">
-          <caret line="30" column="28" selection-start-line="28" selection-start-column="50" selection-end-line="30" selection-end-column="28" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#i#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#em#0;n#span#0;n#pre#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="54" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/includes/tree.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="29" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1087,58 +955,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/includes/breadcrumb.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/controllers/appController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/collection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="128" column="4" selection-start-line="128" selection-start-column="4" selection-end-line="129" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/system.profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="41" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/commandjs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1151,18 +971,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/controllers/admin_viewControllers.js">
+    <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="207" column="54" selection-start-line="207" selection-start-column="54" selection-end-line="207" selection-end-column="54" />
+          <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39086294">
-          <caret line="254" column="83" selection-start-line="254" selection-start-column="83" selection-end-line="254" selection-end-column="83" />
+        <state vertical-scroll-proportion="-14.384615">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/collection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="128" column="4" selection-start-line="128" selection-start-column="4" selection-end-line="129" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/includes/breadcrumb.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.307692">
+          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/controllers/admin_viewControllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/db_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/database.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="29" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/commandjs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="107" column="27" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="51" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/includes/tree.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.90241104">
+          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/db_views/query.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.153847">
+          <caret line="30" column="28" selection-start-line="28" selection-start-column="50" selection-end-line="30" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/pages/admin_views/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/includes/add_connectionModal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.653847">
+          <caret line="84" column="54" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#label#1;n#div#0;n#div#2;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/controllers/appController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/controllers/db_viewController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4024526">
+          <caret line="74" column="29" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
           <folding />
         </state>
       </provider>

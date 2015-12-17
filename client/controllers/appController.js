@@ -1,12 +1,11 @@
-var app = angular.module('app',['ngRoute','dbs_tree','db_view',
-    'breadcrumb_controller','coll_view','doc_view','index_view',
+var app = angular.module('app',['ngRoute','index_view','dbs_tree','db_view',
+    'breadcrumb_controller','coll_view','doc_view','dbindex_view',
     'proview_controller','upload_controller','fileList','command','daily','dailytask','current',
     'admin','address']);
 
 
 app.config(function ($routeProvider) {
 
-    //$locationProvider.html5Mode(true);
     $routeProvider
         .when('/',{
             templateUrl : 'client/views/pages/index.html'
