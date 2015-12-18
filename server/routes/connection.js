@@ -57,33 +57,21 @@ router.get('/getConnections', function (req, res) {
     })
 });
 
+function testConnection (connection){
+
+}
+
 router.post('/save_connection', function (req,res) {
 
     var connection = req.body;
-    var serverdb = req.serverdb;
-    var connectionList = serverdb.collection('connectionlist');
-    connectionList.insertOne(connection, function (err,result) {
-        if(err){
-            console.log('connection.js  70');
-            console.log(err);
-        }else{
-            res.json({
-                success : true
-            })
-        }
-    });
-});
 
-router.post('/test_connection', function (req, res) {
-
-    var connection = req.body;
     mongodb.connect('mongodb://'+connection.server+ ':' + connection.port + '/admin', function (err,db) {
         if(err){
             console.log('connection.js 82');
             console.log(err);
             res.json({
                 success : false,
-                error : err
+                error : err.message
             })
         }else if(!db){
             res.json({
@@ -98,12 +86,88 @@ router.post('/test_connection', function (req, res) {
                         console.log(err);
                         res.json({
                             success : false,
-                            error : err
+                            error : err.message
                         })
                     }else if(!result){
                         res.json({
                             success : false,
-                            error : 'user and password not match!'
+                            error : 'User or password not match!'
+                        })
+                    }else{
+                        var serverdb = req.serverdb;
+                        var connectionList = serverdb.collection('connectionlist');
+                        connectionList.insertOne(connection, function (err,result) {
+                            if(err){
+                                console.log('connection.js  70');
+                                console.log(err);
+                            }else{
+                                res.json({
+                                    success : true
+                                })
+                            }
+                        });
+                    }
+                })
+            }else{
+                var adminDb = db.admin();
+                adminDb.listDatabases(function (err,dbs) {
+                    if(err){
+                        console.log('connection.js 118');
+                        console.log(err);
+                        res.json({
+                            success : false,
+                            error : err.message
+                        })
+                    }else{
+                        var serverdb = req.serverdb;
+                        var connectionList = serverdb.collection('connectionlist');
+                        connectionList.insertOne(connection, function (err,result) {
+                            if(err){
+                                console.log('connection.js  70');
+                                console.log(err);
+                            }else{
+                                res.json({
+                                    success : true
+                                })
+                            }
+                        });
+                    }
+                });
+            }
+        }
+    })
+});
+
+router.post('/test_connection', function (req, res) {
+
+    var connection = req.body;
+    mongodb.connect('mongodb://'+connection.server+ ':' + connection.port + '/admin', function (err,db) {
+        if(err){
+            console.log('connection.js 82');
+            console.log(err);
+            res.json({
+                success : false,
+                error : err.message
+            })
+        }else if(!db){
+            res.json({
+                success : false,
+                error : 'Database not exit!'
+            })
+        }else{
+            if(connection.auth.sign){
+                db.admin().authenticate(connection.auth.user,connection.auth.password, function (err,result){
+                    if(err){
+                        console.log('connection.js 97');
+                        console.log(err);
+                        res.json({
+                            success : false,
+                            error : err.message
+                        })
+                    }else if(!result){
+                        res.json({
+                            success : false,
+                            error : 'User or password not match!'
                         })
                     }else{
                         res.json({
@@ -112,9 +176,21 @@ router.post('/test_connection', function (req, res) {
                     }
                 })
             }else{
-                res.json({
-                    success : true
-                })
+                var adminDb = db.admin();
+                adminDb.listDatabases(function (err,dbs) {
+                    if(err){
+                        console.log('connection.js 118');
+                        console.log(err);
+                        res.json({
+                            success : false,
+                            error : err.message
+                        })
+                    }else{
+                        res.json({
+                            success : true
+                        })
+                    }
+                });
             }
         }
     })

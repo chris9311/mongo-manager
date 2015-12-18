@@ -26,7 +26,7 @@
             <a ng-hide="urlarry.length == 0" href="#/">Home</a>
             <span ng-show="urlarry.length == 0">Home</span>
         </li>
-        <li ng-repeat="url in urlarry" ng-switch on="url">
+        <li ng-repeat="url in urlarry track by $index" ng-switch on="url">
             <a ng-hide="url && urlarry.length == 1" ng-switch-when="admin" href="#/admin">{{url}}</a>
             <span ng-show="url && urlarry.length == 1" ng-switch-when="admin">{{url}}</span>
             <a ng-hide="url && urlarry.length == 2" ng-switch-when="daily" href="#/admin/daily">{{url}}</a>

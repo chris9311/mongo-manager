@@ -40,8 +40,6 @@ dbs_tree.controller('treeController', function ($rootScope,$scope,$http,$locatio
     };
 
     $scope.redirect = function (conn_name) {
-        //console.log('init');
-        //$location = '/'+conn_name;
         window.location = '#/database/'+conn_name ;
     }
 });
@@ -59,7 +57,9 @@ dbs_tree.controller('addConnecntionController', function ($scope, $http) {
                 user : '',
                 password : ''
             }
-        }
+        };
+        $scope.success = '';
+        $scope.message = '';
     };
     reset();
     $scope.clear = function () {
@@ -69,13 +69,20 @@ dbs_tree.controller('addConnecntionController', function ($scope, $http) {
     $scope.testConnection = function () {
         if(!$scope.connection.auth.sign){
             $scope.connection.auth = {
-                sign : false
+                sign : false,
+                db : 'admin',
+                user : '',
+                password : ''
             }
         }
         $http.post('/connection/test_connection',$scope.connection)
             .success(function (json) {
+                $scope.success = json.success;
                 if(json.success){
-                    console.log(json.success)
+                    console.log(json.success);
+                    $scope.message = 'Connect successful';
+                }else{
+                    $scope.message = json.error;
                 }
             })
     };
@@ -83,12 +90,24 @@ dbs_tree.controller('addConnecntionController', function ($scope, $http) {
     $scope.saveConnection = function () {
         $http.post('/connection/save_connection',$scope.connection)
             .success(function (json) {
+                $scope.success = json.success;
                 if(json.success){
                     console.log(json.success);
+                    $scope.message = 'Save connection successful';
                     window.location = '/';
+                }else{
+                    $scope.message = json.error;
                 }
             })
     };
+});
+
+dbs_tree.directive('addControllerModal', function () {
+    return {
+        restrict : 'E',
+        replace : true,
+        templateUrl : 'client/views/includes/add_connectionModal.html',
+    }
 });
 
 var breadcrumbcontroller = angular.module('breadcrumb_controller',[]);
@@ -110,7 +129,12 @@ breadcrumbcontroller.controller('breadcrumbController',function($scope,$rootScop
 });
 
 var index_view = angular.module('index_view',[]);
-index_view.controller('indexviewController',function($rootScope,$scope,$http,$routeParams){
+index_view.controller('indexviewController', function ($rootScope,$scope,$http) {
+    $scope.$emit('hide_loading');
+});
+
+var dbindex_view = angular.module('dbindex_view',[]);
+dbindex_view.controller('dbindexviewController',function($rootScope,$scope,$http,$routeParams){
 
     $rootScope.urlParams = $routeParams;
     $scope.conn_name = $routeParams.conn_name;
@@ -225,7 +249,7 @@ coll_view.controller('collviewController',function($scope,$http,$rootScope,$rout
         if($scope.find){
             str = JSON.stringify($scope.find);
         }
-        $http.get('/collection/exportExcel/'+ $scope.conn_name + '/' + $scope.dbName + '/' + $scope.collName + '/' + str)
+        $http.get('/collection/exportExcel/' + $scope.dbName + '/' + $scope.collName + '/' + str)
             .success(function (json) {
                 if(json.success){
                     console.log('file generation');

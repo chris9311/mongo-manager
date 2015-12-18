@@ -4,6 +4,7 @@ admin.controller('adminController', function ($scope,$http) {
     $scope.show_upload = function () {
         $scope.$emit('reloadModal','');
     };
+    $scope.$emit('hide_loading');
 });
 
 var profileviewcontroller = angular.module('proview_controller',['ui.bootstrap']);

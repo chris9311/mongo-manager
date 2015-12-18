@@ -5,5 +5,5 @@ module.exports = {
      */
     serverDatabase: {
         dbUrl : 'localhost:27017'
-    },
+    }
 };

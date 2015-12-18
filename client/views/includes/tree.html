@@ -40,6 +40,7 @@
             </li>
         </ul>
     </div>
+
     <div class="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="delConfirmModal" data-backdrop='false'>
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -61,91 +62,5 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addConnectionModal" role="dialog" aria-labelledby="myModalLabel" ng-controller="addConnecntionController">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>
-                        New Connection
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="clear()">
-                        <span aria-hidden="true">&times;</span></button>
-                    </h3>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" method="post">
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="control-label col-md-2">Name:</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" ng-model="connection.conn_name">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <label class="control-label col-md-3">Server:</label>
-                                    <div class="col-md-9">
-                                        <input class="form-control" ng-model="connection.server">
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <label class="control-label col-md-3">Port:</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" ng-model="connection.port">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            Authentication
-                            <input type="checkbox" ng-model="connection.auth.sign">
-                            &nbsp;&nbsp;&nbsp;
-                            <!--Replica Set-->
-                            <!--<input type="checkbox">-->
-                        </div>
-                        <br/>
-                        <div ng-show="connection.auth.sign">
-                            <div class="form-group" >
-                                <div class="row">
-                                    <label class="control-label col-md-3">Database:</label>
-                                    <div class="col-md-7">
-                                        <input class="form-control" ng-model="connection.auth.db">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group" >
-                                <div class="row">
-                                    <label class="control-label col-md-3">User Name:</label>
-                                    <div class="col-md-7">
-                                        <input class="form-control" ng-model="connection.auth.user">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group" >
-                                <div class="row">
-                                    <label class="control-label col-md-3">Password:</label>
-                                    <div class="col-md-7">
-                                        <input type="password" ng-if="!isEyeOpen" ng-model="connection.auth.password" class="form-control">
-                                        <input type="text" ng-if="isEyeOpen" ng-model="connection.auth.password" class="form-control">
-                                    </div>
-                                    <label class="control-label">
-                                        <i class="glyphicon" ng-class="{'glyphicon-eye-open':isEyeOpen,'glyphicon-eye-close':!isEyeOpen}" ng-click="isEyeOpen = !isEyeOpen" style="cursor:pointer"></i>
-                                        <!--<a href="" class="glyphicon glyphicon-eye-close"></a>-->
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-default" type="button" ng-click="testConnection()">Test Connection</button>
-                    <button class="btn btn-default" type="button" ng-click="saveConnection()">Save</button>
-                    <button class="btn btn-default" type="button" data-dismiss="modal" ng-click="clear()">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <add-controller-modal></add-controller-modal>
 </div>
