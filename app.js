@@ -48,6 +48,7 @@ app.use(function (req,res,next) {
           console.log('app.js 48');
           console.log(err);
         }else{
+          /////////////
           async.map(conns, function (connection,callback) {
             var connection = connection;
             var serverAddress = connection.server + ':' +connection.port;
