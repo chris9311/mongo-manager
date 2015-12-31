@@ -365,7 +365,7 @@ dailytask.controller('newtaskController', function ($scope,$http) {
     //    return {
     //        restrict : 'E',
     //        replace : true,
-    //        templateUrl : 'client/views/pages/task/dailytask.html',
+    //        templateUrl : 'client/views/pages/task/dailytask_bp.html',
     //    }
     //})
     //.directive('weeklytask', function () {

@@ -546,16 +546,30 @@ router.get('/dailytasklist', function (req,res) {
 //    });
 //});
 
-
-router.get('/set_task/:time', function (req,res){
+router.get('/set_dailytask/:time', function (req,res){
     //var schdule =
     var time = req.params.time;
     var cronSched = later.parse.cron(''+time+' * * * *');
     later.date.UTC();
     later.date.localTime();
     var task = later.setInterval(function () {
+        console.log('daily task');
         console.log(new Date());
     },cronSched);
+    res.json({
+        success : true
+    })
+});
+
+router.get('/set_oncetask/:time', function (req,res) {
+    var time = req.params.time;
+    var cronSched = later.parse.cron(''+time+' * * * *');
+    later.date.UTC();
+    later.data.localTime();
+    var task = later.setInterval(function () {
+        console.log('once task');
+        console.log(new Date());
+    });
     res.json({
         success : true
     })
